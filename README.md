@@ -25,7 +25,23 @@ For more information, see the [FERMO Metabolomics](https://github.com/fermo-meta
 
 ## Documentation
 
+The official documentation can be found [HERE](https://fermo-metabolomics.github.io/fermo_docs/).
+
 ## System Requirements
+
+### Hardware requirements
+
+`fermo_core` can be run on a standard computer and does not have any special requirements.
+
+### Software requirements
+
+#### OS Requirements
+
+Local installation of this package is only supported for Linux (tested on Ubuntu 20.04 and 22.04).
+
+#### Python dependencies
+
+Dependencies including exact versions are specified in the [pyproject.toml](./pyproject.toml) file.
 
 ## Installation Guide
 
@@ -35,18 +51,18 @@ For more information, see the [FERMO Metabolomics](https://github.com/fermo-meta
 - Run `pip install fermo_core`
 - Once installed, run as specified in [Run with `pip`](#run-with-pip)
 
-### With `hatch` from GitHub
+### With `uv` from GitHub
 - Install `python 3.11.x`
-- Install hatch (e.g. with `pipx install hatch`)
+- Install `uv` (e.g. with `pipx install uv`)
 - Download or clone the repository
 - (Change into the fermo_core base directory if not already present)
-- Run `hatch -v env create`
-- Once installed, run as specified in [Run with `hatch`](#run-with-hatch)
+- Run `uv sync`
+- Once installed, run as specified in [Run with `uv`](#run-with-hatch)
 
 ### With `conda` from GitHub
-- Install conda (e.g. miniconda)
-- Create a conda environment with `conda create --name fermo_core python=3.11`
-- Activate the conda environment with `conda activate fermo_core`
+- Install `conda` (e.g. miniconda)
+- Create a `conda` environment with `conda create --name fermo_core python=3.11`
+- Activate the `conda` environment with `conda activate fermo_core`
 - Download or clone the repository
 - (Change into the fermo_core base directory if not already present)
 - Run `pip install -e .`
@@ -57,8 +73,8 @@ For more information, see the [FERMO Metabolomics](https://github.com/fermo-meta
 ### Run with `pip`
 - `fermo_core --parameters <your_parameter_file.json>`
 
-### Run with `hatch`:
-- `hatch run fermo_core --parameters <your_parameter_file.json>`
+### Run with `uv`:
+- `uv run fermo_core --parameters <your_parameter_file.json>`
 
 ### Run with `conda`:
 - `python3 fermo_core/main.py --parameters <your_parameter_file.json>`
@@ -66,7 +82,9 @@ For more information, see the [FERMO Metabolomics](https://github.com/fermo-meta
 ## Demo
 
 
-`fermo_core` can be used both as a command line interface as well as a library.
+
+
+
 
 All parameters and input data are specified in a `parameters.json` file.
 This file must be formatted according to the JSON Schema specified in `fermo_core/config/schema.json`. 
