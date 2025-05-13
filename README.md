@@ -1,24 +1,33 @@
 fermo_core
 =========
 
-[![DOI](https://zenodo.org/badge/671395100.svg)](https://zenodo.org/doi/10.5281/zenodo.11259126) [![PyPI version](https://badge.fury.io/py/fermo_core.svg)](https://badge.fury.io/py/fermo_core)
+[![DOI](https://zenodo.org/badge/671395100.svg)](https://zenodo.org/doi/10.5281/zenodo.11259126) [![PyPI version](https://badge.fury.io/py/fermo_core.svg)](https://badge.fury.io/py/fermo_core) [![Go Coverage](https://github.com/fermo-metabolomics/fermo_core/wiki/coverage.svg)](https://raw.githack.com/wiki/fermo-metabolomics/fermo_core/coverage.html)
 
-`fermo_core` is a tool to process, analyze, and prioritize compounds from metabolomics data. 
+Contents
+-----------------
+- [Overview](#overview)
+- [Documentation](#documentation)
+- [System Requirements](#system-requirements)
+- [Installation Guide](#installation-guide)
+- [Quick Start](#quick-start)
+- [Demo](#demo)
+- [Attribution](#attribution)
+- [For Developers](#for-developers)
 
-While primarily intended to be the backend processing module of the FERMO application, `fermo_core` can be used as a command line interface (CLI) for large-scale data processing and analysis or as library. 
+## Overview
+
+`fermo_core` is a tool to perform hypothesis-driven prioritization on metabolomics data. 
+Besides its use as backend processing tool of the [FERMO dashboard](https://github.com/fermo-metabolomics/fermo), `fermo_core` can be used as a command line interface (CLI) for large-scale data processing and analysis.
 
 This README specifies the use of `fermo_core` as CLI. For a more user-friendly version of FERMO, see [FERMO Online](https://fermo.bioinformatics.nl).
 
 For more information, see the [FERMO Metabolomics](https://github.com/fermo-metabolomics) GitHub Organization page.
 
-Table of Contents
------------------
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [Attribution](#attribution)
+## Documentation
 
-## Installation
+## System Requirements
+
+## Installation Guide
 
 ### With `pip` from PyPI
 - Install `python 3.11.x`
@@ -54,7 +63,8 @@ Table of Contents
 ### Run with `conda`:
 - `python3 fermo_core/main.py --parameters <your_parameter_file.json>`
 
-## Usage
+## Demo
+
 
 `fermo_core` can be used both as a command line interface as well as a library.
 
@@ -73,3 +83,6 @@ For more information on input and output files, their format, and their purpose,
 ### Publications
 
 See [FERMO online](https://fermo.bioinformatics.nl/) for information on citing `fermo_core`.
+
+
+## For Developers

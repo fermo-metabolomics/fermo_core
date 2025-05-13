@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev_mmz
   pull_request:
     branches:
       - main
@@ -37,3 +38,14 @@ jobs:
       - name: Run fermo_core on test dataset
         run: |
           python fermo_core/main.py --parameters tests/test_data/test.parameters.json
+
+      - name: Update coverage report
+        uses: ncruces/go-coverage-report@v0
+        with:
+          report: true
+          chart: false
+          amend: true
+        if: |
+          matrix.os == 'ubuntu-latest' &&
+          github.event_name == 'push'
+        continue-on-error: true
