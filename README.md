@@ -165,7 +165,11 @@ See [CITATION.cff](CITATION.cff) or [FERMO online](https://fermo.bioinformatics.
 
 *Nota bene: for details on how to contribute to the FERMO project, please refer to [CONTRIBUTING](CONTRIBUTING.md).*
 
-### Package Installation
+### Development
+
+Instructions for setting up a development environment.
+
+#### Package Installation
 
 *Assumes that `hatch` is installed*
 
@@ -174,3 +178,20 @@ hatch env create dev
 hatch run dev:pre-commit install
 hatch run dev:pytest --run_slow
 ```
+
+### Documentation
+
+Instructions on setting up and deploying the automated documentation found [here](http://fermo-metabolomics.github.io/fermo_core/).
+
+The documentation rebuilds and deploys automatically on every release using GitHub Actions.
+
+#### Package Installation
+
+*Assumes that `hatch` is installed*
+
+```commandline
+hatch env create doc
+hatch run doc:sphinx-build -b html docs/source/ docs/_build
+```
+
+

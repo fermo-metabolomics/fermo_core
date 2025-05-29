@@ -38,6 +38,7 @@ logger = logging.getLogger("fermo_core")
 
 class PhenQuantAss(BaseModel):
     """Pydantic-based class to run qualitative phenotype assignment
+
     Attributes:
         coeff_cutoff: the correlation coefficient cutoff
         p_val_cutoff: the corrected p-value cutoff
@@ -62,6 +63,7 @@ class PhenQuantAss(BaseModel):
 
     def return_values(self: Self) -> tuple[Stats, Repository]:
         """Return the modified objects to the calling function
+
         Returns:
             The modified Stats and Repository objects
         """
@@ -69,6 +71,7 @@ class PhenQuantAss(BaseModel):
 
     def run_analysis(self: Self):
         """Run the phenotype annotation analysis
+
         Raise:
             RuntimeError: self.stats.phenotypes not assigned
         """
@@ -85,8 +88,10 @@ class PhenQuantAss(BaseModel):
     @staticmethod
     def add_annotation_attribute(feature: Feature) -> Feature:
         """Add annotation attribute to feature if not existing
+
         Arguments:
             feature: the Feature object to modify
+
         Returns:
             The modified feature object
         """
@@ -98,6 +103,7 @@ class PhenQuantAss(BaseModel):
 
     def find_relevant_f_ids(self: Self):
         """Determines features detected in > 3 samples
+
         Raises:
             RuntimeError: No relevant features (present in >3 samples) detected.
         """
@@ -142,6 +148,7 @@ class PhenQuantAss(BaseModel):
     @staticmethod
     def pearson_percentage(areas: list, activs: list) -> tuple[float, float]:
         """Calculate regular pearson coefficient
+
         Args:
             areas: the feature areas per sample
             activs: the measured activities per sample
@@ -154,6 +161,7 @@ class PhenQuantAss(BaseModel):
     @staticmethod
     def pearson_concentration(areas: list, activs: list) -> tuple[float, float]:
         """Calculate regular pearson coefficient
+
         Args:
             areas: the feature areas per sample
             activs: the measured activities per sample
@@ -166,6 +174,7 @@ class PhenQuantAss(BaseModel):
 
     def calculate_correlation(self: Self):
         """Collect data and prepare calculation
+
         Raises:
             KeyError: unsupported type of input data
         """
