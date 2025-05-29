@@ -6,10 +6,10 @@
 fermo_core documentation
 ========================
 
+Welcome to the documentation for `fermo_core` version |version|. Below you'll find an overview and the API reference.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-Welcome to the documentation for `fermo_core`. Below you'll find an overview and the API reference.
 
 `View the Project on GitHub <https://github.com/fermo-metabolomics/fermo_core>`_
