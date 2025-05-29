@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator &mdash; fermo_core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fermo_core.data_analysis.class_analysis_manager" href="../../class_analysis_manager/index.html" />
+    <link rel="prev" title="fermo_core.data_analysis.chrom_trace_calculator" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            fermo_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html">fermo_core</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../config/index.html">fermo_core.config</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html">fermo_core.data_analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../data_processing/index.html">fermo_core.data_processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../input_output/index.html">fermo_core.input_output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../main/index.html">fermo_core.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/index.html">fermo_core.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">fermo_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">fermo_core</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">fermo_core.data_analysis</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">fermo_core.data_analysis.chrom_trace_calculator</a></li>
+      <li class="breadcrumb-item active">fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/autoapi/fermo_core/data_analysis/chrom_trace_calculator/class_chrom_trace_calculator/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator">
+<span id="fermo-core-data-analysis-chrom-trace-calculator-class-chrom-trace-calculator"></span><h1>fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator<a class="headerlink" href="#module-fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator" title="Link to this heading"></a></h1>
+<p>Calculate time/intensity traces of pseudo-chromatograms for plotting in GUI.</p>
+<p>Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.logger" title="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData" title="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChromTraceData</span></code></a></p></td>
+<td><p>Internal class to organize attributes to create a pseudo-chromatogram trace</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator" title="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChromTraceCalculator</span></code></a></p></td>
+<td><p>Organize methods to create a pseudo-chromatogram trace</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.logger">
+<span class="sig-prename descclassname"><span class="pre">fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.</span></span><span class="sig-name descname"><span class="pre">ChromTraceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_begin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData" title="Link to this definition"></a></dt>
+<dd><p>Internal class to organize attributes to create a pseudo-chromatogram trace</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>feature_id: id of molecular feature associated to data
+sample_id: id of sample associated to data
+rt_begin: RT of beginning of chromatogram
+int_begin: rel int of beginning of chromatogram
+rt_left_kink: RT of artificial point between start and fwhm for vis purpose
+int_left_kink: rel int of artificial point between start and fwhm for vis purpose
+rt_left_fwhm: RT of left side of feature width at half maximum
+int_left_fwhm: rel int of left side of feature width at half maximum
+rt_apex: RT of apex of the peak
+int_apex: rel int of apex of the peak
+rt_right_fwhm: rRT of right side of feature width at half maximum
+int_right_fwhm: rel int of right side of feature width at half max
+rt_right_kink: RT of artificial point between fwhm for vis purpose
+int_right_kink: rel int of artificial point between fwhm for vis purpose
+rt_end: RT of end of chromatogram
+int_end: rel int of end of chromatogram
+fwhm: feature width at half maximum intensity in minutes
+rt_range: peak range (from start to stop) in minutes</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.feature_id">
+<span class="sig-name descname"><span class="pre">feature_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.feature_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.sample_id">
+<span class="sig-name descname"><span class="pre">sample_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.sample_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_begin">
+<span class="sig-name descname"><span class="pre">rt_begin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_begin" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_begin">
+<span class="sig-name descname"><span class="pre">int_begin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_begin" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_left_kink">
+<span class="sig-name descname"><span class="pre">rt_left_kink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_left_kink" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_left_kink">
+<span class="sig-name descname"><span class="pre">int_left_kink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_left_kink" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_left_fwhm">
+<span class="sig-name descname"><span class="pre">rt_left_fwhm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_left_fwhm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_left_fwhm">
+<span class="sig-name descname"><span class="pre">int_left_fwhm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_left_fwhm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_apex">
+<span class="sig-name descname"><span class="pre">rt_apex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_apex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_apex">
+<span class="sig-name descname"><span class="pre">int_apex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_apex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_right_fwhm">
+<span class="sig-name descname"><span class="pre">rt_right_fwhm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_right_fwhm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_right_fwhm">
+<span class="sig-name descname"><span class="pre">int_right_fwhm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_right_fwhm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_right_kink">
+<span class="sig-name descname"><span class="pre">rt_right_kink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_right_kink" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_right_kink">
+<span class="sig-name descname"><span class="pre">int_right_kink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_right_kink" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_end">
+<span class="sig-name descname"><span class="pre">rt_end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_end" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_end">
+<span class="sig-name descname"><span class="pre">int_end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.int_end" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.fwhm">
+<span class="sig-name descname"><span class="pre">fwhm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.fwhm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_range">
+<span class="sig-name descname"><span class="pre">rt_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData.rt_range" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.</span></span><span class="sig-name descname"><span class="pre">ChromTraceCalculator</span></span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator" title="Link to this definition"></a></dt>
+<dd><p>Organize methods to create a pseudo-chromatogram trace</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.chrom_trace">
+<span class="sig-name descname"><span class="pre">chrom_trace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData" title="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData"><span class="pre">ChromTraceData</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.chrom_trace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.modify_samples">
+<span class="sig-name descname"><span class="pre">modify_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../data_processing/class_repository/index.html#fermo_core.data_processing.class_repository.Repository" title="fermo_core.data_processing.class_repository.Repository"><span class="pre">fermo_core.data_processing.class_repository.Repository</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../data_processing/class_stats/index.html#fermo_core.data_processing.class_stats.Stats" title="fermo_core.data_processing.class_stats.Stats"><span class="pre">fermo_core.data_processing.class_stats.Stats</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../data_processing/class_repository/index.html#fermo_core.data_processing.class_repository.Repository" title="fermo_core.data_processing.class_repository.Repository"><span class="pre">fermo_core.data_processing.class_repository.Repository</span></a></span></span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.modify_samples" title="Link to this definition"></a></dt>
+<dd><p>Load sample from repository for modification, then store again</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>samples: a Repository object containing the samples.
+stats: a Stats object containing a tuple of sample IDs.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A Repository containing the modified samples.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.modify_features_in_sample">
+<span class="sig-name descname"><span class="pre">modify_features_in_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../data_processing/builder_sample/dataclass_sample/index.html#fermo_core.data_processing.builder_sample.dataclass_sample.Sample" title="fermo_core.data_processing.builder_sample.dataclass_sample.Sample"><span class="pre">fermo_core.data_processing.builder_sample.dataclass_sample.Sample</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../data_processing/builder_sample/dataclass_sample/index.html#fermo_core.data_processing.builder_sample.dataclass_sample.Sample" title="fermo_core.data_processing.builder_sample.dataclass_sample.Sample"><span class="pre">fermo_core.data_processing.builder_sample.dataclass_sample.Sample</span></a></span></span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.modify_features_in_sample" title="Link to this definition"></a></dt>
+<dd><p>Add chromatogram traces to Features in Sample</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>sample: a Sample object containing Feature objects</p>
+</dd>
+<dt>Returns:</dt><dd><p>A Sample object with Feature objects with added chromatogram traces.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.validate_fwhm_rt">
+<span class="sig-name descname"><span class="pre">validate_fwhm_rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.validate_fwhm_rt" title="Link to this definition"></a></dt>
+<dd><p>Validate that fwhm is less than rt_range and assign value.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>fwhm: the full width at half maximum intensity in minutes
+rt_range: indicates range from beginning to end of peak, in minutes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_left_fwhm">
+<span class="sig-name descname"><span class="pre">calc_rt_left_fwhm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_left_fwhm" title="Link to this definition"></a></dt>
+<dd><p>Calculate rt_left_fwhm, validate if in rt range</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_right_fwhm">
+<span class="sig-name descname"><span class="pre">calc_rt_right_fwhm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_right_fwhm" title="Link to this definition"></a></dt>
+<dd><p>Calculate rt_right_fwhm, validate if in rt range</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_left_kink">
+<span class="sig-name descname"><span class="pre">calc_rt_left_kink</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_left_kink" title="Link to this definition"></a></dt>
+<dd><p>Calculate rt_left_kink and validate if in rt_range</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_right_kink">
+<span class="sig-name descname"><span class="pre">calc_rt_right_kink</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.calc_rt_right_kink" title="Link to this definition"></a></dt>
+<dd><p>Calculate rt_right_kink and validate if in rt_range</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.assign_relative_intensity">
+<span class="sig-name descname"><span class="pre">assign_relative_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relative_int</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.assign_relative_intensity" title="Link to this definition"></a></dt>
+<dd><p>Calculates and assigns relative intensity values</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>relative_int: intensity relative to the highest/most intense mol feature</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.create_trace_rt">
+<span class="sig-name descname"><span class="pre">create_trace_rt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Ellipsis</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.create_trace_rt" title="Link to this definition"></a></dt>
+<dd><p>Create a trace of retention time points to assign to Feature object.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>A tuple of floats for RT of pseudo-chromatogram.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.create_trace_int">
+<span class="sig-name descname"><span class="pre">create_trace_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Ellipsis</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator.create_trace_int" title="Link to this definition"></a></dt>
+<dd><p>Create a trace of relative intensity points to assign to Feature object.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>A tuple of floats for int of pseudo-chromatogram.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="fermo_core.data_analysis.chrom_trace_calculator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../class_analysis_manager/index.html" class="btn btn-neutral float-right" title="fermo_core.data_analysis.class_analysis_manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mitja M. Zdouc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+fermo_core.data_processing
+==========================
+
+.. py:module:: fermo_core.data_processing
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_processing/builder_feature/index
+   /autoapi/fermo_core/data_processing/builder_sample/index
+   /autoapi/fermo_core/data_processing/class_repository/index
+   /autoapi/fermo_core/data_processing/class_stats/index
+   /autoapi/fermo_core/data_processing/parser/index
+
+

@@ -1,0 +1,15 @@
+fermo_core.data_processing.parser.peaktable_parser
+==================================================
+
+.. py:module:: fermo_core.data_processing.parser.peaktable_parser
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_processing/parser/peaktable_parser/class_mzmine3_parser/index
+
+

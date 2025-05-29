@@ -1,0 +1,15 @@
+fermo_core.data_analysis.score_assigner
+=======================================
+
+.. py:module:: fermo_core.data_analysis.score_assigner
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/score_assigner/class_score_assigner/index
+
+

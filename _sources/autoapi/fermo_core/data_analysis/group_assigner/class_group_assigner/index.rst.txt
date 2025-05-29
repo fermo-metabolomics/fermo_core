@@ -1,0 +1,93 @@
+fermo_core.data_analysis.group_assigner.class_group_assigner
+============================================================
+
+.. py:module:: fermo_core.data_analysis.group_assigner.class_group_assigner
+
+.. autoapi-nested-parse::
+
+   Assign group information.
+
+   Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.group_assigner.class_group_assigner.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.group_assigner.class_group_assigner.GroupAssigner
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: GroupAssigner(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize group metadata assignment.
+
+   Attributes:
+       stats: Stats object, holds stats on molecular features and samples
+       features: Repository object, holds "General Feature" objects
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:method:: return_attrs() -> tuple[fermo_core.data_processing.class_stats.Stats, fermo_core.data_processing.class_repository.Repository]
+
+      Returns modified attributes to the calling function
+
+      Returns:
+          Tuple containing modified Stats and Feature Repository objects.
+
+
+
+   .. py:method:: assign_groups()
+
+      Assign the group information to features and stats
+
+
+
+   .. py:method:: run_analysis()
+
+      Run group assignment analysis
+
+
+

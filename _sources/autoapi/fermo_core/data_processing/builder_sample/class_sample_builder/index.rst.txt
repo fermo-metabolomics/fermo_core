@@ -1,0 +1,123 @@
+fermo_core.data_processing.builder_sample.class_sample_builder
+==============================================================
+
+.. py:module:: fermo_core.data_processing.builder_sample.class_sample_builder
+
+.. autoapi-nested-parse::
+
+   Builder for different instances of samples.
+
+   Samples act as "feature aggregators" and contain feature-specific information.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.builder_sample.class_sample_builder.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.builder_sample.class_sample_builder.SampleBuilder
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: SampleBuilder(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to build variant of Sample objects based on user input.
+
+   Order of calling method not
+
+
+   .. py:attribute:: sample
+      :type:  fermo_core.data_processing.builder_sample.dataclass_sample.Sample
+
+
+   .. py:method:: set_s_id(s_id: str)
+
+      Set sample identifier.
+
+      Args:
+          s_id: a sample identifier string
+
+
+
+   .. py:method:: set_max_intensity_mzmine3(s_id: str, df: pandas.DataFrame)
+
+      Extract max feature intensity detected for sample s_id from DataFrame df
+
+      Args:
+          s_id: a sample identifier string
+          df: a MZmine3 style peaktable as Pandas DataFrame
+
+
+
+   .. py:method:: set_max_area_mzmine3(s_id: str, df: pandas.DataFrame)
+
+      Extract max feature area detected for sample s_id from DataFrame df
+
+      Args:
+          s_id: a sample identifier string
+          df: a MZmine3 style peaktable as Pandas DataFrame
+
+
+
+   .. py:method:: set_features_mzmine3(s_id: str, df: pandas.DataFrame)
+
+      Extract features detected for sample s_id from DataFrame df
+
+      Args:
+          s_id: a sample identifier string
+          df: a MZmine3 style peaktable as Pandas DataFrame
+
+      Raises:
+          ValueError: Required attributes self.sample.max_intensity or
+          self.sample.max_area have not been set.
+
+
+
+   .. py:method:: set_feature_ids()
+
+      Sets feature IDs for convenient access.
+
+      Raises:
+          ValueError: Required attribute self.sample.features has not been set.
+
+
+
+   .. py:method:: get_result()
+
+

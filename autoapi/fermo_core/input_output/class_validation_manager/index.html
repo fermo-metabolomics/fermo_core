@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fermo_core.input_output.class_validation_manager &mdash; fermo_core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="fermo_core.input_output.param_handlers" href="../param_handlers/index.html" />
+    <link rel="prev" title="fermo_core.input_output.class_summary_writer" href="../class_summary_writer/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            fermo_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">fermo_core</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../config/index.html">fermo_core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_analysis/index.html">fermo_core.data_analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_processing/index.html">fermo_core.data_processing</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">fermo_core.input_output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../main/index.html">fermo_core.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/index.html">fermo_core.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">fermo_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">fermo_core</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">fermo_core.input_output</a></li>
+      <li class="breadcrumb-item active">fermo_core.input_output.class_validation_manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/fermo_core/input_output/class_validation_manager/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fermo_core.input_output.class_validation_manager">
+<span id="fermo-core-input-output-class-validation-manager"></span><h1>fermo_core.input_output.class_validation_manager<a class="headerlink" href="#module-fermo_core.input_output.class_validation_manager" title="Link to this heading"></a></h1>
+<p>Hold methods to validate user input.</p>
+<p>Validation methods that are used by both graphical user interface and command line
+interface.</p>
+<p>Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.class_validation_manager.logger" title="fermo_core.input_output.class_validation_manager.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.class_validation_manager.ValidationManager" title="fermo_core.input_output.class_validation_manager.ValidationManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationManager</span></code></a></p></td>
+<td><p>Manage methods for user input validation and error-handling logic.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.logger">
+<span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.class_validation_manager.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.class_validation_manager.</span></span><span class="sig-name descname"><span class="pre">ValidationManager</span></span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager" title="Link to this definition"></a></dt>
+<dd><p>Manage methods for user input validation and error-handling logic.</p>
+<p>All validation methods are static and raise errors that need to be handled
+by the calling methods. All validation methods should start with “validate”.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_float_zero_one">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_float_zero_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_float_zero_one" title="Link to this definition"></a></dt>
+<dd><p>Positive float between zero and one</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>f: a float</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Not a float between zero and one</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_allowed">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_allowed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_allowed" title="Link to this definition"></a></dt>
+<dd><p>Check if str one of allowed strings</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>s: string
+allowed: a list of allowed strings</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Not one of allowed strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_mass_deviation_ppm">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_mass_deviation_ppm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ppm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_mass_deviation_ppm" title="Link to this definition"></a></dt>
+<dd><p>Validate if mass deviation is in reasonable range.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ppm: a mass deviation value in ppm.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Out of reasonable range.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_file_exists">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_file_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_file_exists" title="Link to this definition"></a></dt>
+<dd><p>Validate that input file exists.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>file_path: a valid path as str</p>
+</dd>
+<dt>Raises:</dt><dd><p>FileNotFoundError: file does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_file_extension">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_file_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_file_extension" title="Link to this definition"></a></dt>
+<dd><p>Validate the file name extension.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>filepath: A pathlib Path object
+extension: a str describing the file extension</p>
+</dd>
+<dt>Raises:</dt><dd><p>TypeError: incorrect file name extension</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_csv_file">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_csv_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_csv_file" title="Link to this definition"></a></dt>
+<dd><p>Validate that input file is a comma separated values file (csv).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>csv_file: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>pd.errors.ParserError if file is not readable by pandas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_peaktable_mzmine">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_peaktable_mzmine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_peaktable_mzmine" title="Link to this definition"></a></dt>
+<dd><p>Validate that input file is a mzmine3/4-style peaktable</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: unexpected values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_ms2query_results">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_ms2query_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ms2query_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_ms2query_results" title="Link to this definition"></a></dt>
+<dd><p>Validate format of ms2query results table</p>
+<p>Prepared for MS2Query version 1.3.0. Must have a column “id” corresponding to
+the feature id of the peak table.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ms2query_results: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>KeyError: missing columns in results file or empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_csv_has_rows">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_csv_has_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_csv_has_rows" title="Link to this definition"></a></dt>
+<dd><p>Validate if csv file has rows</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>csv_path: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: has no rows (data)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_no_duplicate_entries_csv_column">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_no_duplicate_entries_csv_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_no_duplicate_entries_csv_column" title="Link to this definition"></a></dt>
+<dd><p>Validate that csv column has no duplicate entries</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>csv_file: A pathlib Path object
+column: Name of column to test for duplicate entries</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: duplicate entries found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_mgf_file">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_mgf_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mgf_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_mgf_file" title="Link to this definition"></a></dt>
+<dd><p>Validate that file is a mgf file containing MS/MS spectra.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mgf_file: A pathlib Path object to a Mascot Generic Format (mgf) file</p>
+</dd>
+<dt>Raises:</dt><dd><p>StopIteration: Not a mgf file or empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_pheno_qualitative">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_pheno_qualitative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pheno_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_pheno_qualitative" title="Link to this definition"></a></dt>
+<dd><p>Validate that file is a qualitative phenotype file</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pheno_file: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Incorrect format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_pheno_quant_percentage">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_pheno_quant_percentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pheno_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_pheno_quant_percentage" title="Link to this definition"></a></dt>
+<dd><p>Validate that file is a quantitative-percentage phenotype file</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pheno_file: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Incorrect format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_pheno_quant_concentration">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_pheno_quant_concentration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pheno_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_pheno_quant_concentration" title="Link to this definition"></a></dt>
+<dd><p>Validate that file is a quantitative-concentration phenotype file</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pheno_file: A pathlib Path object</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Incorrect format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_group_metadata_fermo">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_group_metadata_fermo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_group_metadata_fermo" title="Link to this definition"></a></dt>
+<dd><p>Validate that file is a group metadata file in fermo style.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>group_file: A pathlib Path object to a fermo-group metadata file</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: Not a fermo style group metadata file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_range_zero_one">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_range_zero_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_range_zero_one" title="Link to this definition"></a></dt>
+<dd><p>Validate that user-provided range is inside range 0.0 - 1.0.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>user_range: User-provided range: two floats, upper and lower bounds.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: More than two values OR not floats OR out of bounds</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_file_vs_jsonschema">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_file_vs_jsonschema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_file_vs_jsonschema" title="Link to this definition"></a></dt>
+<dd><p>Validate user-input against jsonschema.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>user_input: dict containing user-input, derived from json-file
+filename: the name of the input file for error message</p>
+</dd>
+<dt>Raises:</dt><dd><p>jsonschema.exceptions.ValidationError: user input does not validate against schema</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.class_validation_manager.ValidationManager.validate_output_created">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_output_created</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.class_validation_manager.ValidationManager.validate_output_created" title="Link to this definition"></a></dt>
+<dd><p>Validate that output file was created and log if not</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>filepath: a Path object pointing to created output file</p>
+</dd>
+<dt>Raises:</dt><dd><p>FileNotFoundError: file should have been created but can’t be found</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../class_summary_writer/index.html" class="btn btn-neutral float-left" title="fermo_core.input_output.class_summary_writer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../param_handlers/index.html" class="btn btn-neutral float-right" title="fermo_core.input_output.param_handlers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mitja M. Zdouc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

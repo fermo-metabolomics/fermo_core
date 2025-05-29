@@ -1,0 +1,341 @@
+fermo_core.data_processing.class_stats
+======================================
+
+.. py:module:: fermo_core.data_processing.class_stats
+
+.. autoapi-nested-parse::
+
+   Storage and handling of general stats of analysis run.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.class_stats.Group
+   fermo_core.data_processing.class_stats.GroupMData
+   fermo_core.data_processing.class_stats.SamplePhenotype
+   fermo_core.data_processing.class_stats.PhenoData
+   fermo_core.data_processing.class_stats.SpecSimNet
+   fermo_core.data_processing.class_stats.Stats
+
+
+Module Contents
+---------------
+
+.. py:class:: Group(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize group info belonging to a metadata category
+
+   Attributes:
+       name: group identifier
+       s_ids: a set of sample ids belonging to group
+       f_ids: a set of feature ids detected in samples of group
+
+
+   .. py:attribute:: s_ids
+      :type:  set
+
+
+   .. py:attribute:: f_ids
+      :type:  set
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: GroupMData(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize group metadata information
+
+   Attributes:
+       default_s_ids: containing ungrouped samples ("DEFAULT")
+       nonblank_s_ids: containing nonblank sample ids
+       nonblank_f_ids:containing ids of nonblank sample-associated features
+       blank_s_ids: containing sample blank ids
+       blank_f_ids: containing ids of sample blank-associated features
+       ctgrs: dict containing category:{group-id: Group}, key-value pairs
+
+
+   .. py:attribute:: default_s_ids
+      :type:  set
+
+
+   .. py:attribute:: nonblank_s_ids
+      :type:  set
+
+
+   .. py:attribute:: nonblank_f_ids
+      :type:  set
+
+
+   .. py:attribute:: blank_s_ids
+      :type:  set
+
+
+   .. py:attribute:: blank_f_ids
+      :type:  set
+
+
+   .. py:attribute:: ctgrs
+      :type:  dict
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: SamplePhenotype(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize phenotype data per sample
+
+   Attributes:
+       s_id: the sample identifier
+       value: the corresponding value if any
+
+
+   .. py:attribute:: s_id
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:method:: to_json()
+
+
+.. py:class:: PhenoData(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize phenotype data from file
+
+   Attributes:
+       datatype: a string indicating the data type and the algorithm to use
+       category: identifier assay
+       s_phen_data: a list of SamplePhenotype instances of positive (active) samples
+       s_negative: a list of sample IDs with no data - inactive (negative) samples
+       f_ids_positive: a set of ids determined to be phenotype-associated
+
+
+   .. py:attribute:: datatype
+      :type:  str
+
+
+   .. py:attribute:: category
+      :type:  str
+
+
+   .. py:attribute:: s_phen_data
+      :type:  list
+      :value: []
+
+
+
+   .. py:attribute:: s_negative
+      :type:  set
+
+
+   .. py:attribute:: f_ids_positive
+      :type:  set
+
+
+   .. py:method:: to_json()
+
+
+.. py:class:: SpecSimNet(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize info on a spectral similarity analysis run
+
+   Attributes:
+       algorithm: the identifier of the algorithm
+       network: the full network as networkx Graph object for later cytoscape export
+       subnetworks: a dict of subnetwork Graph objects with subnetwork int id as keys
+       summary: a dict of clusters and associated features
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: network
+      :type:  Any
+
+
+   .. py:attribute:: subnetworks
+      :type:  dict
+
+
+   .. py:attribute:: summary
+      :type:  dict[int, set]
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: Stats(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize stats and general info.
+
+   Attributes:
+       rt_min: retention time start of the first feature peak, in minutes
+       rt_max: retention time stop of the last feature peak, in minutes
+       rt_range: range in minutes between rt_min and rt_max
+       area_min: area under the curve for smallest peak across all features/samples
+       area_max: area under the curve for biggest peak across all features/samples.
+       samples: tuple of all sample ids in analysis run
+       features: total number of features
+       active_features: retained in analysis run
+       inactive_features: filtered out during analysis run by FeatureFilter module
+       GroupMData: instance of the GroupMData object containing group metadata
+       networks: all similarity networks in analysis run
+       phenotypes: list of PhenoData objects containing phenotype data
+       spectral_library: a list of matchms.Spectrum instances
+
+
+   .. py:attribute:: rt_min
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_max
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_range
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: area_min
+      :type:  Optional[int]
+      :value: None
+
+
+
+   .. py:attribute:: area_max
+      :type:  Optional[int]
+      :value: None
+
+
+
+   .. py:attribute:: samples
+      :type:  Optional[tuple]
+      :value: None
+
+
+
+   .. py:attribute:: features
+      :type:  Optional[int]
+      :value: None
+
+
+
+   .. py:attribute:: active_features
+      :type:  set
+
+
+   .. py:attribute:: inactive_features
+      :type:  set
+
+
+   .. py:attribute:: GroupMData
+      :type:  Stats.GroupMData
+
+
+   .. py:attribute:: networks
+      :type:  Optional[dict[str, SpecSimNet]]
+      :value: None
+
+
+
+   .. py:attribute:: phenotypes
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: spectral_library
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:method:: parse_mzmine3(params: fermo_core.input_output.class_parameter_manager.ParameterManager)
+
+      Parse a mzmine3 peaktable for general stats on analysis run.
+
+      Arguments:
+          params: instance of ParameterManager object holding user input data
+
+      Notes:
+          By default, all samples are grouped in group "DEFAULT".
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Export class attributes to json-dump compatible dict.
+
+      Returns:
+          A dictionary with class attributes as keys
+
+      Notes:
+          Attribute spectral library is not exported - matches are stored in
+          feature annotation.
+
+
+

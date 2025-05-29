@@ -1,0 +1,163 @@
+fermo_core.utils.utility_method_manager
+=======================================
+
+.. py:module:: fermo_core.utils.utility_method_manager
+
+.. autoapi-nested-parse::
+
+   Organize general utility functions that are not specific for any other classes.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.utils.utility_method_manager.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.utils.utility_method_manager.UtilityMethodManager
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: UtilityMethodManager(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based base class to organize general utility methods for subclasses.
+
+
+   .. py:method:: check_ms2deepscore_req(polarity: str)
+
+      Checks if files required for ms2query functionality are present
+
+      Attributes:
+          polarity: the mass spectrometry data polarity
+
+      Raises:
+          RuntimeError: unexpected polarity (currently only positive mode supported)
+
+
+
+   .. py:method:: download_file(url: str, location: pathlib.Path, timeout: int)
+      :staticmethod:
+
+
+      Downloads from given URL into the designated location.
+
+      Arguments:
+          url: A URL string to download from
+          location: A Path pointing towards the designated file location
+          timeout: A timeout for the download
+
+      Raises:
+          URLError: states the URL from where download failed
+
+      Notes:
+          `urlretrieve` considered legacy, therefore not used
+
+
+
+   .. py:method:: create_spectrum_object(data: dict, intensity_from: float) -> matchms.Spectrum
+      :staticmethod:
+
+
+      Create matchms Spectrum, add neutral losses, normalize and filter intensity
+
+      Arguments:
+          data: a dict containing data to create a matchms Spectrum object.
+          intensity_from: a float between 0 and 1 to filter for MS2 rel intensity
+
+      Returns:
+          A matchms Spectrum object
+
+
+
+   .. py:method:: mass_deviation(m1: float, m2: float, f_id_m2: int | str) -> float
+      :staticmethod:
+
+
+      Calculate mass deviation in ppm between m1 and m2
+
+      Arguments:
+          m1: an m/z ratio
+          m2: an m/z ratio
+          f_id_m2: the (feature) id of m2 for error reporting
+
+      Returns:
+          The mass deviation in ppm
+
+      Raises:
+          ZeroDivisionError: m2 is zero
+
+      Notes:
+          Taken from publication doi.org/10.1016/j.jasms.2010.06.006
+
+
+
+   .. py:method:: extract_as_kcb_results(as_results: pathlib.Path, cutoff: float) -> dict
+      :staticmethod:
+
+
+      Extract MIBiG IDs from antiSMASH full results folder
+
+      Arguments:
+          as_results: a path pointing towards the antiSMASH results folder
+          cutoff: the coverage cutoff value to restrict spurious hits
+
+      Returns:
+          A dict of regions with detected MIBiG knownclusterblast matches
+
+      Raises:
+          NotADirectoryError: the knownclusterblast directory was not found
+
+
+
+   .. py:method:: create_mibig_spec_lib(mibig_ids: set) -> list[matchms.Spectrum]
+      :staticmethod:
+
+
+      Load MIBiG-derived in silico spectral library.
+
+      Attributes:
+          mibig_ids: A set of MIBiG IDs to create a targeted spectral library
+
+      Returns:
+          The spectral library
+
+      Raises:
+          RuntimeError: empty spectral library
+
+
+

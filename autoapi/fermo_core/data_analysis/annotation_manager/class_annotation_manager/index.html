@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fermo_core.data_analysis.annotation_manager.class_annotation_manager &mdash; fermo_core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="fermo_core.data_analysis.annotation_manager.class_fragment_annotator" href="../class_fragment_annotator/index.html" />
+    <link rel="prev" title="fermo_core.data_analysis.annotation_manager.class_adduct_annotator" href="../class_adduct_annotator/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            fermo_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html">fermo_core</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../config/index.html">fermo_core.config</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html">fermo_core.data_analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../data_processing/index.html">fermo_core.data_processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../input_output/index.html">fermo_core.input_output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../main/index.html">fermo_core.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/index.html">fermo_core.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">fermo_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">fermo_core</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">fermo_core.data_analysis</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">fermo_core.data_analysis.annotation_manager</a></li>
+      <li class="breadcrumb-item active">fermo_core.data_analysis.annotation_manager.class_annotation_manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/autoapi/fermo_core/data_analysis/annotation_manager/class_annotation_manager/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fermo_core.data_analysis.annotation_manager.class_annotation_manager">
+<span id="fermo-core-data-analysis-annotation-manager-class-annotation-manager"></span><h1>fermo_core.data_analysis.annotation_manager.class_annotation_manager<a class="headerlink" href="#module-fermo_core.data_analysis.annotation_manager.class_annotation_manager" title="Link to this heading"></a></h1>
+<p>Organize the calling of annotation modules.</p>
+<p>Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.logger" title="fermo_core.data_analysis.annotation_manager.class_annotation_manager.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager" title="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnotationManager</span></code></a></p></td>
+<td><p>Pydantic-based class to organize calling and logging of annotation modules</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.logger">
+<span class="sig-prename descclassname"><span class="pre">fermo_core.data_analysis.annotation_manager.class_annotation_manager.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_analysis.annotation_manager.class_annotation_manager.</span></span><span class="sig-name descname"><span class="pre">AnnotationManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize calling and logging of annotation modules</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>params: ParameterManager object, holds user-provided parameters
+stats: Stats object, holds stats on molecular features and samples
+features: Repository object, holds “General Feature” objects
+samples: Repository object, holds “Sample” objects</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.params">
+<span class="sig-name descname"><span class="pre">params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../input_output/class_parameter_manager/index.html#fermo_core.input_output.class_parameter_manager.ParameterManager" title="fermo_core.input_output.class_parameter_manager.ParameterManager"><span class="pre">fermo_core.input_output.class_parameter_manager.ParameterManager</span></a></em><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.params" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data_processing/class_stats/index.html#fermo_core.data_processing.class_stats.Stats" title="fermo_core.data_processing.class_stats.Stats"><span class="pre">fermo_core.data_processing.class_stats.Stats</span></a></em><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.stats" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.features">
+<span class="sig-name descname"><span class="pre">features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data_processing/class_repository/index.html#fermo_core.data_processing.class_repository.Repository" title="fermo_core.data_processing.class_repository.Repository"><span class="pre">fermo_core.data_processing.class_repository.Repository</span></a></em><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.features" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.samples">
+<span class="sig-name descname"><span class="pre">samples</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data_processing/class_repository/index.html#fermo_core.data_processing.class_repository.Repository" title="fermo_core.data_processing.class_repository.Repository"><span class="pre">fermo_core.data_processing.class_repository.Repository</span></a></em><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.samples" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.return_attrs">
+<span class="sig-name descname"><span class="pre">return_attrs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../../data_processing/class_stats/index.html#fermo_core.data_processing.class_stats.Stats" title="fermo_core.data_processing.class_stats.Stats"><span class="pre">fermo_core.data_processing.class_stats.Stats</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../data_processing/class_repository/index.html#fermo_core.data_processing.class_repository.Repository" title="fermo_core.data_processing.class_repository.Repository"><span class="pre">fermo_core.data_processing.class_repository.Repository</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../data_processing/class_repository/index.html#fermo_core.data_processing.class_repository.Repository" title="fermo_core.data_processing.class_repository.Repository"><span class="pre">fermo_core.data_processing.class_repository.Repository</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../input_output/class_parameter_manager/index.html#fermo_core.input_output.class_parameter_manager.ParameterManager" title="fermo_core.input_output.class_parameter_manager.ParameterManager"><span class="pre">fermo_core.input_output.class_parameter_manager.ParameterManager</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.return_attrs" title="Link to this definition"></a></dt>
+<dd><p>Returns modified attributes from AnnotationManager to the calling function</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Tuple containing Stats, Feature Repository and Sample Repository objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_analysis">
+<span class="sig-name descname"><span class="pre">run_analysis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_analysis" title="Link to this definition"></a></dt>
+<dd><p>Organizes calling of data analysis steps.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.verify_user_lib_params">
+<span class="sig-name descname"><span class="pre">verify_user_lib_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.verify_user_lib_params" title="Link to this definition"></a></dt>
+<dd><p>Perform preliminary checks on user-provided library and params.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>A bool indicating pass or fail</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_user_lib_mod_cosine_matching">
+<span class="sig-name descname"><span class="pre">run_user_lib_mod_cosine_matching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_user_lib_mod_cosine_matching" title="Link to this definition"></a></dt>
+<dd><p>Match features against a user-provided spectral library using mod cosine.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_user_lib_ms2deepscore_matching">
+<span class="sig-name descname"><span class="pre">run_user_lib_ms2deepscore_matching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_user_lib_ms2deepscore_matching" title="Link to this definition"></a></dt>
+<dd><p>Match features against user-provided spectral library using ms2deepscore.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_feature_adduct_annotation">
+<span class="sig-name descname"><span class="pre">run_feature_adduct_annotation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_feature_adduct_annotation" title="Link to this definition"></a></dt>
+<dd><p>Perform feature adduct annotation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_neutral_loss_annotation">
+<span class="sig-name descname"><span class="pre">run_neutral_loss_annotation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_neutral_loss_annotation" title="Link to this definition"></a></dt>
+<dd><p>Perform feature MS2 neutral loss annotation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_fragment_annotation">
+<span class="sig-name descname"><span class="pre">run_fragment_annotation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_fragment_annotation" title="Link to this definition"></a></dt>
+<dd><p>Perform feature MS2 fragment annotation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_mzmine_assignment">
+<span class="sig-name descname"><span class="pre">run_mzmine_assignment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_mzmine_assignment" title="Link to this definition"></a></dt>
+<dd><p>Annotate Features from optional mzmine file fields</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_ms2query_results_assignment">
+<span class="sig-name descname"><span class="pre">run_ms2query_results_assignment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_ms2query_results_assignment" title="Link to this definition"></a></dt>
+<dd><p>Annotate Features from existing MS2Query results</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_as_kcb_cosine_annotation">
+<span class="sig-name descname"><span class="pre">run_as_kcb_cosine_annotation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_as_kcb_cosine_annotation" title="Link to this definition"></a></dt>
+<dd><p>Match features against a antiSMASH knownclusterblast-derived library.</p>
+<p>Allows modified cosine-based library matching against the in silico generated
+MS2 spectra of significant antiSMASH KnownClusterBlast (MIBiG) matches.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_as_kcb_deepscore_annotation">
+<span class="sig-name descname"><span class="pre">run_as_kcb_deepscore_annotation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_analysis.annotation_manager.class_annotation_manager.AnnotationManager.run_as_kcb_deepscore_annotation" title="Link to this definition"></a></dt>
+<dd><p>Match features against a antiSMASH knownclusterblast-derived library.</p>
+<p>Allows MS2DeepScore-based library matching against the in silico generated
+MS2 spectra of significant antiSMASH KnownClusterBlast (MIBiG) matches.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../class_adduct_annotator/index.html" class="btn btn-neutral float-left" title="fermo_core.data_analysis.annotation_manager.class_adduct_annotator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../class_fragment_annotator/index.html" class="btn btn-neutral float-right" title="fermo_core.data_analysis.annotation_manager.class_fragment_annotator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mitja M. Zdouc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

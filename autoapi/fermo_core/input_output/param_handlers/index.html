@@ -1,0 +1,1287 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fermo_core.input_output.param_handlers &mdash; fermo_core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="fermo_core.main" href="../../main/index.html" />
+    <link rel="prev" title="fermo_core.input_output.class_validation_manager" href="../class_validation_manager/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            fermo_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">fermo_core</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../config/index.html">fermo_core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_analysis/index.html">fermo_core.data_analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_processing/index.html">fermo_core.data_processing</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">fermo_core.input_output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../main/index.html">fermo_core.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/index.html">fermo_core.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">fermo_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">fermo_core</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">fermo_core.input_output</a></li>
+      <li class="breadcrumb-item active">fermo_core.input_output.param_handlers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/fermo_core/input_output/param_handlers/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fermo_core.input_output.param_handlers">
+<span id="fermo-core-input-output-param-handlers"></span><h1>fermo_core.input_output.param_handlers<a class="headerlink" href="#module-fermo_core.input_output.param_handlers" title="Link to this heading"></a></h1>
+<p>Organizes classes that hold and validate parameters.</p>
+<p>Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.logger" title="fermo_core.input_output.param_handlers.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.PeaktableParameters" title="fermo_core.input_output.param_handlers.PeaktableParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeaktableParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for representing and validating peaktable parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.MsmsParameters" title="fermo_core.input_output.param_handlers.MsmsParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MsmsParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for representing and validating MS/MS file parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.PhenotypeParameters" title="fermo_core.input_output.param_handlers.PhenotypeParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhenotypeParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for representing and validating phenotype file parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.GroupMetadataParameters" title="fermo_core.input_output.param_handlers.GroupMetadataParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupMetadataParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for representing and validating group metadata parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.SpecLibParameters" title="fermo_core.input_output.param_handlers.SpecLibParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpecLibParameters</span></code></a></p></td>
+<td><p>Pydantic-based class for repres. and valid. of spectral library files parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.MS2QueryResultsParameters" title="fermo_core.input_output.param_handlers.MS2QueryResultsParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MS2QueryResultsParameters</span></code></a></p></td>
+<td><p>Pydantic-based class for repres. and valid. of MS2Query result parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.AsResultsParameters" title="fermo_core.input_output.param_handlers.AsResultsParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AsResultsParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for representing and validating an antiSMASH results dir.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.OutputParameters" title="fermo_core.input_output.param_handlers.OutputParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutputParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for representing and validating output parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters" title="fermo_core.input_output.param_handlers.AdductAnnotationParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AdductAnnotationParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of adduct annotation parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.NeutralLossParameters" title="fermo_core.input_output.param_handlers.NeutralLossParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeutralLossParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of neutral loss annotation params.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters" title="fermo_core.input_output.param_handlers.FragmentAnnParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FragmentAnnParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of fragment annotation params.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters" title="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpecSimNetworkCosineParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of spec. similarity network params.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters" title="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpecSimNetworkDeepscoreParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of spec. similarity network params.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters" title="fermo_core.input_output.param_handlers.FeatureFilteringParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatureFilteringParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of feature filtering parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters" title="fermo_core.input_output.param_handlers.BlankAssignmentParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BlankAssignmentParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of blank assignment parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters" title="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupFactAssignmentParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of group factor assignment params.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams" title="fermo_core.input_output.param_handlers.PhenoQualAssgnParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhenoQualAssgnParams</span></code></a></p></td>
+<td><p>A Pydantic-based class for phenotype qualitative assignment parameters</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams" title="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhenoQuantPercentAssgnParams</span></code></a></p></td>
+<td><p>A Pydantic-based class for phenotype quantitative percentage assignment params</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams" title="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhenoQuantConcAssgnParams</span></code></a></p></td>
+<td><p>A Pydantic-based class for phenotype quantitative concentration assignment params</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters" title="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralLibMatchingCosineParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of spectral library matching params.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters" title="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralLibMatchingDeepscoreParameters</span></code></a></p></td>
+<td><p>A Pydantic-based class for repr. and valid. of spectral library matching params.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams" title="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AsKcbCosineMatchingParams</span></code></a></p></td>
+<td><p>Pydantic-based class for params of antiSMASH KCB results mod cosine matching.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams" title="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AsKcbDeepscoreMatchingParams</span></code></a></p></td>
+<td><p>Pydantic-based class for params of antiSMASH KCB results deepscore matching.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.logger">
+<span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PeaktableParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">PeaktableParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PeaktableParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for representing and validating peaktable parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>filepath: a pathlib Path object pointing towards a peaktable file
+format: indicates the format of the peaktable file
+polarity: indicates the polarity of the data (‘positive’, ‘negative’).</p>
+</dd>
+<dt>Raise:</dt><dd><p>ValueError: Unsupported peaktable format.
+pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PeaktableParameters.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PeaktableParameters.filepath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PeaktableParameters.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PeaktableParameters.format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PeaktableParameters.polarity">
+<span class="sig-name descname"><span class="pre">polarity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PeaktableParameters.polarity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PeaktableParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PeaktableParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PeaktableParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PeaktableParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MsmsParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">MsmsParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.MsmsParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for representing and validating MS/MS file parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>filepath: a pathlib Path object pointing towards an MS/MS file
+format: indicates the format of the MS/MS file
+rel_int_from: the minimum relative intensity of MS2 fragments to be retained</p>
+</dd>
+<dt>Raise:</dt><dd><p>ValueError: Unsupported MS/MS file format.
+pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MsmsParameters.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.MsmsParameters.filepath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MsmsParameters.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.MsmsParameters.format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MsmsParameters.rel_int_from">
+<span class="sig-name descname"><span class="pre">rel_int_from</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.MsmsParameters.rel_int_from" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MsmsParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.MsmsParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MsmsParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.MsmsParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenotypeParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">PhenotypeParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenotypeParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for representing and validating phenotype file parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>filepath: a pathlib Path object pointing towards a phenotype file
+format: indicates the format of the phenotype file</p>
+</dd>
+<dt>Raise:</dt><dd><p>ValueError: Unsupported phenotype file format.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenotypeParameters.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenotypeParameters.filepath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenotypeParameters.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenotypeParameters.format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenotypeParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenotypeParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenotypeParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenotypeParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupMetadataParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">GroupMetadataParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupMetadataParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for representing and validating group metadata parameters.</p>
+<dl>
+<dt>Attributes:</dt><dd><p>filepath: a pathlib Path object pointing towards a group metadata file
+format: indicates the format of the group metadata file</p>
+</dd>
+<dt>Raise:</dt><dd><p>ValueError: Unsupported group metadata file format.
+pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+<dt>Notes:</dt><dd><p>A fermo-style group data file is a .csv-file with the layout:</p>
+<p>sample_name,group_col_1,group_col_2,…,group_col_n</p>
+<p>sample1,medium_A,condition_A</p>
+<p>sample2,medium_B,condition_A</p>
+<p>sample3,medium_C,condition_A</p>
+<p>Ad values: The only prohibited value is ‘DEFAULT’ which is reserved for
+internal use. ‘BLANK’ os a special value that indicates the sample/medium
+blank for automated subtraction.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupMetadataParameters.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupMetadataParameters.filepath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupMetadataParameters.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupMetadataParameters.format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupMetadataParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupMetadataParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupMetadataParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupMetadataParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecLibParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">SpecLibParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecLibParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class for repres. and valid. of spectral library files parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>dirpath: a pathlib Path object pointing towards a dir containing spec lib files
+format: indicates the format of the spectral library files</p>
+</dd>
+<dt>Raise:</dt><dd><p>ValueError: Unsupported spectral library format.
+pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecLibParameters.dirpath">
+<span class="sig-name descname"><span class="pre">dirpath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.DirectoryPath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecLibParameters.dirpath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecLibParameters.format">
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecLibParameters.format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecLibParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecLibParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecLibParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecLibParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MS2QueryResultsParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">MS2QueryResultsParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.MS2QueryResultsParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class for repres. and valid. of MS2Query result parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>filepath: a pathlib Path object pointing towards a MS2Query results file
+score_cutoff: the minimal score to retain the annotation</p>
+</dd>
+<dt>Raise:</dt><dd><p>pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MS2QueryResultsParameters.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.MS2QueryResultsParameters.filepath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MS2QueryResultsParameters.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.MS2QueryResultsParameters.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MS2QueryResultsParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.MS2QueryResultsParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.MS2QueryResultsParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.MS2QueryResultsParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsResultsParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">AsResultsParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsResultsParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for representing and validating an antiSMASH results dir.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>directory_path: the output directory path
+similarity_cutoff: a fraction indicating the minimum shared similarity required</p>
+</dd>
+<dt>Raise:</dt><dd><p>pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsResultsParameters.directory_path">
+<span class="sig-name descname"><span class="pre">directory_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.DirectoryPath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsResultsParameters.directory_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsResultsParameters.similarity_cutoff">
+<span class="sig-name descname"><span class="pre">similarity_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsResultsParameters.similarity_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsResultsParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsResultsParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsResultsParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsResultsParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.OutputParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">OutputParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.OutputParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for representing and validating output parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>directory_path: the output directory path</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.OutputParameters.directory_path">
+<span class="sig-name descname"><span class="pre">directory_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.DirectoryPath</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.OutputParameters.directory_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.OutputParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.OutputParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.OutputParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.OutputParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AdductAnnotationParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">AdductAnnotationParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of adduct annotation parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+mass_dev_ppm: The estimated maximum mass deviation in ppm.
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AdductAnnotationParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AdductAnnotationParameters.mass_dev_ppm">
+<span class="sig-name descname"><span class="pre">mass_dev_ppm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters.mass_dev_ppm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AdductAnnotationParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AdductAnnotationParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AdductAnnotationParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AdductAnnotationParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.NeutralLossParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">NeutralLossParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.NeutralLossParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of neutral loss annotation params.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+mass_dev_ppm: The estimated maximum mass deviation in ppm.
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.NeutralLossParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.NeutralLossParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.NeutralLossParameters.mass_dev_ppm">
+<span class="sig-name descname"><span class="pre">mass_dev_ppm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.NeutralLossParameters.mass_dev_ppm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.NeutralLossParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.NeutralLossParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.NeutralLossParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.NeutralLossParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.NeutralLossParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.NeutralLossParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FragmentAnnParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">FragmentAnnParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of fragment annotation params.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+mass_dev_ppm: The estimated maximum mass deviation in ppm.
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FragmentAnnParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FragmentAnnParameters.mass_dev_ppm">
+<span class="sig-name descname"><span class="pre">mass_dev_ppm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters.mass_dev_ppm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FragmentAnnParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FragmentAnnParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FragmentAnnParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.FragmentAnnParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">SpecSimNetworkCosineParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of spec. similarity network params.</p>
+<p>This class manages parameters for the modified cosine algorithm.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+msms_min_frag_nr: minimum nr of fragments a spectrum must have to be considered.
+fragment_tol: the tolerance between matched fragments, in m/z units.
+score_cutoff: the minimum similarity score between two spectra.
+max_nr_links: max nr of connections from a node.
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.msms_min_frag_nr">
+<span class="sig-name descname"><span class="pre">msms_min_frag_nr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.msms_min_frag_nr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.fragment_tol">
+<span class="sig-name descname"><span class="pre">fragment_tol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.fragment_tol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.max_nr_links">
+<span class="sig-name descname"><span class="pre">max_nr_links</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.max_nr_links" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">SpecSimNetworkDeepscoreParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of spec. similarity network params.</p>
+<p>This class manages parameters for the ms2deepscore algorithm.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+score_cutoff: the minimum similarity score between two spectra.
+max_nr_links: max links to a single spectra.
+msms_min_frag_nr: minimum number of fragments in MS2 to run it in analysis
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.max_nr_links">
+<span class="sig-name descname"><span class="pre">max_nr_links</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.max_nr_links" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.msms_min_frag_nr">
+<span class="sig-name descname"><span class="pre">msms_min_frag_nr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.msms_min_frag_nr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">FeatureFilteringParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of feature filtering parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+filter_rel_int_range_min: min value to filter feature for rel int
+filter_rel_int_range_max: max value to filter feature for rel int
+filter_rel_area_range_min: min value to filter feature for rel area
+filter_rel_area_range_max: max value to filter feature for rel area
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_int_range_min">
+<span class="sig-name descname"><span class="pre">filter_rel_int_range_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_int_range_min" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_int_range_max">
+<span class="sig-name descname"><span class="pre">filter_rel_int_range_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_int_range_max" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_area_range_min">
+<span class="sig-name descname"><span class="pre">filter_rel_area_range_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_area_range_min" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_area_range_max">
+<span class="sig-name descname"><span class="pre">filter_rel_area_range_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.filter_rel_area_range_max" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.validate_attrs">
+<span class="sig-name descname"><span class="pre">validate_attrs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.validate_attrs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.FeatureFilteringParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.FeatureFilteringParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">BlankAssignmentParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of blank assignment parameters.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+factor: An integer fold-change to differentiate blank features.
+algorithm: the algorithm to summarize values of different samples.
+value: the type of value to use for determination
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.factor">
+<span class="sig-name descname"><span class="pre">factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.factor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.algorithm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.BlankAssignmentParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.BlankAssignmentParameters.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">GroupFactAssignmentParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of group factor assignment params.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+algorithm: the algorithm to summarize values of different samples.
+value: the type of value to use for comparison
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.algorithm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.GroupFactAssignmentParameters.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">PhenoQualAssgnParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for phenotype qualitative assignment parameters</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+factor: An integer fold-change to differentiate phenotype-assoc. features.
+algorithm: the algorithm to summarize values of active vs inactive samples.
+value: the type of value to use for determination
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.factor">
+<span class="sig-name descname"><span class="pre">factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.factor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.algorithm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQualAssgnParams.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQualAssgnParams.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">PhenoQuantPercentAssgnParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for phenotype quantitative percentage assignment params</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+sample_avg: algorithm to summarize mult measurements per sample for single assay
+value: the type of value to use for determination
+algorithm: the statistical algorithm to calculate correlation
+fdr_corr: false-discovery rate correction algorithm (one of statsmodels.stats.multitest.multipletests)
+p_val_cutoff: minimum FDR-corrected p-value to consider in assignment
+coeff_cutoff: minimum correlation coefficient cutoff to consider in assignment
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.sample_avg">
+<span class="sig-name descname"><span class="pre">sample_avg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.sample_avg" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.algorithm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.fdr_corr">
+<span class="sig-name descname"><span class="pre">fdr_corr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.fdr_corr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.p_val_cutoff">
+<span class="sig-name descname"><span class="pre">p_val_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.p_val_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.coeff_cutoff">
+<span class="sig-name descname"><span class="pre">coeff_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.coeff_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">PhenoQuantConcAssgnParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for phenotype quantitative concentration assignment params</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+sample_avg: algorithm to summarize mult measurements per sample for single assay
+value: the type of value to use for determination
+algorithm: the statistical algorithm to calculate correlation
+fdr_corr: false-discovery rate correction algorithm (one of statsmodels.stats.multitest.multipletests)
+p_val_cutoff: minimum FDR-corrected p-value to consider in assignment
+coeff_cutoff: minimum correlation coefficient cutoff to consider in assignment
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.sample_avg">
+<span class="sig-name descname"><span class="pre">sample_avg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.sample_avg" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.algorithm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.fdr_corr">
+<span class="sig-name descname"><span class="pre">fdr_corr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.fdr_corr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.p_val_cutoff">
+<span class="sig-name descname"><span class="pre">p_val_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.p_val_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.coeff_cutoff">
+<span class="sig-name descname"><span class="pre">coeff_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.coeff_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.val" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">SpectralLibMatchingCosineParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of spectral library matching params.</p>
+<p>This class addresses parameters for the modified cosine algorithm.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+fragment_tol: max tolerable diff to consider two fragments as equal, in m/z
+min_nr_matched_peaks: peak cutoff to consider a match of two MS/MS spectra
+score_cutoff: score cutoff to consider a match of two MS/MS spectra
+max_precursor_mass_diff: maximum precursor mass difference
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.fragment_tol">
+<span class="sig-name descname"><span class="pre">fragment_tol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.fragment_tol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.min_nr_matched_peaks">
+<span class="sig-name descname"><span class="pre">min_nr_matched_peaks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.min_nr_matched_peaks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.max_precursor_mass_diff">
+<span class="sig-name descname"><span class="pre">max_precursor_mass_diff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.max_precursor_mass_diff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">SpectralLibMatchingDeepscoreParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for repr. and valid. of spectral library matching params.</p>
+<p>This class addresses parameters for the MS2DeepScore algorithm.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+score_cutoff: score cutoff to consider a match of two MS/MS spectra.
+max_precursor_mass_diff: max allowed precursor mz difference to accept a match
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.max_precursor_mass_diff">
+<span class="sig-name descname"><span class="pre">max_precursor_mass_diff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.max_precursor_mass_diff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">AsKcbCosineMatchingParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class for params of antiSMASH KCB results mod cosine matching.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+fragment_tol: max tolerable diff to consider two fragments as equal, in m/z
+min_nr_matched_peaks: peak cutoff to consider a match of two MS/MS spectra
+score_cutoff: score cutoff to consider a match of two MS/MS spectra
+max_precursor_mass_diff: maximum precursor mass difference
+module_passed: indicates that the module ran without errors</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.fragment_tol">
+<span class="sig-name descname"><span class="pre">fragment_tol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.fragment_tol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.min_nr_matched_peaks">
+<span class="sig-name descname"><span class="pre">min_nr_matched_peaks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.min_nr_matched_peaks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.max_precursor_mass_diff">
+<span class="sig-name descname"><span class="pre">max_precursor_mass_diff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.max_precursor_mass_diff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.input_output.param_handlers.</span></span><span class="sig-name descname"><span class="pre">AsKcbDeepscoreMatchingParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class for params of antiSMASH KCB results deepscore matching.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>activate_module: bool to indicate if module should be executed.
+score_cutoff: score cutoff to consider a match of two MS/MS spectra.
+max_precursor_mass_diff: max allowed precursor mz difference to accept a match
+module_passed: indicates that the module ran without errors</p>
+</dd>
+<dt>Raise:</dt><dd><p>pydantic.ValidationError: Pydantic validation failed during instantiation.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.activate_module">
+<span class="sig-name descname"><span class="pre">activate_module</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.activate_module" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.score_cutoff">
+<span class="sig-name descname"><span class="pre">score_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveFloat</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.score_cutoff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.max_precursor_mass_diff">
+<span class="sig-name descname"><span class="pre">max_precursor_mass_diff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.PositiveInt</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.max_precursor_mass_diff" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.module_passed">
+<span class="sig-name descname"><span class="pre">module_passed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.module_passed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../class_validation_manager/index.html" class="btn btn-neutral float-left" title="fermo_core.input_output.class_validation_manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../main/index.html" class="btn btn-neutral float-right" title="fermo_core.main" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mitja M. Zdouc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

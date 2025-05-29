@@ -1,0 +1,22 @@
+fermo_core.data_analysis.annotation_manager
+===========================================
+
+.. py:module:: fermo_core.data_analysis.annotation_manager
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_adduct_annotator/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_annotation_manager/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_fragment_annotator/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_mod_cos_annotator/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_ms2deepscore_annotator/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_ms2query_annotator/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_mzmine_ann_parser/index
+   /autoapi/fermo_core/data_analysis/annotation_manager/class_neutral_loss_annotator/index
+
+

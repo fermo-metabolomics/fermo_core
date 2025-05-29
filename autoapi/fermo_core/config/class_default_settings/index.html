@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fermo_core.config.class_default_settings &mdash; fermo_core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="fermo_core.data_analysis" href="../../data_analysis/index.html" />
+    <link rel="prev" title="fermo_core.config" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            fermo_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">fermo_core</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">fermo_core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_analysis/index.html">fermo_core.data_analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_processing/index.html">fermo_core.data_processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../input_output/index.html">fermo_core.input_output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../main/index.html">fermo_core.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/index.html">fermo_core.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">fermo_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">fermo_core</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">fermo_core.config</a></li>
+      <li class="breadcrumb-item active">fermo_core.config.class_default_settings</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/fermo_core/config/class_default_settings/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fermo_core.config.class_default_settings">
+<span id="fermo-core-config-class-default-settings"></span><h1>fermo_core.config.class_default_settings<a class="headerlink" href="#module-fermo_core.config.class_default_settings" title="Link to this heading"></a></h1>
+<p>Organizes certain hardcoded default settings for easier access.</p>
+<p>Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.config.class_default_settings.DefaultPaths" title="fermo_core.config.class_default_settings.DefaultPaths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultPaths</span></code></a></p></td>
+<td><p>A Pydantic-based class for storing shared hardcoded default settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.config.class_default_settings.DefaultMasses" title="fermo_core.config.class_default_settings.DefaultMasses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultMasses</span></code></a></p></td>
+<td><p>A Pydantic-based class for storing atom and ion masses for adduct annotation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Loss</span></code></a></p></td>
+<td><p>A Pydantic-based class for storing information on neutral losses</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.config.class_default_settings.NeutralLosses" title="fermo_core.config.class_default_settings.NeutralLosses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeutralLosses</span></code></a></p></td>
+<td><p>A Pydantic-based class for storing monoisotopic masses of neutral losses in MS2</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.config.class_default_settings.Fragment" title="fermo_core.config.class_default_settings.Fragment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Fragment</span></code></a></p></td>
+<td><p>A Pydantic-based class for storing information on characteristic fragments</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.config.class_default_settings.CharFragments" title="fermo_core.config.class_default_settings.CharFragments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CharFragments</span></code></a></p></td>
+<td><p>A Pydantic-based class for storing characteristic ion fragment masses</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultPaths">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.config.class_default_settings.</span></span><span class="sig-name descname"><span class="pre">DefaultPaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultPaths" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for storing shared hardcoded default settings.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>dirpath_ms2deepscore_pos: points towards default ms2deepscore dir
+url_ms2deepscore_pos: the url to download the default ms2deepscore file
+dirpath_losses: point towards neutral loss dir
+dirpath_frags: point towards fragment dir
+library_mibig_pos: points towards mibig spectral library for positive ion mode</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultPaths.dirpath_ms2deepscore_pos">
+<span class="sig-name descname"><span class="pre">dirpath_ms2deepscore_pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.DirectoryPath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultPaths.dirpath_ms2deepscore_pos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultPaths.url_ms2deepscore_pos">
+<span class="sig-name descname"><span class="pre">url_ms2deepscore_pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://zenodo.org/records/8274763/files/ms2deepscore_positive_10k_1000_1000_1000_500.hdf5?download=1'</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultPaths.url_ms2deepscore_pos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultPaths.dirpath_losses">
+<span class="sig-name descname"><span class="pre">dirpath_losses</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.DirectoryPath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultPaths.dirpath_losses" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultPaths.dirpath_frags">
+<span class="sig-name descname"><span class="pre">dirpath_frags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.DirectoryPath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultPaths.dirpath_frags" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultPaths.library_mibig_pos">
+<span class="sig-name descname"><span class="pre">library_mibig_pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultPaths.library_mibig_pos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.config.class_default_settings.</span></span><span class="sig-name descname"><span class="pre">DefaultMasses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for storing atom and ion masses for adduct annotation</p>
+<dl class="simple">
+<dt>Sources:</dt><dd><p><a class="reference external" href="https://fiehnlab.ucdavis.edu/staff/kind/Metabolomics/MS-Adduct-Calculator/">https://fiehnlab.ucdavis.edu/staff/kind/Metabolomics/MS-Adduct-Calculator/</a>
+<a class="reference external" href="https://media.iupac.org/publications/pac/2003/pdf/7506x0683.pdf">https://media.iupac.org/publications/pac/2003/pdf/7506x0683.pdf</a>
+<a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/compound/Bicarbonate-Ion">https://pubchem.ncbi.nlm.nih.gov/compound/Bicarbonate-Ion</a>
+<a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/compound/Water">https://pubchem.ncbi.nlm.nih.gov/compound/Water</a></p>
+</dd>
+<dt>Attributes:</dt><dd><p>Na: sodium monoisotopic mass
+H: proton monoisotopic mass
+C13_12: mass difference between 13C and 12C isotopes
+Fe56: monoisotopic mass of 56Fe
+NH4: monoisotopic mass ammonium
+K: monoisotopic mass potassium
+H2O: monoisotopic mass water
+Cl35: monoisotopic mass of 35Cl
+HCO2: monoisotopic mass of bicarbonate anion
+TFA: monoisotopic mass of trifluoroacetic acid anion
+Ac: monoisotopicmass of acetic acid anion</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.Na">
+<span class="sig-name descname"><span class="pre">Na</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">22.989218</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.Na" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.H">
+<span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.007276</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.H" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.C13_12">
+<span class="sig-name descname"><span class="pre">C13_12</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0033548</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.C13_12" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.Fe56">
+<span class="sig-name descname"><span class="pre">Fe56</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">55.934941</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.Fe56" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.NH4">
+<span class="sig-name descname"><span class="pre">NH4</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18.033823</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.NH4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.K">
+<span class="sig-name descname"><span class="pre">K</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">38.963158</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.K" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.H2O">
+<span class="sig-name descname"><span class="pre">H2O</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18.010565</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.H2O" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.Cl35">
+<span class="sig-name descname"><span class="pre">Cl35</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">34.969402</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.Cl35" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.HCO2">
+<span class="sig-name descname"><span class="pre">HCO2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60.992568</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.HCO2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.TFA">
+<span class="sig-name descname"><span class="pre">TFA</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">112.985586</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.TFA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.DefaultMasses.Ac">
+<span class="sig-name descname"><span class="pre">Ac</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">59.013851</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.DefaultMasses.Ac" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Loss">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.config.class_default_settings.</span></span><span class="sig-name descname"><span class="pre">Loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.Loss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for storing information on neutral losses</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>loss: the neutral loss in Da
+descr: the neutral loss description
+abbr: the neutral loss abbreviation</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Loss.loss">
+<span class="sig-name descname"><span class="pre">loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.Loss.loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Loss.descr">
+<span class="sig-name descname"><span class="pre">descr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.Loss.descr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Loss.abbr">
+<span class="sig-name descname"><span class="pre">abbr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.Loss.abbr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.config.class_default_settings.</span></span><span class="sig-name descname"><span class="pre">NeutralLosses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for storing monoisotopic masses of neutral losses in MS2</p>
+<dl>
+<dt>Sources:</dt><dd><p>Kersten et al 2011 (doi.org/10.1038/nchembio.684)</p>
+<p>Kersten et al 2013 (doi.org/10.1073/pnas.1315492110)</p>
+<p>Interpretation of MS-MS Mass Spectra of Drugs and Pesticides, Niessen,
+Correa 2017 (ISBN 9781119294245)</p>
+</dd>
+<dt>Attributes:</dt><dd><p>ribosomal_src: path to the file location
+ribosomal: neutral losses derived from ribosomal peptides, positive mode
+nonribo_src: path to the file location
+nonribo: neutral losses derived from nonribosomal peptides, positive mode
+glycoside_src: path to the file location
+glycoside: neutral losses derived from glycosides, positive mode
+gen_bio_pos_src: path to file location
+gen_bio_pos: generic neutral losses from metabolites, positive mode
+gen_other_pos_src: path to file location
+gen_other_pos: generic neutral losses (metabolite+synthetics), positive mode
+gen_other_neg_src: path to file location
+gen_other_neg: generic neutral losses (metabolite+synthetics), negative mode</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.ribosomal_src">
+<span class="sig-name descname"><span class="pre">ribosomal_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.ribosomal_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.ribosomal">
+<span class="sig-name descname"><span class="pre">ribosomal</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><span class="pre">Loss</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.ribosomal" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.nonribo_src">
+<span class="sig-name descname"><span class="pre">nonribo_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.nonribo_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.nonribo">
+<span class="sig-name descname"><span class="pre">nonribo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><span class="pre">Loss</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.nonribo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.glycoside_src">
+<span class="sig-name descname"><span class="pre">glycoside_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.glycoside_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.glycoside">
+<span class="sig-name descname"><span class="pre">glycoside</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><span class="pre">Loss</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.glycoside" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.gen_bio_pos_src">
+<span class="sig-name descname"><span class="pre">gen_bio_pos_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.gen_bio_pos_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.gen_bio_pos">
+<span class="sig-name descname"><span class="pre">gen_bio_pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><span class="pre">Loss</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.gen_bio_pos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.gen_other_pos_src">
+<span class="sig-name descname"><span class="pre">gen_other_pos_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.gen_other_pos_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.gen_other_pos">
+<span class="sig-name descname"><span class="pre">gen_other_pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><span class="pre">Loss</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.gen_other_pos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.gen_other_neg_src">
+<span class="sig-name descname"><span class="pre">gen_other_neg_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.gen_other_neg_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.gen_other_neg">
+<span class="sig-name descname"><span class="pre">gen_other_neg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Loss" title="fermo_core.config.class_default_settings.Loss"><span class="pre">Loss</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.gen_other_neg" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.NeutralLosses.read_files">
+<span class="sig-name descname"><span class="pre">read_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.NeutralLosses.read_files" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Fragment">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.config.class_default_settings.</span></span><span class="sig-name descname"><span class="pre">Fragment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.Fragment" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for storing information on characteristic fragments</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>mass: the m/z value of the fragment
+descr: the neutral loss description</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Fragment.mass">
+<span class="sig-name descname"><span class="pre">mass</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.Fragment.mass" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.Fragment.descr">
+<span class="sig-name descname"><span class="pre">descr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.Fragment.descr" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.CharFragments">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.config.class_default_settings.</span></span><span class="sig-name descname"><span class="pre">CharFragments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.CharFragments" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>A Pydantic-based class for storing characteristic ion fragment masses</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>aa_frags_src: path to the file location
+aa_frags: b2 and y2 series of (proteinogenic) amino acids</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.CharFragments.aa_frags_src">
+<span class="sig-name descname"><span class="pre">aa_frags_src</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.FilePath</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.CharFragments.aa_frags_src" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.CharFragments.aa_frags">
+<span class="sig-name descname"><span class="pre">aa_frags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fermo_core.config.class_default_settings.Fragment" title="fermo_core.config.class_default_settings.Fragment"><span class="pre">Fragment</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.config.class_default_settings.CharFragments.aa_frags" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.config.class_default_settings.CharFragments.read_files">
+<span class="sig-name descname"><span class="pre">read_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.config.class_default_settings.CharFragments.read_files" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="fermo_core.config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../data_analysis/index.html" class="btn btn-neutral float-right" title="fermo_core.data_analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mitja M. Zdouc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

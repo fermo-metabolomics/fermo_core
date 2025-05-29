@@ -1,0 +1,17 @@
+fermo_core.data_processing.builder_sample
+=========================================
+
+.. py:module:: fermo_core.data_processing.builder_sample
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_processing/builder_sample/class_sample_builder/index
+   /autoapi/fermo_core/data_processing/builder_sample/class_samples_director/index
+   /autoapi/fermo_core/data_processing/builder_sample/dataclass_sample/index
+
+

@@ -1,0 +1,15 @@
+fermo_core.utils
+================
+
+.. py:module:: fermo_core.utils
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/utils/utility_method_manager/index
+
+

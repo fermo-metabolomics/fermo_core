@@ -1,0 +1,21 @@
+fermo_core.input_output
+=======================
+
+.. py:module:: fermo_core.input_output
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/input_output/class_argparse_manager/index
+   /autoapi/fermo_core/input_output/class_export_manager/index
+   /autoapi/fermo_core/input_output/class_file_manager/index
+   /autoapi/fermo_core/input_output/class_parameter_manager/index
+   /autoapi/fermo_core/input_output/class_summary_writer/index
+   /autoapi/fermo_core/input_output/class_validation_manager/index
+   /autoapi/fermo_core/input_output/param_handlers/index
+
+

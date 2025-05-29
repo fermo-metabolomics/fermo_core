@@ -1,0 +1,15 @@
+fermo_core.data_analysis.feature_filter
+=======================================
+
+.. py:module:: fermo_core.data_analysis.feature_filter
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/feature_filter/class_feature_filter/index
+
+

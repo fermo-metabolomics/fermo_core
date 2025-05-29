@@ -1,0 +1,475 @@
+fermo_core.input_output.class_parameter_manager
+===============================================
+
+.. py:module:: fermo_core.input_output.class_parameter_manager
+
+.. autoapi-nested-parse::
+
+   Hold parameters for downstream data processing and analysis.
+
+   Interface to collect and hold user input from both command line and GUI.
+
+   Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.input_output.class_parameter_manager.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: ParameterManager(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Handle parameters for processing by fermo_core.
+
+
+   .. py:attribute:: PeaktableParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: MsmsParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: PhenotypeParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: GroupMetadataParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: SpecLibParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: MS2QueryResultsParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: AsResultsParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: OutputParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: AdductAnnotationParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: NeutralLossParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: FragmentAnnParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: SpecSimNetworkCosineParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: SpecSimNetworkDeepscoreParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: FeatureFilteringParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: BlankAssignmentParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: GroupFactAssignmentParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: PhenoQualAssgnParams
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: PhenoQuantPercentAssgnParams
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: PhenoQuantConcAssgnParams
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: SpectralLibMatchingCosineParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: SpectralLibMatchingDeepscoreParameters
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: AsKcbCosineMatchingParams
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:attribute:: AsKcbDeepscoreMatchingParams
+      :type:  Any | None
+      :value: None
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Export class attributes to json-dump compatible dict.
+
+      Returns:
+          A dictionary with class attributes as keys
+
+
+
+   .. py:method:: log_skipped_modules(module: str)
+      :staticmethod:
+
+
+      Write log of skipped module assignment.
+
+      Arguments:
+          module: a str referencing the module that was skipped.
+
+
+
+   .. py:method:: log_passed_modules(module: str)
+      :staticmethod:
+
+
+      Write log of passed module assignment.
+
+      Arguments:
+          module: a str referencing the module that was skipped.
+
+
+
+   .. py:method:: log_malformed_parameters_skip(module: str)
+      :staticmethod:
+
+
+      Write log for module for which missing/malformed parameters were found.
+
+      Arguments:
+          module: a str referencing the module for errors were detected.
+
+
+
+   .. py:method:: assign_parameters_cli(user_params: dict)
+
+      Modifies attributes by calling methods that take user input from CLI.
+
+      Arguments:
+          user_params: a json-derived dict with user input; jsonschema-controlled.
+
+
+
+   .. py:method:: assign_params(user_params: dict) -> None
+
+      Assigns user-input on files to ParameterManager.
+
+      Arguments:
+          user_params: a json-derived dict with user input; jsonschema-controlled.
+
+      Raises:
+          KeyError: could not find "peaktable" parameters in user input.
+
+
+
+   .. py:method:: assign_peaktable(user_params: dict)
+
+      Assign peaktable file parameters to self.PeaktableParameters
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+      Raises:
+          Exception: catch for specific exception by PeaktableParameters()
+
+
+
+   .. py:method:: assign_msms(user_params: dict)
+
+      Assign msms file parameters to self.MsmsParameters
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_phenotype(user_params: dict)
+
+      Assign phenotype file parameters to self.PhenotypeParameters
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_group_metadata(user_params: dict)
+
+      Assign group metadata file parameters to self.GroupMetadataParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_spectral_library(user_params: dict)
+
+      Assign spectral library file parameters to self.SpecLibParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_ms2query_results(user_params: dict)
+
+      Assign ms2query_results parameters to self.MS2QueryResultsParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_as_results(user_params: dict)
+
+      Assign antiSMASH results parameters to self.AsResultsParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_adduct_annotation(user_params: dict)
+
+      Assign adduct_annotation parameters to self.AdductAnnotationParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_fragment_annotation(user_params: dict)
+
+      Assign fragment_annotation parameters to self.FragmentAnnParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_neutral_loss_annotation(user_params: dict)
+
+      Assign neutral_loss_annotation parameters to self.NeutralLossParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_spec_sim_networking_cosine(user_params: dict)
+
+      Assign spec_sim_networking/modified_cosine parameters to
+          self.SpecSimNetworkCosineParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_spec_sim_networking_ms2deepscore(user_params: dict)
+
+      Assign spec_sim_networking/ms2deepscore parameters to
+          self.SpecSimNetworkDeepscoreParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_feature_filtering(user_params: dict)
+
+      Assign feature_filtering parameters to self.FeatureFilteringParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_blank_assignment(user_params: dict)
+
+      Assign blank_assignment parameters to self.BlankAssignmentParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_group_factor_assignment(user_params: dict)
+
+      Assign parameters to self.GroupFactAssignmentParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_phenotype_qualitative(user_params: dict)
+
+      Assign phenotype_assignment/qualitative parameters to
+          self.PhenoQualAssgnParams.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_phenotype_quant_percent(user_params: dict)
+
+      Assign phenotype_assignment/quantitative-percentage parameters to
+          self.PhenoQuantPercentAssgnParams.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_phenotype_quant_concentration(user_params: dict)
+
+      Assign phenotype_assignment/quantitative-concentration parameters to
+          self.PhenoQuantConcAssgnParams.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_spec_lib_matching_cosine(user_params: dict)
+
+      Assign spectral_library_matching/modified_cosine parameters to
+          self.SpectralLibMatchingCosineParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_spec_lib_matching_ms2deepscore(user_params: dict)
+
+      Assign spectral_library_matching/ms2deepscore parameters to
+          self.SpectralLibMatchingDeepscoreParameters.
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_as_kcb_matching_cosine(user_params: dict)
+
+      Assign antismash kcb results parameters to self.AsKcbCosineMatchingParams.
+
+      Uses modified cosine algorithm
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+
+   .. py:method:: assign_as_kcb_matching_deepscore(user_params: dict)
+
+      Assign antismash kcb results parameters to self.AsKcbDeepscoreMatchingParams.
+
+      Uses MS2DeepScore algorithm
+
+      Parameters:
+          user_params: user-provided params, read from json file
+
+
+

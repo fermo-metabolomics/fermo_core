@@ -1,0 +1,206 @@
+fermo_core.data_analysis.annotation_manager.class_neutral_loss_annotator
+========================================================================
+
+.. py:module:: fermo_core.data_analysis.annotation_manager.class_neutral_loss_annotator
+
+.. autoapi-nested-parse::
+
+   Runs the neutral loss annotation module.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.annotation_manager.class_neutral_loss_annotator.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.annotation_manager.class_neutral_loss_annotator.NeutralLossAnnotator
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: NeutralLossAnnotator(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class for calling and logging of neutral loss annotation
+
+   Attributes:
+       params: ParameterManager object, holds user-provided parameters
+       stats: Stats object, holds stats on molecular features and samples
+       features: Repository object, holds "General Feature" objects
+       samples: Repository object, holds "Sample" objects
+       mass: NeutralMasses object storing hardcoded values
+
+
+   .. py:attribute:: params
+      :type:  fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: samples
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: mass
+      :type:  fermo_core.config.class_default_settings.NeutralLosses
+
+
+   .. py:method:: return_attributes() -> tuple[fermo_core.data_processing.class_repository.Repository, fermo_core.input_output.class_parameter_manager.ParameterManager]
+
+      Returns modified attributes
+
+      Returns:
+          Modified Feature and Params object
+
+
+
+   .. py:method:: annotate_feature_neg(f_id: int)
+
+      Annotate neutral losses of feature and store data in General Feature
+
+      Arguments:
+          f_id: the feature ID
+
+
+
+   .. py:method:: add_annotation(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+      :staticmethod:
+
+
+      Adds annotation data storage to feature
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: validate_gen_other_neg_losses(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+      Validate losses against a list of generic losses of biol/synth origin
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: annotate_feature_pos(f_id: int)
+
+      Annotate neutral losses of feature and store data in General Feature
+
+      Arguments:
+          f_id: the feature ID
+
+
+
+   .. py:method:: validate_ribosomal_losses(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+      Validate losses against a list of losses derived from ribosomal peptides
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: validate_nonribosomal_losses(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+      Validate losses against a list of losses derived from nonribosomal peptides
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: validate_glycoside_losses(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+      Validate losses against a list of glycoside losses
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: validate_gen_bio_pos_losses(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+      Validate losses against a list of generic losses of biological origin
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: validate_gen_other_pos_losses(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+      Validate losses against a list of generic losses of biol/synth origin
+
+      Arguments:
+          feature: a feature object instance
+
+      Returns:
+          the modified feature object instance
+
+
+
+   .. py:method:: run_analysis()
+
+      Organizes calling of data analysis steps.
+
+
+

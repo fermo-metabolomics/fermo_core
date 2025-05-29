@@ -1,0 +1,149 @@
+fermo_core.data_processing.parser.class_general_parser
+======================================================
+
+.. py:module:: fermo_core.data_processing.parser.class_general_parser
+
+.. autoapi-nested-parse::
+
+   Organizes calling of specific parsers.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.parser.class_general_parser.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.parser.class_general_parser.GeneralParser
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: GeneralParser(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize calling of specific parser classes + logger
+
+   Attributes:
+       stats: Stats object, holds stats on molecular features and samples
+       features: Repository object, holds "General Feature" objects
+       samples: Repository object, holds "Sample" objects
+
+
+   .. py:attribute:: stats
+      :type:  Optional[fermo_core.data_processing.class_stats.Stats]
+      :value: None
+
+
+
+   .. py:attribute:: features
+      :type:  Optional[fermo_core.data_processing.class_repository.Repository]
+      :value: None
+
+
+
+   .. py:attribute:: samples
+      :type:  Optional[fermo_core.data_processing.class_repository.Repository]
+      :value: None
+
+
+
+   .. py:method:: return_attributes() -> tuple[fermo_core.data_processing.class_stats.Stats, fermo_core.data_processing.class_repository.Repository, fermo_core.data_processing.class_repository.Repository]
+
+      Returns created attributes to the calling function
+
+      Returns:
+          Tuple containing Stats, Feature Repository and Sample Repository objects.
+
+
+
+   .. py:method:: parse_parameters(params: fermo_core.input_output.class_parameter_manager.ParameterManager)
+
+      Organize calling of specific parser classes.
+
+      Arguments:
+          params: ParameterManager holding validated user input
+
+
+
+   .. py:method:: parse_peaktable(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> None
+
+      Parses user-provided peaktable file.
+
+      Arguments:
+          params: ParameterManager holding validated user input
+
+      Raises:
+          RuntimeError: unsupported peaktable data format
+
+
+
+   .. py:method:: parse_msms(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> None
+
+      Parses user-provided msms file.
+
+      Arguments:
+          params: ParameterManager holding validated user input
+
+
+
+   .. py:method:: parse_group_metadata(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> None
+
+      Parses user-provided group metadata file.
+
+      Arguments:
+          params: ParameterManager holding validated user input
+
+
+
+   .. py:method:: parse_phenotype(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> None
+
+      Parses user-provided phenotype/bioactivity data file.
+
+      Arguments:
+          params: ParameterManager holding validated user input
+
+
+
+   .. py:method:: parse_spectral_library(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> None
+
+      Parses user-provided spectral_library file.
+
+      Arguments:
+          params: ParameterManager holding validated user input
+
+
+

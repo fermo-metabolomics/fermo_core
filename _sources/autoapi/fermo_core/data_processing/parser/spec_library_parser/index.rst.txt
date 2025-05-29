@@ -1,0 +1,15 @@
+fermo_core.data_processing.parser.spec_library_parser
+=====================================================
+
+.. py:module:: fermo_core.data_processing.parser.spec_library_parser
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_processing/parser/spec_library_parser/class_spec_lib_mgf_parser/index
+
+

@@ -1,0 +1,647 @@
+fermo_core.data_processing.builder_feature.dataclass_feature
+============================================================
+
+.. py:module:: fermo_core.data_processing.builder_feature.dataclass_feature
+
+.. autoapi-nested-parse::
+
+   Organize molecular feature data. Product of Feature Builder class.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.builder_feature.dataclass_feature.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.builder_feature.dataclass_feature.Adduct
+   fermo_core.data_processing.builder_feature.dataclass_feature.Match
+   fermo_core.data_processing.builder_feature.dataclass_feature.NeutralLoss
+   fermo_core.data_processing.builder_feature.dataclass_feature.CharFrag
+   fermo_core.data_processing.builder_feature.dataclass_feature.Phenotype
+   fermo_core.data_processing.builder_feature.dataclass_feature.Annotations
+   fermo_core.data_processing.builder_feature.dataclass_feature.SimNetworks
+   fermo_core.data_processing.builder_feature.dataclass_feature.SampleInfo
+   fermo_core.data_processing.builder_feature.dataclass_feature.GroupFactor
+   fermo_core.data_processing.builder_feature.dataclass_feature.Scores
+   fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: Adduct(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent adduct annotation information
+
+   Attributes:
+       adduct_type: describes type of adduct
+       partner_adduct: adduct of partner feature
+       partner_id: partner feature id based on which the adduct was found
+       partner_mz: partner feature mz
+       diff_ppm: the difference in ppm between the two features
+       sample: the sample identifier
+       sample_set: a set of samples in which Adduct was observed
+
+
+   .. py:attribute:: adduct_type
+      :type:  str
+
+
+   .. py:attribute:: partner_adduct
+      :type:  str
+
+
+   .. py:attribute:: partner_id
+      :type:  int
+
+
+   .. py:attribute:: partner_mz
+      :type:  float
+
+
+   .. py:attribute:: diff_ppm
+      :type:  float
+
+
+   .. py:attribute:: sample
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:attribute:: sample_set
+      :type:  Optional[set]
+      :value: None
+
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: Match(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent library matching information
+
+   Attributes:
+       id: identifier of matched molecule
+       library: name of library file matched molecule is from
+       algorithm: algorithm used for matching
+       score: score that led to a matching between feature and matched molecule
+       mz: m/z ratio of matched molecule
+       diff_mz: difference between m/z ratios of feature and matched molecule
+       module: responsible for matching operation
+       smiles: optional smiles string (ms2query)
+       inchikey: optional inchi key (ms2query)
+       npc_class: NPClassifier class of analog (ms2query)
+
+
+   .. py:attribute:: id
+      :type:  Any
+
+
+   .. py:attribute:: library
+      :type:  str
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: score
+      :type:  float
+
+
+   .. py:attribute:: mz
+      :type:  float
+
+
+   .. py:attribute:: diff_mz
+      :type:  float
+
+
+   .. py:attribute:: module
+      :type:  str
+
+
+   .. py:attribute:: smiles
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:attribute:: inchikey
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:attribute:: npc_class
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: NeutralLoss(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent detected neutral losses in MS2 spectrum
+
+   Attributes:
+       id: neutral loss identifier
+       loss_det: detected m/z
+       loss_ex: expected m/z
+       mz_frag: the fragment m/z corresponding to neutral loss (parent m/z - loss)
+       diff: difference in ppm
+
+
+   .. py:attribute:: id
+      :type:  str
+
+
+   .. py:attribute:: loss_det
+      :type:  float
+
+
+   .. py:attribute:: loss_ex
+      :type:  float
+
+
+   .. py:attribute:: mz_frag
+      :type:  float
+
+
+   .. py:attribute:: diff
+      :type:  float
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: CharFrag(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent characteristic ion fragments in MS2 spectrum
+
+   Attributes:
+       id: fragment identifier
+       frag_det: detected m/z
+       frag_ex: expected m/z
+       diff: difference in ppm
+
+
+   .. py:attribute:: id
+      :type:  str
+
+
+   .. py:attribute:: frag_det
+      :type:  float
+
+
+   .. py:attribute:: frag_ex
+      :type:  float
+
+
+   .. py:attribute:: diff
+      :type:  float
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: Phenotype(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent phenotype information
+
+   Attributes:
+       format: the format of the phenotype file
+       category: the assay category (column) if applicable
+       descr: additional data if applicable
+       score: the score calculated
+       p_value: the calculated p-value if applicable
+       p_value_corr: the corrected p-value if applicable
+
+
+
+   .. py:attribute:: format
+      :type:  str
+
+
+   .. py:attribute:: category
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:attribute:: descr
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:attribute:: score
+      :type:  float
+
+
+   .. py:attribute:: p_value
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: p_value_corr
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: Annotations(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent annotation information
+
+   Attributes:
+       adducts: list of Adduct objects representing putative adducts of this feature
+       matches: list of Match objects repr. putative library matching hits
+       losses: list of NeutralLoss objects annotating functional groups of feature
+       fragments: list of CharFrag objects annotating characteristic ion fragments
+       phenotypes: list of Phenotype objects if feature phenotype-associated
+
+
+   .. py:attribute:: adducts
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: matches
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: losses
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: fragments
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: phenotypes
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:method:: sort_entries(attr: str, score: str, direction: bool)
+
+      Sort the entries in 'attr' based on 'score' in descending order
+
+      Arguments:
+          attr: the attribute to target
+          score: the score to sort for
+          direction: False to sort low to high, True for reverse
+
+
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: SimNetworks(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent spectral similarity network information
+
+   Attributes:
+       algorithm: name of algorithm
+       network_id: an integer indicating the network feature is associated with
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: network_id
+      :type:  int
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: SampleInfo(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent sample->value information
+
+   Attributes:
+       s_id: identifier of sample
+       value: indicating the respective value (area or height)
+
+
+   .. py:attribute:: s_id
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  float
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: GroupFactor(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent group factor (fold difference) information
+
+   Attributes:
+       group1: comparison group 1
+       group2: comparison group 2
+       factor: group factor (fold difference), with the greater number taken
+
+
+   .. py:attribute:: group1
+      :type:  str
+
+
+   .. py:attribute:: group2
+      :type:  str
+
+
+   .. py:attribute:: factor
+      :type:  float
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: Scores(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent feature score information
+
+   Attributes:
+       phenotype: the highest phenotype correlation score (if any) across all assays
+       novelty: putative novelty of the feature (compared against external data)
+
+
+   .. py:attribute:: phenotype
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: novelty
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: Feature(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class to represent a molecular feature.
+
+   Attributes:
+       f_id: the integer ID of the molecular feature.
+       mz: the precursor mass to charge ratio (m/z).
+       rt: the retention time at peak apex.
+       rt_start: the start of the peak in minutes.
+       rt_stop: the stop of the peak in minutes.
+       rt_range: the length of a molecular feature peak in minutes.
+       trace_rt: the rt data points of the pseudo-chromatogram trace
+       trace_int: the relative intensity data points of the pseudo-chromatogram trace
+       fwhm: the feature width at half maximum intensity (peak width).
+       intensity: the maximum intensity.
+       rel_intensity: the intensity relative to the highest feature in the sample.
+       area: the area of the peak
+       rel_area: the area relative to the feature with the highest area in the sample.
+       Spectrum: a matchms Spectrum object instance using data from msms
+       samples: samples in which feature was detected.
+       area_per_sample: list of SampleInfo instances summarizing area per sample
+       height_per_sample: list of SampleInfo instances summarizing height per sample
+       blank: bool to indicate if feature is blank-associated (if provided).
+       groups: association to categories and groups is such data was provided.
+       group_factors: indicates the group factors(fold differences) if provided.
+       Annotations: objects summarizing associated annotation data
+       networks: dict of objects representing associated networking data
+       Scores: Object representing feature-associated scores
+
+
+   .. py:attribute:: f_id
+      :type:  Optional[int]
+      :value: None
+
+
+
+   .. py:attribute:: mz
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_start
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_stop
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_range
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: trace_rt
+      :type:  Optional[tuple]
+      :value: None
+
+
+
+   .. py:attribute:: trace_int
+      :type:  Optional[tuple]
+      :value: None
+
+
+
+   .. py:attribute:: fwhm
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: intensity
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rel_intensity
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: area
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rel_area
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: Spectrum
+      :type:  Optional[Any]
+      :value: None
+
+
+
+   .. py:attribute:: samples
+      :type:  Optional[set]
+      :value: None
+
+
+
+   .. py:attribute:: area_per_sample
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: height_per_sample
+      :type:  Optional[list]
+      :value: None
+
+
+
+   .. py:attribute:: blank
+      :type:  Optional[bool]
+      :value: None
+
+
+
+   .. py:attribute:: groups
+      :type:  Optional[dict]
+      :value: None
+
+
+
+   .. py:attribute:: group_factors
+      :type:  Optional[dict]
+      :value: None
+
+
+
+   .. py:attribute:: Annotations
+      :type:  Optional[Any]
+      :value: None
+
+
+
+   .. py:attribute:: networks
+      :type:  Optional[dict]
+      :value: None
+
+
+
+   .. py:attribute:: Scores
+      :type:  Optional[Any]
+      :value: None
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert class attributes to json-compatible dict.
+
+      Returns:
+          A dictionary with class attributes as keys
+
+
+

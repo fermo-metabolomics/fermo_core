@@ -1,0 +1,340 @@
+fermo_core.config.class_default_settings
+========================================
+
+.. py:module:: fermo_core.config.class_default_settings
+
+.. autoapi-nested-parse::
+
+   Organizes certain hardcoded default settings for easier access.
+
+   Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.config.class_default_settings.DefaultPaths
+   fermo_core.config.class_default_settings.DefaultMasses
+   fermo_core.config.class_default_settings.Loss
+   fermo_core.config.class_default_settings.NeutralLosses
+   fermo_core.config.class_default_settings.Fragment
+   fermo_core.config.class_default_settings.CharFragments
+
+
+Module Contents
+---------------
+
+.. py:class:: DefaultPaths(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for storing shared hardcoded default settings.
+
+   Attributes:
+       dirpath_ms2deepscore_pos: points towards default ms2deepscore dir
+       url_ms2deepscore_pos: the url to download the default ms2deepscore file
+       dirpath_losses: point towards neutral loss dir
+       dirpath_frags: point towards fragment dir
+       library_mibig_pos: points towards mibig spectral library for positive ion mode
+
+
+   .. py:attribute:: dirpath_ms2deepscore_pos
+      :type:  pydantic.DirectoryPath
+
+
+   .. py:attribute:: url_ms2deepscore_pos
+      :type:  str
+      :value: 'https://zenodo.org/records/8274763/files/ms2deepscore_positive_10k_1000_1000_1000_500.hdf5?download=1'
+
+
+
+   .. py:attribute:: dirpath_losses
+      :type:  pydantic.DirectoryPath
+
+
+   .. py:attribute:: dirpath_frags
+      :type:  pydantic.DirectoryPath
+
+
+   .. py:attribute:: library_mibig_pos
+      :type:  pydantic.FilePath
+
+
+.. py:class:: DefaultMasses(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for storing atom and ion masses for adduct annotation
+
+   Sources:
+       https://fiehnlab.ucdavis.edu/staff/kind/Metabolomics/MS-Adduct-Calculator/
+       https://media.iupac.org/publications/pac/2003/pdf/7506x0683.pdf
+       https://pubchem.ncbi.nlm.nih.gov/compound/Bicarbonate-Ion
+       https://pubchem.ncbi.nlm.nih.gov/compound/Water
+
+   Attributes:
+       Na: sodium monoisotopic mass
+       H: proton monoisotopic mass
+       C13_12: mass difference between 13C and 12C isotopes
+       Fe56: monoisotopic mass of 56Fe
+       NH4: monoisotopic mass ammonium
+       K: monoisotopic mass potassium
+       H2O: monoisotopic mass water
+       Cl35: monoisotopic mass of 35Cl
+       HCO2: monoisotopic mass of bicarbonate anion
+       TFA: monoisotopic mass of trifluoroacetic acid anion
+       Ac: monoisotopicmass of acetic acid anion
+
+
+   .. py:attribute:: Na
+      :type:  float
+      :value: 22.989218
+
+
+
+   .. py:attribute:: H
+      :type:  float
+      :value: 1.007276
+
+
+
+   .. py:attribute:: C13_12
+      :type:  float
+      :value: 1.0033548
+
+
+
+   .. py:attribute:: Fe56
+      :type:  float
+      :value: 55.934941
+
+
+
+   .. py:attribute:: NH4
+      :type:  float
+      :value: 18.033823
+
+
+
+   .. py:attribute:: K
+      :type:  float
+      :value: 38.963158
+
+
+
+   .. py:attribute:: H2O
+      :type:  float
+      :value: 18.010565
+
+
+
+   .. py:attribute:: Cl35
+      :type:  float
+      :value: 34.969402
+
+
+
+   .. py:attribute:: HCO2
+      :type:  float
+      :value: 60.992568
+
+
+
+   .. py:attribute:: TFA
+      :type:  float
+      :value: 112.985586
+
+
+
+   .. py:attribute:: Ac
+      :type:  float
+      :value: 59.013851
+
+
+
+.. py:class:: Loss(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for storing information on neutral losses
+
+   Attributes:
+       loss: the neutral loss in Da
+       descr: the neutral loss description
+       abbr: the neutral loss abbreviation
+
+
+   .. py:attribute:: loss
+      :type:  float
+
+
+   .. py:attribute:: descr
+      :type:  str
+
+
+   .. py:attribute:: abbr
+      :type:  str
+
+
+.. py:class:: NeutralLosses(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for storing monoisotopic masses of neutral losses in MS2
+
+   Sources:
+       Kersten et al 2011 (doi.org/10.1038/nchembio.684)
+
+       Kersten et al 2013 (doi.org/10.1073/pnas.1315492110)
+
+       Interpretation of MS-MS Mass Spectra of Drugs and Pesticides, Niessen,
+       Correa 2017 (ISBN 9781119294245)
+
+   Attributes:
+       ribosomal_src: path to the file location
+       ribosomal: neutral losses derived from ribosomal peptides, positive mode
+       nonribo_src: path to the file location
+       nonribo: neutral losses derived from nonribosomal peptides, positive mode
+       glycoside_src: path to the file location
+       glycoside: neutral losses derived from glycosides, positive mode
+       gen_bio_pos_src: path to file location
+       gen_bio_pos: generic neutral losses from metabolites, positive mode
+       gen_other_pos_src: path to file location
+       gen_other_pos: generic neutral losses (metabolite+synthetics), positive mode
+       gen_other_neg_src: path to file location
+       gen_other_neg: generic neutral losses (metabolite+synthetics), negative mode
+
+
+   .. py:attribute:: ribosomal_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: ribosomal
+      :type:  list[Loss]
+      :value: []
+
+
+
+   .. py:attribute:: nonribo_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: nonribo
+      :type:  list[Loss]
+      :value: []
+
+
+
+   .. py:attribute:: glycoside_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: glycoside
+      :type:  list[Loss]
+      :value: []
+
+
+
+   .. py:attribute:: gen_bio_pos_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: gen_bio_pos
+      :type:  list[Loss]
+      :value: []
+
+
+
+   .. py:attribute:: gen_other_pos_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: gen_other_pos
+      :type:  list[Loss]
+      :value: []
+
+
+
+   .. py:attribute:: gen_other_neg_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: gen_other_neg
+      :type:  list[Loss]
+      :value: []
+
+
+
+   .. py:method:: read_files()
+
+
+.. py:class:: Fragment(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for storing information on characteristic fragments
+
+   Attributes:
+       mass: the m/z value of the fragment
+       descr: the neutral loss description
+
+
+   .. py:attribute:: mass
+      :type:  float
+
+
+   .. py:attribute:: descr
+      :type:  str
+
+
+.. py:class:: CharFragments(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for storing characteristic ion fragment masses
+
+   Attributes:
+       aa_frags_src: path to the file location
+       aa_frags: b2 and y2 series of (proteinogenic) amino acids
+
+
+   .. py:attribute:: aa_frags_src
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: aa_frags
+      :type:  list[Fragment]
+      :value: []
+
+
+
+   .. py:method:: read_files()
+
+

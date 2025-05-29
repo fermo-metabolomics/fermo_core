@@ -1,0 +1,15 @@
+fermo_core.config
+=================
+
+.. py:module:: fermo_core.config
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/config/class_default_settings/index
+
+

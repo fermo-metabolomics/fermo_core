@@ -1,0 +1,1061 @@
+fermo_core.input_output.param_handlers
+======================================
+
+.. py:module:: fermo_core.input_output.param_handlers
+
+.. autoapi-nested-parse::
+
+   Organizes classes that hold and validate parameters.
+
+   Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.input_output.param_handlers.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.input_output.param_handlers.PeaktableParameters
+   fermo_core.input_output.param_handlers.MsmsParameters
+   fermo_core.input_output.param_handlers.PhenotypeParameters
+   fermo_core.input_output.param_handlers.GroupMetadataParameters
+   fermo_core.input_output.param_handlers.SpecLibParameters
+   fermo_core.input_output.param_handlers.MS2QueryResultsParameters
+   fermo_core.input_output.param_handlers.AsResultsParameters
+   fermo_core.input_output.param_handlers.OutputParameters
+   fermo_core.input_output.param_handlers.AdductAnnotationParameters
+   fermo_core.input_output.param_handlers.NeutralLossParameters
+   fermo_core.input_output.param_handlers.FragmentAnnParameters
+   fermo_core.input_output.param_handlers.SpecSimNetworkCosineParameters
+   fermo_core.input_output.param_handlers.SpecSimNetworkDeepscoreParameters
+   fermo_core.input_output.param_handlers.FeatureFilteringParameters
+   fermo_core.input_output.param_handlers.BlankAssignmentParameters
+   fermo_core.input_output.param_handlers.GroupFactAssignmentParameters
+   fermo_core.input_output.param_handlers.PhenoQualAssgnParams
+   fermo_core.input_output.param_handlers.PhenoQuantPercentAssgnParams
+   fermo_core.input_output.param_handlers.PhenoQuantConcAssgnParams
+   fermo_core.input_output.param_handlers.SpectralLibMatchingCosineParameters
+   fermo_core.input_output.param_handlers.SpectralLibMatchingDeepscoreParameters
+   fermo_core.input_output.param_handlers.AsKcbCosineMatchingParams
+   fermo_core.input_output.param_handlers.AsKcbDeepscoreMatchingParams
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: PeaktableParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for representing and validating peaktable parameters.
+
+   Attributes:
+       filepath: a pathlib Path object pointing towards a peaktable file
+       format: indicates the format of the peaktable file
+       polarity: indicates the polarity of the data ('positive', 'negative').
+
+   Raise:
+       ValueError: Unsupported peaktable format.
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+
+   .. py:attribute:: filepath
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: format
+      :type:  str
+
+
+   .. py:attribute:: polarity
+      :type:  str
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: MsmsParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for representing and validating MS/MS file parameters.
+
+   Attributes:
+       filepath: a pathlib Path object pointing towards an MS/MS file
+       format: indicates the format of the MS/MS file
+       rel_int_from: the minimum relative intensity of MS2 fragments to be retained
+
+   Raise:
+       ValueError: Unsupported MS/MS file format.
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+
+   .. py:attribute:: filepath
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: format
+      :type:  str
+
+
+   .. py:attribute:: rel_int_from
+      :type:  float
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: PhenotypeParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for representing and validating phenotype file parameters.
+
+   Attributes:
+       filepath: a pathlib Path object pointing towards a phenotype file
+       format: indicates the format of the phenotype file
+
+   Raise:
+       ValueError: Unsupported phenotype file format.
+
+
+   .. py:attribute:: filepath
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: format
+      :type:  str
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: GroupMetadataParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for representing and validating group metadata parameters.
+
+   Attributes:
+       filepath: a pathlib Path object pointing towards a group metadata file
+       format: indicates the format of the group metadata file
+
+   Raise:
+       ValueError: Unsupported group metadata file format.
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+   Notes:
+       A fermo-style group data file is a .csv-file with the layout:
+
+       sample_name,group_col_1,group_col_2,...,group_col_n 
+
+       sample1,medium_A,condition_A 
+
+       sample2,medium_B,condition_A
+
+       sample3,medium_C,condition_A 
+
+
+       Ad values: The only prohibited value is 'DEFAULT' which is reserved for
+       internal use. 'BLANK' os a special value that indicates the sample/medium
+       blank for automated subtraction.
+
+
+   .. py:attribute:: filepath
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: format
+      :type:  str
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: SpecLibParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class for repres. and valid. of spectral library files parameters.
+
+   Attributes:
+       dirpath: a pathlib Path object pointing towards a dir containing spec lib files
+       format: indicates the format of the spectral library files
+
+   Raise:
+       ValueError: Unsupported spectral library format.
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+
+   .. py:attribute:: dirpath
+      :type:  pydantic.DirectoryPath
+
+
+   .. py:attribute:: format
+      :type:  str
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: MS2QueryResultsParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class for repres. and valid. of MS2Query result parameters.
+
+   Attributes:
+       filepath: a pathlib Path object pointing towards a MS2Query results file
+       score_cutoff: the minimal score to retain the annotation
+
+   Raise:
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+
+   .. py:attribute:: filepath
+      :type:  pydantic.FilePath
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: AsResultsParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for representing and validating an antiSMASH results dir.
+
+   Attributes:
+       directory_path: the output directory path
+       similarity_cutoff: a fraction indicating the minimum shared similarity required
+
+   Raise:
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+
+   .. py:attribute:: directory_path
+      :type:  pydantic.DirectoryPath
+
+
+   .. py:attribute:: similarity_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: OutputParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for representing and validating output parameters.
+
+   Attributes:
+       directory_path: the output directory path
+
+
+   .. py:attribute:: directory_path
+      :type:  pydantic.DirectoryPath
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: AdductAnnotationParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of adduct annotation parameters.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       mass_dev_ppm: The estimated maximum mass deviation in ppm.
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: mass_dev_ppm
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: NeutralLossParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of neutral loss annotation params.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       mass_dev_ppm: The estimated maximum mass deviation in ppm.
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: mass_dev_ppm
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: FragmentAnnParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of fragment annotation params.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       mass_dev_ppm: The estimated maximum mass deviation in ppm.
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: mass_dev_ppm
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: SpecSimNetworkCosineParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of spec. similarity network params.
+
+   This class manages parameters for the modified cosine algorithm.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       msms_min_frag_nr: minimum nr of fragments a spectrum must have to be considered.
+       fragment_tol: the tolerance between matched fragments, in m/z units.
+       score_cutoff: the minimum similarity score between two spectra.
+       max_nr_links: max nr of connections from a node.
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: msms_min_frag_nr
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: fragment_tol
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: max_nr_links
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: SpecSimNetworkDeepscoreParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of spec. similarity network params.
+
+   This class manages parameters for the ms2deepscore algorithm.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       score_cutoff: the minimum similarity score between two spectra.
+       max_nr_links: max links to a single spectra.
+       msms_min_frag_nr: minimum number of fragments in MS2 to run it in analysis
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: True
+
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: max_nr_links
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: msms_min_frag_nr
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: FeatureFilteringParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of feature filtering parameters.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       filter_rel_int_range_min: min value to filter feature for rel int
+       filter_rel_int_range_max: max value to filter feature for rel int
+       filter_rel_area_range_min: min value to filter feature for rel area
+       filter_rel_area_range_max: max value to filter feature for rel area
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: filter_rel_int_range_min
+      :type:  float
+
+
+   .. py:attribute:: filter_rel_int_range_max
+      :type:  float
+
+
+   .. py:attribute:: filter_rel_area_range_min
+      :type:  float
+
+
+   .. py:attribute:: filter_rel_area_range_max
+      :type:  float
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: validate_attrs()
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: BlankAssignmentParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of blank assignment parameters.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       factor: An integer fold-change to differentiate blank features.
+       algorithm: the algorithm to summarize values of different samples.
+       value: the type of value to use for determination
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: factor
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  str
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: GroupFactAssignmentParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of group factor assignment params.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       algorithm: the algorithm to summarize values of different samples.
+       value: the type of value to use for comparison
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  str
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: PhenoQualAssgnParams(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for phenotype qualitative assignment parameters
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       factor: An integer fold-change to differentiate phenotype-assoc. features.
+       algorithm: the algorithm to summarize values of active vs inactive samples.
+       value: the type of value to use for determination
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: factor
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  str
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: PhenoQuantPercentAssgnParams(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for phenotype quantitative percentage assignment params
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       sample_avg: algorithm to summarize mult measurements per sample for single assay
+       value: the type of value to use for determination
+       algorithm: the statistical algorithm to calculate correlation
+       fdr_corr: false-discovery rate correction algorithm (one of statsmodels.stats.multitest.multipletests)
+       p_val_cutoff: minimum FDR-corrected p-value to consider in assignment
+       coeff_cutoff: minimum correlation coefficient cutoff to consider in assignment
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: sample_avg
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  str
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: fdr_corr
+      :type:  str
+
+
+   .. py:attribute:: p_val_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: coeff_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: PhenoQuantConcAssgnParams(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for phenotype quantitative concentration assignment params
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       sample_avg: algorithm to summarize mult measurements per sample for single assay
+       value: the type of value to use for determination
+       algorithm: the statistical algorithm to calculate correlation
+       fdr_corr: false-discovery rate correction algorithm (one of statsmodels.stats.multitest.multipletests)
+       p_val_cutoff: minimum FDR-corrected p-value to consider in assignment
+       coeff_cutoff: minimum correlation coefficient cutoff to consider in assignment
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: sample_avg
+      :type:  str
+
+
+   .. py:attribute:: value
+      :type:  str
+
+
+   .. py:attribute:: algorithm
+      :type:  str
+
+
+   .. py:attribute:: fdr_corr
+      :type:  str
+
+
+   .. py:attribute:: p_val_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: coeff_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: val()
+
+
+   .. py:method:: to_json() -> dict
+
+
+.. py:class:: SpectralLibMatchingCosineParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of spectral library matching params.
+
+   This class addresses parameters for the modified cosine algorithm.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       fragment_tol: max tolerable diff to consider two fragments as equal, in m/z
+       min_nr_matched_peaks: peak cutoff to consider a match of two MS/MS spectra
+       score_cutoff: score cutoff to consider a match of two MS/MS spectra
+       max_precursor_mass_diff: maximum precursor mass difference
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: fragment_tol
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: min_nr_matched_peaks
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: max_precursor_mass_diff
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: SpectralLibMatchingDeepscoreParameters(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for repr. and valid. of spectral library matching params.
+
+   This class addresses parameters for the MS2DeepScore algorithm.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       score_cutoff: score cutoff to consider a match of two MS/MS spectra.
+       max_precursor_mass_diff: max allowed precursor mz difference to accept a match
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: max_precursor_mass_diff
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: AsKcbCosineMatchingParams(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class for params of antiSMASH KCB results mod cosine matching.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       fragment_tol: max tolerable diff to consider two fragments as equal, in m/z
+       min_nr_matched_peaks: peak cutoff to consider a match of two MS/MS spectra
+       score_cutoff: score cutoff to consider a match of two MS/MS spectra
+       max_precursor_mass_diff: maximum precursor mass difference
+       module_passed: indicates that the module ran without errors
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: fragment_tol
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: min_nr_matched_peaks
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: max_precursor_mass_diff
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+
+.. py:class:: AsKcbDeepscoreMatchingParams(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class for params of antiSMASH KCB results deepscore matching.
+
+   Attributes:
+       activate_module: bool to indicate if module should be executed.
+       score_cutoff: score cutoff to consider a match of two MS/MS spectra.
+       max_precursor_mass_diff: max allowed precursor mz difference to accept a match
+       module_passed: indicates that the module ran without errors
+
+   Raise:
+       pydantic.ValidationError: Pydantic validation failed during instantiation.
+
+
+   .. py:attribute:: activate_module
+      :type:  bool
+      :value: False
+
+
+
+   .. py:attribute:: score_cutoff
+      :type:  pydantic.PositiveFloat
+
+
+   .. py:attribute:: max_precursor_mass_diff
+      :type:  pydantic.PositiveInt
+
+
+   .. py:attribute:: module_passed
+      :type:  bool
+      :value: False
+
+
+
+   .. py:method:: to_json() -> dict
+
+      Convert attributes to json-compatible ones.
+
+
+

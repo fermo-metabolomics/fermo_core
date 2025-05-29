@@ -1,0 +1,17 @@
+fermo_core.data_analysis.sim_networks_manager
+=============================================
+
+.. py:module:: fermo_core.data_analysis.sim_networks_manager
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/sim_networks_manager/class_mod_cosine_networker/index
+   /autoapi/fermo_core/data_analysis/sim_networks_manager/class_ms2deepscore_networker/index
+   /autoapi/fermo_core/data_analysis/sim_networks_manager/class_sim_networks_manager/index
+
+

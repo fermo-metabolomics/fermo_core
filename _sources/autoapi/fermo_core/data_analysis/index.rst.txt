@@ -1,0 +1,24 @@
+fermo_core.data_analysis
+========================
+
+.. py:module:: fermo_core.data_analysis
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/annotation_manager/index
+   /autoapi/fermo_core/data_analysis/blank_assigner/index
+   /autoapi/fermo_core/data_analysis/chrom_trace_calculator/index
+   /autoapi/fermo_core/data_analysis/class_analysis_manager/index
+   /autoapi/fermo_core/data_analysis/feature_filter/index
+   /autoapi/fermo_core/data_analysis/group_assigner/index
+   /autoapi/fermo_core/data_analysis/group_factor_assigner/index
+   /autoapi/fermo_core/data_analysis/phenotype_manager/index
+   /autoapi/fermo_core/data_analysis/score_assigner/index
+   /autoapi/fermo_core/data_analysis/sim_networks_manager/index
+
+

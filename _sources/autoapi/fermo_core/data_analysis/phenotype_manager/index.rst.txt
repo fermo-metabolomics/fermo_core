@@ -1,0 +1,17 @@
+fermo_core.data_analysis.phenotype_manager
+==========================================
+
+.. py:module:: fermo_core.data_analysis.phenotype_manager
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/phenotype_manager/class_phen_qual_assigner/index
+   /autoapi/fermo_core/data_analysis/phenotype_manager/class_phen_quant_ass/index
+   /autoapi/fermo_core/data_analysis/phenotype_manager/class_phenotype_manager/index
+
+

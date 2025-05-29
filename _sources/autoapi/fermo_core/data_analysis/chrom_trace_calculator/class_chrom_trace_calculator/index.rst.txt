@@ -1,0 +1,273 @@
+fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator
+============================================================================
+
+.. py:module:: fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator
+
+.. autoapi-nested-parse::
+
+   Calculate time/intensity traces of pseudo-chromatograms for plotting in GUI.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceData
+   fermo_core.data_analysis.chrom_trace_calculator.class_chrom_trace_calculator.ChromTraceCalculator
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: ChromTraceData(feature_id: int, sample_id: str, rt: float, rt_begin: float, rt_end: float)
+
+   Internal class to organize attributes to create a pseudo-chromatogram trace
+
+   Attributes:
+       feature_id: id of molecular feature associated to data
+       sample_id: id of sample associated to data
+       rt_begin: RT of beginning of chromatogram
+       int_begin: rel int of beginning of chromatogram
+       rt_left_kink: RT of artificial point between start and fwhm for vis purpose
+       int_left_kink: rel int of artificial point between start and fwhm for vis purpose
+       rt_left_fwhm: RT of left side of feature width at half maximum
+       int_left_fwhm: rel int of left side of feature width at half maximum
+       rt_apex: RT of apex of the peak
+       int_apex: rel int of apex of the peak
+       rt_right_fwhm: rRT of right side of feature width at half maximum
+       int_right_fwhm: rel int of right side of feature width at half max
+       rt_right_kink: RT of artificial point between fwhm for vis purpose
+       int_right_kink: rel int of artificial point between fwhm for vis purpose
+       rt_end: RT of end of chromatogram
+       int_end: rel int of end of chromatogram
+       fwhm: feature width at half maximum intensity in minutes
+       rt_range: peak range (from start to stop) in minutes
+
+
+   .. py:attribute:: feature_id
+      :type:  int
+
+
+   .. py:attribute:: sample_id
+      :type:  str
+
+
+   .. py:attribute:: rt_begin
+      :type:  float
+
+
+   .. py:attribute:: int_begin
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_left_kink
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: int_left_kink
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_left_fwhm
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: int_left_fwhm
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_apex
+      :type:  float
+
+
+   .. py:attribute:: int_apex
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_right_fwhm
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: int_right_fwhm
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_right_kink
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: int_right_kink
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_end
+      :type:  float
+
+
+   .. py:attribute:: int_end
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: fwhm
+      :type:  Optional[float]
+      :value: None
+
+
+
+   .. py:attribute:: rt_range
+      :type:  Optional[float]
+      :value: None
+
+
+
+.. py:class:: ChromTraceCalculator
+
+   Organize methods to create a pseudo-chromatogram trace
+
+
+   .. py:attribute:: chrom_trace
+      :type:  Optional[ChromTraceData]
+      :value: None
+
+
+
+   .. py:method:: modify_samples(samples: fermo_core.data_processing.class_repository.Repository, stats: fermo_core.data_processing.class_stats.Stats) -> fermo_core.data_processing.class_repository.Repository
+
+      Load sample from repository for modification, then store again
+
+      Attributes:
+          samples: a Repository object containing the samples.
+          stats: a Stats object containing a tuple of sample IDs.
+
+      Returns:
+          A Repository containing the modified samples.
+
+
+
+   .. py:method:: modify_features_in_sample(sample: fermo_core.data_processing.builder_sample.dataclass_sample.Sample) -> fermo_core.data_processing.builder_sample.dataclass_sample.Sample
+
+      Add chromatogram traces to Features in Sample
+
+      Attributes:
+          sample: a Sample object containing Feature objects
+
+      Returns:
+          A Sample object with Feature objects with added chromatogram traces.
+
+
+
+   .. py:method:: validate_fwhm_rt(fwhm: float, rt_range: float)
+
+      Validate that fwhm is less than rt_range and assign value.
+
+      Attributes:
+          fwhm: the full width at half maximum intensity in minutes
+          rt_range: indicates range from beginning to end of peak, in minutes
+
+
+
+   .. py:method:: calc_rt_left_fwhm()
+
+      Calculate rt_left_fwhm, validate if in rt range
+
+
+
+   .. py:method:: calc_rt_right_fwhm()
+
+      Calculate rt_right_fwhm, validate if in rt range
+
+
+
+   .. py:method:: calc_rt_left_kink()
+
+      Calculate rt_left_kink and validate if in rt_range
+
+
+
+   .. py:method:: calc_rt_right_kink()
+
+      Calculate rt_right_kink and validate if in rt_range
+
+
+
+   .. py:method:: assign_relative_intensity(relative_int: float)
+
+      Calculates and assigns relative intensity values
+
+      Arguments:
+          relative_int: intensity relative to the highest/most intense mol feature
+
+
+
+   .. py:method:: create_trace_rt() -> tuple[float, Ellipsis]
+
+      Create a trace of retention time points to assign to Feature object.
+
+      Returns:
+          A tuple of floats for RT of pseudo-chromatogram.
+
+
+
+   .. py:method:: create_trace_int() -> tuple[float, Ellipsis]
+
+      Create a trace of relative intensity points to assign to Feature object.
+
+      Returns:
+          A tuple of floats for int of pseudo-chromatogram.
+
+
+

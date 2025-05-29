@@ -1,0 +1,322 @@
+fermo_core.input_output.class_validation_manager
+================================================
+
+.. py:module:: fermo_core.input_output.class_validation_manager
+
+.. autoapi-nested-parse::
+
+   Hold methods to validate user input.
+
+   Validation methods that are used by both graphical user interface and command line
+   interface.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.input_output.class_validation_manager.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.input_output.class_validation_manager.ValidationManager
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: ValidationManager
+
+   Manage methods for user input validation and error-handling logic.
+
+   All validation methods are static and raise errors that need to be handled
+   by the calling methods. All validation methods should start with "validate".
+
+
+   .. py:method:: validate_float_zero_one(f: float) -> None
+      :staticmethod:
+
+
+      Positive float between zero and one
+
+      Args:
+          f: a float
+
+      Raises:
+          ValueError: Not a float between zero and one
+
+
+
+   .. py:method:: validate_allowed(s: str, allowed: list) -> None
+      :staticmethod:
+
+
+      Check if str one of allowed strings
+
+      Args:
+          s: string
+          allowed: a list of allowed strings
+
+      Raises:
+          ValueError: Not one of allowed strings
+
+
+
+   .. py:method:: validate_mass_deviation_ppm(ppm: int)
+      :staticmethod:
+
+
+      Validate if mass deviation is in reasonable range.
+
+      Args:
+          ppm: a mass deviation value in ppm.
+
+      Raises:
+          ValueError: Out of reasonable range.
+
+
+
+   .. py:method:: validate_file_exists(file_path: str)
+      :staticmethod:
+
+
+      Validate that input file exists.
+
+      Parameters:
+          file_path: a valid path as str
+
+      Raises:
+          FileNotFoundError: file does not exist
+
+
+
+   .. py:method:: validate_file_extension(filepath: pathlib.Path, extension: str)
+      :staticmethod:
+
+
+      Validate the file name extension.
+
+      Parameters:
+          filepath: A pathlib Path object
+          extension: a str describing the file extension
+
+      Raises:
+          TypeError: incorrect file name extension
+
+
+
+   .. py:method:: validate_csv_file(csv_file: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that input file is a comma separated values file (csv).
+
+      Args:
+         csv_file: A pathlib Path object
+
+      Raises:
+         pd.errors.ParserError if file is not readable by pandas
+
+
+
+   .. py:method:: validate_peaktable_mzmine(path: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that input file is a mzmine3/4-style peaktable
+
+      Args:
+         path: A pathlib Path object
+
+      Raises:
+          ValueError: unexpected values
+
+
+
+   .. py:method:: validate_ms2query_results(ms2query_results: pathlib.Path)
+      :staticmethod:
+
+
+      Validate format of ms2query results table
+
+      Prepared for MS2Query version 1.3.0. Must have a column "id" corresponding to
+      the feature id of the peak table.
+
+      Args:
+         ms2query_results: A pathlib Path object
+
+      Raises:
+          KeyError: missing columns in results file or empty
+
+
+
+   .. py:method:: validate_csv_has_rows(csv_path: pathlib.Path)
+      :staticmethod:
+
+
+      Validate if csv file has rows
+
+      Args:
+         csv_path: A pathlib Path object
+
+      Raises:
+          ValueError: has no rows (data)
+
+
+
+   .. py:method:: validate_no_duplicate_entries_csv_column(csv_file: pathlib.Path, column: str)
+      :staticmethod:
+
+
+      Validate that csv column has no duplicate entries
+
+      Args:
+         csv_file: A pathlib Path object
+         column: Name of column to test for duplicate entries
+
+      Raises:
+          ValueError: duplicate entries found
+
+
+
+   .. py:method:: validate_mgf_file(mgf_file: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that file is a mgf file containing MS/MS spectra.
+
+      Args:
+         mgf_file: A pathlib Path object to a Mascot Generic Format (mgf) file
+
+      Raises:
+          StopIteration: Not a mgf file or empty
+
+
+
+   .. py:method:: validate_pheno_qualitative(pheno_file: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that file is a qualitative phenotype file
+
+      Args:
+         pheno_file: A pathlib Path object
+
+      Raises:
+          ValueError: Incorrect format
+
+
+
+   .. py:method:: validate_pheno_quant_percentage(pheno_file: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that file is a quantitative-percentage phenotype file
+
+      Args:
+         pheno_file: A pathlib Path object
+
+      Raises:
+          ValueError: Incorrect format
+
+
+
+   .. py:method:: validate_pheno_quant_concentration(pheno_file: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that file is a quantitative-concentration phenotype file
+
+      Args:
+         pheno_file: A pathlib Path object
+
+      Raises:
+          ValueError: Incorrect format
+
+
+
+   .. py:method:: validate_group_metadata_fermo(group_file: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that file is a group metadata file in fermo style.
+
+      Args:
+         group_file: A pathlib Path object to a fermo-group metadata file
+
+      Raises:
+          ValueError: Not a fermo style group metadata file
+
+
+
+   .. py:method:: validate_range_zero_one(user_range: list[float])
+      :staticmethod:
+
+
+      Validate that user-provided range is inside range 0.0 - 1.0.
+
+      Arguments:
+          user_range: User-provided range: two floats, upper and lower bounds.
+
+      Raises:
+          ValueError: More than two values OR not floats OR out of bounds
+
+
+
+   .. py:method:: validate_file_vs_jsonschema(user_input: dict, filename: str)
+      :staticmethod:
+
+
+      Validate user-input against jsonschema.
+
+      Arguments:
+          user_input: dict containing user-input, derived from json-file
+          filename: the name of the input file for error message
+
+      Raises:
+          jsonschema.exceptions.ValidationError: user input does not validate against schema
+
+
+
+   .. py:method:: validate_output_created(filepath: pathlib.Path)
+      :staticmethod:
+
+
+      Validate that output file was created and log if not
+
+      Arguments:
+          filepath: a Path object pointing to created output file
+
+      Raises:
+          FileNotFoundError: file should have been created but can't be found
+
+
+

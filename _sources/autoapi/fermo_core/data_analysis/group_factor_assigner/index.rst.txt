@@ -1,0 +1,15 @@
+fermo_core.data_analysis.group_factor_assigner
+==============================================
+
+.. py:module:: fermo_core.data_analysis.group_factor_assigner
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/group_factor_assigner/class_group_factor_assigner/index
+
+

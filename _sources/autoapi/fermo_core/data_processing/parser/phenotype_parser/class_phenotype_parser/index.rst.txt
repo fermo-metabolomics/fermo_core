@@ -1,0 +1,126 @@
+fermo_core.data_processing.parser.phenotype_parser.class_phenotype_parser
+=========================================================================
+
+.. py:module:: fermo_core.data_processing.parser.phenotype_parser.class_phenotype_parser
+
+.. autoapi-nested-parse::
+
+   Parses phenotype data files.
+
+   Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.parser.phenotype_parser.class_phenotype_parser.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.parser.phenotype_parser.class_phenotype_parser.PhenotypeParser
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: PhenotypeParser(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Interface to parse phenotype files.
+
+   Attributes:
+       stats: a Stats object instance
+       df: a Pandas dataframe to extract data from
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: df
+      :type:  Any
+
+
+   .. py:method:: return_stats() -> fermo_core.data_processing.class_stats.Stats
+
+      Return the modified objects
+
+      Returns:
+           The modified stats object
+
+
+
+   .. py:method:: message(msg: str)
+      :staticmethod:
+
+
+
+   .. py:method:: validate_sample_names()
+
+      Validate overlap of sample names from peaktable and phenotype file
+
+      Raises:
+          RuntimeError: sample names in df do not match peaktable-extracted ones
+
+
+
+   .. py:method:: parse_qualitative()
+
+      Parse data from qualitative phenotype file
+
+      Raises:
+          RuntimeError: no negative (inactive) samples: no active/inactive
+          determination possible
+
+
+
+   .. py:method:: parse_quantitative_percentage(algorithm: str)
+
+      Parse data from quantitative percentage phenotype file
+
+      Arguments:
+          algorithm: the algorithm to summarize duplicate measurements per sample
+              for each assay.
+
+
+
+
+   .. py:method:: parse_quantitative_concentration(algorithm: str)
+
+      Parse data from quantitative concentration phenotype file
+
+      Arguments:
+          algorithm: the algorithm to summarize duplicate measurements per sample
+              for each assay.
+
+
+

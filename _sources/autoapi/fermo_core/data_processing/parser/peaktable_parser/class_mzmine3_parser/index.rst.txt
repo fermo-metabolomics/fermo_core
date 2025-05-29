@@ -1,0 +1,116 @@
+fermo_core.data_processing.parser.peaktable_parser.class_mzmine3_parser
+=======================================================================
+
+.. py:module:: fermo_core.data_processing.parser.peaktable_parser.class_mzmine3_parser
+
+.. autoapi-nested-parse::
+
+   Parses MZMine3 peaktable file
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.parser.peaktable_parser.class_mzmine3_parser.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.parser.peaktable_parser.class_mzmine3_parser.PeakMzmine3Parser
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: PeakMzmine3Parser(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Interface to parse MZmine3 style peaktable.
+
+
+   .. py:method:: parse(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> tuple[fermo_core.data_processing.class_stats.Stats, fermo_core.data_processing.class_repository.Repository, fermo_core.data_processing.class_repository.Repository]
+
+      Parse a mzmine3 style peaktable.
+
+      Arguments:
+          params: An instance of the ParameterManager class
+
+      Returns:
+          A tuple with an instance of Stats, a Feature Repository, and a Sample
+              Repository
+
+
+
+   .. py:method:: _extract_stats(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> fermo_core.data_processing.class_stats.Stats
+      :staticmethod:
+
+
+      Extract stats from MZmine3-style peaktable.
+
+      Arguments:
+          params: An instance of the ParameterManager class
+
+      Returns:
+          A Stats object summarizing general information about peaktable.
+
+
+
+   .. py:method:: _extract_features(params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> fermo_core.data_processing.class_repository.Repository
+      :staticmethod:
+
+
+      Extract features from MZmine3-style peaktable.
+
+      Arguments:
+          params: An instance of the ParameterManager class
+
+      Returns:
+          A Repository object containing Feature objects
+
+
+
+   .. py:method:: _extract_samples(stats: fermo_core.data_processing.class_stats.Stats, params: fermo_core.input_output.class_parameter_manager.ParameterManager) -> fermo_core.data_processing.class_repository.Repository
+      :staticmethod:
+
+
+      Extract samples from MZmine3-style peaktable.
+
+      Arguments:
+          stats: An instance of the Stats class
+          params: An instance of the ParameterManager class
+
+      Returns:
+          A Repository object containing Sample objects
+
+
+

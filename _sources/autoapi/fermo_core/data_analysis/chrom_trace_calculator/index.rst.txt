@@ -1,0 +1,15 @@
+fermo_core.data_analysis.chrom_trace_calculator
+===============================================
+
+.. py:module:: fermo_core.data_analysis.chrom_trace_calculator
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_analysis/chrom_trace_calculator/class_chrom_trace_calculator/index
+
+

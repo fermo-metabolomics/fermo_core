@@ -1,0 +1,20 @@
+fermo_core
+==========
+
+.. py:module:: fermo_core
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/config/index
+   /autoapi/fermo_core/data_analysis/index
+   /autoapi/fermo_core/data_processing/index
+   /autoapi/fermo_core/input_output/index
+   /autoapi/fermo_core/main/index
+   /autoapi/fermo_core/utils/index
+
+

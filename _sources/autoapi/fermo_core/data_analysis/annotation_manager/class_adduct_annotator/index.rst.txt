@@ -1,0 +1,503 @@
+fermo_core.data_analysis.annotation_manager.class_adduct_annotator
+==================================================================
+
+.. py:module:: fermo_core.data_analysis.annotation_manager.class_adduct_annotator
+
+.. autoapi-nested-parse::
+
+   Runs the adduct annotation module.
+
+   Copyright (c) 2022 to present Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.annotation_manager.class_adduct_annotator.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.annotation_manager.class_adduct_annotator.AdductAnnotator
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: AdductAnnotator(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to annotate "General Feature" objects with adduct info
+
+   Attributes:
+       params: ParameterManager object, holds user-provided parameters
+       stats: Stats object, holds stats on molecular features and samples
+       features: Repository object, holds "General Feature" objects
+       samples: Repository object, holds "Sample" objects
+
+   Sources:
+       Blumer et al 2021 doi.org/10.1021/acs.jcim.1c00579
+
+
+   .. py:attribute:: params
+      :type:  fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: samples
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:method:: return_features() -> fermo_core.data_processing.class_repository.Repository
+
+      Returns modified attributes from AdductAnnotator to the calling function
+
+      Returns:
+          Modified Feature Repository objects.
+
+
+
+   .. py:method:: run_analysis()
+
+      Organizes calling of data analysis steps.
+
+
+
+   .. py:method:: add_adduct_info(feature: fermo_core.data_processing.builder_feature.dataclass_feature.Feature) -> fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+      :staticmethod:
+
+
+      Instantiate Annotation object instances
+
+      Arguments:
+          feature: Feature object to be modified
+
+      Returns:
+          (modified) Feature object
+
+
+
+   .. py:method:: dereplicate_adducts()
+
+      Combine identical adducts detected in different samples
+
+
+
+   .. py:method:: annotate_adducts_neg(s_name: str | int)
+
+      Pairwise compare features per sample, assign adducts info for negative mode
+
+      Calculates overlap of features (peaks) by simplifying them to
+      one-dimensional vectors. Consider two peaks A and B with A(start, stop)
+      and B(start, stop). If any True in A_stop < B_start OR B_stop < A_start,
+      peaks do NOT overlap. Base assumption is that one of the features is the
+      [M-H]- ion.
+
+      Arguments:
+          s_name: a sample identifier
+
+
+
+
+   .. py:method:: annotate_adducts_pos(s_name: str | int)
+
+      Pairwise compare features per sample, assign adducts info for positive mode
+
+      Calculates overlap of features (peaks) by simplifying them to
+      one-dimensional vectors. Consider two peaks A and B with A(start, stop)
+      and B(start, stop). If any True in A_stop < B_start OR B_stop < A_start,
+      peaks do NOT overlap. Base assumption is that one of the two features is
+      the [M+H]+ adduct.
+
+      Arguments:
+          s_name: a sample identifier
+
+
+
+   .. py:method:: sodium_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+Na]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: dimer_sodium_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [2M+Na]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: triple_h_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+3H]3+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: plus1_isotope(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+1+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: plus2_isotope(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+2+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: plus3_isotope(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+3+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: plus4_isotope(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+4+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: plus5_isotope(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+5+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: double_plus1(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+1+2H]2+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: double_plus2(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+2+2H]2+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: double_plus3(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+3+2H]2+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: double_plus4(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+4+2H]2+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: double_plus5(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+5+2H]2+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: iron56(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+56Fe-2H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: dimer_double(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+2H]2+ and [2M+H]+ adducts, add information
+
+      Consider two overlapping peaks A and B
+      peak A with m/z 1648.47;
+      peak B with m/z 824.74.
+      If A is assumed [M+H]+, B would be [M+2H]2+
+      If B is assumed [M+H]+, A would be [2M+H]+
+      Thus, assignment is performed for [M+2H]2+ and [2M+H]+ in parallel,
+      since M cannot be determined without isotopic data.
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: ammonium(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+NH4]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: potassium(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+K]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: water_add(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+H2O+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: water_loss(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M-H2O+H]+ adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: chloride_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+Cl]- adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: double_dimer_pair_neg(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M-2H]2- and [2M-H]- adduct pair, add information
+
+      Consider two overlapping peaks A and B:
+      -peak A with m/z 1648.47;
+      -peak B with m/z 823.73.
+      If A is assumed [M-H]-, B would be [M-2H]2-
+      If B is assumed [M-H]-, A would be [2M-H]-
+      Thus, assignment is performed for [M-2H]2- and [2M-H]- in parallel,
+      since M cannot be determined without isotopic data.
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: bicarbonate_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+HCO2]- adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: tfa_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+TFA-H]- (trifluoroacetate) adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+
+   .. py:method:: acetate_adduct(feat1: int, feat2: int, s_name: str) -> bool
+
+      Determination of [M+HAc-H]- (acetate) adduct, add information
+
+      Arguments:
+          feat1: feature 1 identifier
+          feat2: feature 2 identifier
+          s_name: the sample identifier
+
+      Returns:
+          A bool indicating the outcome
+
+
+

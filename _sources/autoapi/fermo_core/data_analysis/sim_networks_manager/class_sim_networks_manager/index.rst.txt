@@ -1,0 +1,198 @@
+fermo_core.data_analysis.sim_networks_manager.class_sim_networks_manager
+========================================================================
+
+.. py:module:: fermo_core.data_analysis.sim_networks_manager.class_sim_networks_manager
+
+.. autoapi-nested-parse::
+
+   Organize the calling of (spectral) similarity networking modules.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.sim_networks_manager.class_sim_networks_manager.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_analysis.sim_networks_manager.class_sim_networks_manager.SimNetworksManager
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: SimNetworksManager(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to organize calling and logging of networking modules
+
+   Attributes:
+       params: ParameterManager object, holds user-provided parameters
+       stats: Stats object, holds stats on molecular features and samples
+       features: Repository object, holds "General Feature" objects
+       samples: Repository object, holds "Sample" objects
+
+   Notes:
+       `UtilityMethodManager` baseclass gives additional utility methods.
+
+
+   .. py:attribute:: params
+      :type:  fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: samples
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:method:: log_filtered_feature_no_msms(f_id: int)
+      :staticmethod:
+
+
+      Logs feature filtered from selection due to lack of MS/MS
+
+      Arguments:
+          f_id: feature identifier
+
+
+
+   .. py:method:: log_filtered_feature_nr_fragments(f_id: int, frags: int, min_frags: int)
+      :staticmethod:
+
+
+      Logs feature filtered from selection due to low number of MS/MS fragments
+
+      Arguments:
+          f_id: feature identifier
+          frags: found nr of MS/MS fragments
+          min_frags: minimal necessary nr or MS/MS fragments
+
+
+
+   .. py:method:: return_attrs() -> tuple[fermo_core.data_processing.class_stats.Stats, fermo_core.data_processing.class_repository.Repository, fermo_core.data_processing.class_repository.Repository, fermo_core.input_output.class_parameter_manager.ParameterManager]
+
+      Returns modified attributes from SimNetworksManager to the calling function
+
+      Returns:
+          Tuple containing Stats, Feature Repository and Sample Repository objects.
+
+
+
+   .. py:method:: run_analysis()
+
+      Organizes calling of data analysis steps.
+
+
+
+   .. py:method:: run_modified_cosine_alg()
+
+      Run modified cosine-based spectral similarity networking on features.
+
+
+
+   .. py:method:: run_ms2deepscore_alg()
+
+      Run ms2deepscore-based spectral similarity networking on features.
+
+
+
+   .. py:method:: filter_for_ms2deepscore(mz_array: numpy.ndarray) -> bool
+      :staticmethod:
+
+
+      Filters features that have no peaks between 10 and 1000.
+
+      MS2DeepScore v0.5.0 has a function 'bin_number_array_fixed()' in file
+      'spectrum_binning_fixed.py' that raises an AssertionError if all peaks are
+      below 10 and over 1000 m/z
+
+      Arguments:
+          mz_array: Numpy array of peak m/z positions
+
+
+
+   .. py:method:: filter_input_spectra(features: tuple, feature_repo: fermo_core.data_processing.class_repository.Repository, msms_min_frag_nr: int, algorithm: str) -> dict[str, set]
+
+      Filter features for spectral similarity analysis based on given restrictions.
+
+      Arguments:
+          features: a tuple of feature IDs
+          feature_repo: containing GeneralFeature objects with feature info
+          msms_min_frag_nr: minimum number of fragments per spectrum to be considered
+          algorithm: a flag indicating the calling algorithm
+
+      Returns:
+          A dictionary containing included and excluded feature ints in sets.
+
+
+
+   .. py:method:: format_network_for_storage(graph: networkx.Graph) -> dict
+      :staticmethod:
+
+
+      Process networkx Graph object, remove redundant clusters, extract info
+
+      Arguments:
+          graph: holding spectral similarity networking information
+
+      Returns:
+          dict of full network, subnetworks, dict of clusters/contained features
+
+      Raises:
+          RuntimeError: detected overlap between subclusters in terms of feature IDs
+
+      Notes:
+          Matchms introduces "stringified" feature IDs in network - need to be
+          removed by `networkx.relabel_nodes`
+
+
+
+   .. py:method:: store_network_data(network_name: str, network_data: dict, features: tuple)
+
+      Store network data in storage objects for later use
+
+      Arguments:
+          network_name: name of networking algorithm
+          network_data: dict of network, subnetworks, summary
+          features: tuple of features included in networking
+
+
+

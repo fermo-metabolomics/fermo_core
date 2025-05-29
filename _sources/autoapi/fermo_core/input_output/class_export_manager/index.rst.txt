@@ -1,0 +1,335 @@
+fermo_core.input_output.class_export_manager
+============================================
+
+.. py:module:: fermo_core.input_output.class_export_manager
+
+.. autoapi-nested-parse::
+
+   Organizes data export methods for dumping on disk.
+
+   Copyright (c) 2022-2024 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.input_output.class_export_manager.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.input_output.class_export_manager.JsonExporter
+   fermo_core.input_output.class_export_manager.CsvExporter
+   fermo_core.input_output.class_export_manager.ExportManager
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: JsonExporter(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for methods on exporting data in json format.
+
+   Attributes:
+       params: a Parameter object with specified user parameters
+       stats: a Stats object containing general information
+       features: a Repository object containing feature and general information
+       samples: a Repository object containing sample information
+       version: currently running version of fermo_core
+       starttime: the date and time at start of fermo_core processing
+       session: a dict for collecting data for json dump
+
+
+   .. py:attribute:: params
+      :type:  fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: samples
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: version
+      :type:  str
+
+
+   .. py:attribute:: starttime
+      :type:  datetime.datetime
+
+
+   .. py:attribute:: session
+      :type:  dict
+
+
+   .. py:method:: export_metadata_json()
+
+      Export metadata on analysis run.
+
+
+
+   .. py:method:: export_params_json()
+
+      Export data from params
+
+
+
+   .. py:method:: export_stats_json()
+
+      Export data from stats
+
+
+
+   .. py:method:: export_features_json()
+
+      Export data from features repository
+
+
+
+   .. py:method:: export_samples_json()
+
+      Export data from samples repository
+
+
+
+   .. py:method:: build_json_dict()
+
+      Driver method to assemble data for json dump
+
+
+
+   .. py:method:: return_session() -> dict
+
+      Return the generated session object to calling method
+
+
+
+.. py:class:: CsvExporter(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class for methods on exporting data in csv format.
+
+   Attributes:
+       params: a Parameter object with specified user parameters
+       stats: a Stats object containing general information
+       features: a Repository object containing feature and general information
+       samples: a Repository object containing sample information
+       df: a Pandas dataframe acting as aggregator for data
+
+
+   .. py:attribute:: params
+      :type:  fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: samples
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: df
+      :type:  Any
+
+
+   .. py:method:: add_activity_info_csv()
+
+      Iterate through active/inactive feature info and prepare for export
+
+
+
+   .. py:method:: add_sample_info_csv()
+
+      Iterate through feature sample information and prepare for export
+
+
+
+   .. py:method:: add_blank_info_csv()
+
+      Iterate through feature blank information and prepare for export
+
+
+
+   .. py:method:: add_group_info_csv()
+
+      Iterate through feature group information and prepare for export
+
+
+
+   .. py:method:: add_networks_info_csv()
+
+      Iterate through network information and prepare for export
+
+
+
+   .. py:method:: add_adduct_info_csv()
+
+      Iterate through adduct annotation information and add to df
+
+
+
+   .. py:method:: add_loss_info_csv()
+
+      Iterate through neutral loss annotation information and add to df
+
+
+
+   .. py:method:: add_match_info_csv()
+
+      Iterate through user library match annotation information and add to df
+
+
+
+   .. py:method:: add_fragment_info_csv()
+
+      Iterate through user library fragment annotation information and add to df
+
+
+
+   .. py:method:: add_phenotype_info_csv()
+
+      Iterate through phenotype annotation and add to df
+
+
+
+   .. py:method:: build_csv_output()
+
+      Assemble data for csv export
+
+
+
+   .. py:method:: return_dfs() -> tuple
+
+      Return the generated df objects to calling method for export
+
+      Returns:
+          Tuple of a full dataframe and an abbreviated one
+
+
+
+.. py:class:: ExportManager(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   A Pydantic-based class managing data export.
+
+   Attributes:
+       params: a Parameter object with specified user parameters
+       stats: a Stats object containing general information
+       features: a Repository object containing feature and general information
+       samples: a Repository object containing sample information
+
+
+   .. py:attribute:: params
+      :type:  fermo_core.input_output.class_parameter_manager.ParameterManager
+
+
+   .. py:attribute:: stats
+      :type:  fermo_core.data_processing.class_stats.Stats
+
+
+   .. py:attribute:: features
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:attribute:: samples
+      :type:  fermo_core.data_processing.class_repository.Repository
+
+
+   .. py:method:: log_start_module(file: str)
+      :staticmethod:
+
+
+      Log the start of the export of the corresponding file
+
+
+
+   .. py:method:: log_complete_module(file: str)
+      :staticmethod:
+
+
+      Log the completion of the export of the corresponding file
+
+
+
+   .. py:method:: write_fermo_json(version: str, starttime: datetime.datetime)
+
+      Write collected data in session dict into a json file on disk
+
+      Arguments:
+          version: a str indicating the currently running version of fermo_core
+          starttime: the date and time at start of fermo_core processing
+
+
+
+   .. py:method:: write_csv_output()
+
+      Write modified peaktable as csv on disk
+
+
+
+   .. py:method:: write_cytoscape_output()
+
+      Write Cytoscape-compatible graphml output if networking was performed
+
+
+
+   .. py:method:: write_summary_output()
+
+      Write a human-readable summary of steps performed.
+
+
+
+   .. py:method:: run(version: str, starttime: datetime.datetime)
+
+      Call export methods based on user-input
+
+      Arguments:
+          version: a str indicating the currently running version of fermo_core
+          starttime: the date and time at start of fermo_core processing
+
+
+

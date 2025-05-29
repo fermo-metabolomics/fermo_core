@@ -1,0 +1,15 @@
+fermo_core.data_processing.parser.group_metadata_parser
+=======================================================
+
+.. py:module:: fermo_core.data_processing.parser.group_metadata_parser
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/fermo_core/data_processing/parser/group_metadata_parser/class_fermo_metadata_parser/index
+
+

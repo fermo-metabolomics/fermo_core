@@ -1,0 +1,208 @@
+fermo_core.data_processing.builder_feature.class_feature_builder
+================================================================
+
+.. py:module:: fermo_core.data_processing.builder_feature.class_feature_builder
+
+.. autoapi-nested-parse::
+
+   Builder for different instances of molecular features.
+
+   Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.builder_feature.class_feature_builder.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   fermo_core.data_processing.builder_feature.class_feature_builder.FeatureBuilder
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: FeatureBuilder(**data: Any)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Pydantic-based class to build variants of Feature objects based on user input.
+
+
+   .. py:attribute:: feature
+      :type:  fermo_core.data_processing.builder_feature.dataclass_feature.Feature
+
+
+   .. py:method:: set_f_id(f_id: int)
+
+      Set attribute
+
+      Arguments:
+          f_id: the molecular feature identifier
+
+
+
+   .. py:method:: set_mz(mz: float)
+
+      Set attribute
+
+      Arguments:
+          mz: the molecular feature mass/charge ratio
+
+
+
+   .. py:method:: set_rt(rt: float)
+
+      Set attribute
+
+      Arguments:
+          rt: the retention time of the peak apex
+
+
+
+   .. py:method:: set_rt_start(rt_start: float)
+
+      Set attribute
+
+      Arguments:
+          rt_start: the retention time at the start of the peak
+
+
+
+   .. py:method:: set_rt_stop(rt_stop: float)
+
+      Set attribute
+
+      Arguments:
+          rt_stop: the retention time at the end of the peak
+
+
+
+   .. py:method:: set_rt_range()
+
+      Calculate and set attribute for retention time range
+
+      Raises:
+          ValueError: method called out of order
+
+
+
+   .. py:method:: set_fwhm(fwhm: float, s_id: str)
+
+      Set attribute
+
+      Arguments:
+          fwhm: the feature with at half maximum intensity of the peak
+          s_id: a sample ID
+
+
+
+   .. py:method:: set_intensity(intensity: float)
+
+      Set attribute
+
+      Arguments:
+          intensity: the (absolute) intensity (=height) of the peak
+
+
+
+   .. py:method:: set_rel_intensity(intensity: float, max_intensity: float)
+
+      Calculate and set attribute for relative intensity
+
+      Arguments:
+          intensity: height of feature
+          max_intensity: height of most intense feature per sample
+
+
+
+   .. py:method:: set_area(area: float)
+
+      Set attribute
+
+      Arguments:
+          area: the (absolute) area under the curve of the molecular feature
+
+
+
+   .. py:method:: set_rel_area(area: float, max_area: float)
+
+      Calculate and set attribute for relative area
+
+      Arguments:
+          area: the area under the curve (AUC) of the feature
+          max_area: AUC of the feature with the highest area per sample
+
+
+
+   .. py:method:: set_samples(row: pandas.Series)
+
+      Extract and set sample ids
+
+      Arguments:
+          row: a pandas Series to extract IDs of samples in which feature was detected
+
+
+
+   .. py:method:: set_area_per_sample(row: pandas.Series)
+
+      Extract and set area per sample
+
+      Arguments:
+          row: a pandas Series to extract sample IDs and areas from
+
+      Raises:
+          ValueError: method called out of order
+
+
+
+   .. py:method:: set_height_per_sample(row: pandas.Series)
+
+      Extract and set max height per sample
+
+      Arguments:
+          row: a pandas Series to extract sample IDs and max height from
+
+      Raises:
+          ValueError: method called out of order
+
+
+
+   .. py:method:: get_result()
+
+      Return object instance.
+
+      Returns:
+          The modified object instance.
+
+
+

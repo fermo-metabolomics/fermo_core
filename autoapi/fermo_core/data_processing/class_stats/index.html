@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fermo_core.data_processing.class_stats &mdash; fermo_core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="fermo_core.data_processing.parser" href="../parser/index.html" />
+    <link rel="prev" title="fermo_core.data_processing.class_repository" href="../class_repository/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            fermo_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">fermo_core</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../config/index.html">fermo_core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../data_analysis/index.html">fermo_core.data_analysis</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">fermo_core.data_processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../input_output/index.html">fermo_core.input_output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../main/index.html">fermo_core.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/index.html">fermo_core.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">fermo_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">fermo_core</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">fermo_core.data_processing</a></li>
+      <li class="breadcrumb-item active">fermo_core.data_processing.class_stats</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/fermo_core/data_processing/class_stats/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-fermo_core.data_processing.class_stats">
+<span id="fermo-core-data-processing-class-stats"></span><h1>fermo_core.data_processing.class_stats<a class="headerlink" href="#module-fermo_core.data_processing.class_stats" title="Link to this heading"></a></h1>
+<p>Storage and handling of general stats of analysis run.</p>
+<p>Copyright (c) 2022-2023 Mitja Maximilian Zdouc, PhD</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_processing.class_stats.Group" title="fermo_core.data_processing.class_stats.Group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Group</span></code></a></p></td>
+<td><p>Pydantic-based class to organize group info belonging to a metadata category</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.data_processing.class_stats.GroupMData" title="fermo_core.data_processing.class_stats.GroupMData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupMData</span></code></a></p></td>
+<td><p>Pydantic-based class to organize group metadata information</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_processing.class_stats.SamplePhenotype" title="fermo_core.data_processing.class_stats.SamplePhenotype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SamplePhenotype</span></code></a></p></td>
+<td><p>Pydantic-based class to organize phenotype data per sample</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.data_processing.class_stats.PhenoData" title="fermo_core.data_processing.class_stats.PhenoData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhenoData</span></code></a></p></td>
+<td><p>Pydantic-based class to organize phenotype data from file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fermo_core.data_processing.class_stats.SpecSimNet" title="fermo_core.data_processing.class_stats.SpecSimNet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpecSimNet</span></code></a></p></td>
+<td><p>Pydantic-based class to organize info on a spectral similarity analysis run</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fermo_core.data_processing.class_stats.Stats" title="fermo_core.data_processing.class_stats.Stats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stats</span></code></a></p></td>
+<td><p>Pydantic-based class to organize stats and general info.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Group">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_processing.class_stats.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.Group" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize group info belonging to a metadata category</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>name: group identifier
+s_ids: a set of sample ids belonging to group
+f_ids: a set of feature ids detected in samples of group</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Group.s_ids">
+<span class="sig-name descname"><span class="pre">s_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Group.s_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Group.f_ids">
+<span class="sig-name descname"><span class="pre">f_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Group.f_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Group.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.data_processing.class_stats.Group.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_processing.class_stats.</span></span><span class="sig-name descname"><span class="pre">GroupMData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize group metadata information</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>default_s_ids: containing ungrouped samples (“DEFAULT”)
+nonblank_s_ids: containing nonblank sample ids
+nonblank_f_ids:containing ids of nonblank sample-associated features
+blank_s_ids: containing sample blank ids
+blank_f_ids: containing ids of sample blank-associated features
+ctgrs: dict containing category:{group-id: Group}, key-value pairs</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.default_s_ids">
+<span class="sig-name descname"><span class="pre">default_s_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.default_s_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.nonblank_s_ids">
+<span class="sig-name descname"><span class="pre">nonblank_s_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.nonblank_s_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.nonblank_f_ids">
+<span class="sig-name descname"><span class="pre">nonblank_f_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.nonblank_f_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.blank_s_ids">
+<span class="sig-name descname"><span class="pre">blank_s_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.blank_s_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.blank_f_ids">
+<span class="sig-name descname"><span class="pre">blank_f_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.blank_f_ids" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.ctgrs">
+<span class="sig-name descname"><span class="pre">ctgrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.ctgrs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.GroupMData.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.data_processing.class_stats.GroupMData.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SamplePhenotype">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_processing.class_stats.</span></span><span class="sig-name descname"><span class="pre">SamplePhenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.SamplePhenotype" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize phenotype data per sample</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>s_id: the sample identifier
+value: the corresponding value if any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SamplePhenotype.s_id">
+<span class="sig-name descname"><span class="pre">s_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.SamplePhenotype.s_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SamplePhenotype.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.SamplePhenotype.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SamplePhenotype.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.SamplePhenotype.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_processing.class_stats.</span></span><span class="sig-name descname"><span class="pre">PhenoData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize phenotype data from file</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>datatype: a string indicating the data type and the algorithm to use
+category: identifier assay
+s_phen_data: a list of SamplePhenotype instances of positive (active) samples
+s_negative: a list of sample IDs with no data - inactive (negative) samples
+f_ids_positive: a set of ids determined to be phenotype-associated</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData.datatype">
+<span class="sig-name descname"><span class="pre">datatype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData.datatype" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData.category">
+<span class="sig-name descname"><span class="pre">category</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData.category" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData.s_phen_data">
+<span class="sig-name descname"><span class="pre">s_phen_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData.s_phen_data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData.s_negative">
+<span class="sig-name descname"><span class="pre">s_negative</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData.s_negative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData.f_ids_positive">
+<span class="sig-name descname"><span class="pre">f_ids_positive</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData.f_ids_positive" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.PhenoData.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.PhenoData.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SpecSimNet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_processing.class_stats.</span></span><span class="sig-name descname"><span class="pre">SpecSimNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.SpecSimNet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize info on a spectral similarity analysis run</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>algorithm: the identifier of the algorithm
+network: the full network as networkx Graph object for later cytoscape export
+subnetworks: a dict of subnetwork Graph objects with subnetwork int id as keys
+summary: a dict of clusters and associated features</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SpecSimNet.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.SpecSimNet.algorithm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SpecSimNet.network">
+<span class="sig-name descname"><span class="pre">network</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.SpecSimNet.network" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SpecSimNet.subnetworks">
+<span class="sig-name descname"><span class="pre">subnetworks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.SpecSimNet.subnetworks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SpecSimNet.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.SpecSimNet.summary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.SpecSimNet.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.data_processing.class_stats.SpecSimNet.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert attributes to json-compatible ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fermo_core.data_processing.class_stats.</span></span><span class="sig-name descname"><span class="pre">Stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Pydantic-based class to organize stats and general info.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>rt_min: retention time start of the first feature peak, in minutes
+rt_max: retention time stop of the last feature peak, in minutes
+rt_range: range in minutes between rt_min and rt_max
+area_min: area under the curve for smallest peak across all features/samples
+area_max: area under the curve for biggest peak across all features/samples.
+samples: tuple of all sample ids in analysis run
+features: total number of features
+active_features: retained in analysis run
+inactive_features: filtered out during analysis run by FeatureFilter module
+GroupMData: instance of the GroupMData object containing group metadata
+networks: all similarity networks in analysis run
+phenotypes: list of PhenoData objects containing phenotype data
+spectral_library: a list of matchms.Spectrum instances</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.rt_min">
+<span class="sig-name descname"><span class="pre">rt_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.rt_min" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.rt_max">
+<span class="sig-name descname"><span class="pre">rt_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.rt_max" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.rt_range">
+<span class="sig-name descname"><span class="pre">rt_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.rt_range" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.area_min">
+<span class="sig-name descname"><span class="pre">area_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.area_min" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.area_max">
+<span class="sig-name descname"><span class="pre">area_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.area_max" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.samples">
+<span class="sig-name descname"><span class="pre">samples</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.samples" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.features">
+<span class="sig-name descname"><span class="pre">features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.features" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.active_features">
+<span class="sig-name descname"><span class="pre">active_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.active_features" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.inactive_features">
+<span class="sig-name descname"><span class="pre">inactive_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.inactive_features" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.GroupMData">
+<span class="sig-name descname"><span class="pre">GroupMData</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Stats.GroupMData</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.GroupMData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.networks">
+<span class="sig-name descname"><span class="pre">networks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#fermo_core.data_processing.class_stats.SpecSimNet" title="fermo_core.data_processing.class_stats.SpecSimNet"><span class="pre">SpecSimNet</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.networks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.phenotypes">
+<span class="sig-name descname"><span class="pre">phenotypes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.phenotypes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.spectral_library">
+<span class="sig-name descname"><span class="pre">spectral_library</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.spectral_library" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.parse_mzmine3">
+<span class="sig-name descname"><span class="pre">parse_mzmine3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../input_output/class_parameter_manager/index.html#fermo_core.input_output.class_parameter_manager.ParameterManager" title="fermo_core.input_output.class_parameter_manager.ParameterManager"><span class="pre">fermo_core.input_output.class_parameter_manager.ParameterManager</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.parse_mzmine3" title="Link to this definition"></a></dt>
+<dd><p>Parse a mzmine3 peaktable for general stats on analysis run.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>params: instance of ParameterManager object holding user input data</p>
+</dd>
+<dt>Notes:</dt><dd><p>By default, all samples are grouped in group “DEFAULT”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fermo_core.data_processing.class_stats.Stats.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#fermo_core.data_processing.class_stats.Stats.to_json" title="Link to this definition"></a></dt>
+<dd><p>Export class attributes to json-dump compatible dict.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>A dictionary with class attributes as keys</p>
+</dd>
+<dt>Notes:</dt><dd><p>Attribute spectral library is not exported - matches are stored in
+feature annotation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../class_repository/index.html" class="btn btn-neutral float-left" title="fermo_core.data_processing.class_repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../parser/index.html" class="btn btn-neutral float-right" title="fermo_core.data_processing.parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Mitja M. Zdouc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
