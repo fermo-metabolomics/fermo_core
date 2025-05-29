@@ -69,7 +69,6 @@ class AdductAnnotator(BaseModel):
 
     def run_analysis(self: Self):
         """Organizes calling of data analysis steps."""
-
         if self.params.PeaktableParameters.polarity == "positive":
             logger.info(
                 "'AnnotationManager/AdductAnnotator': positive ion mode detected. "
@@ -132,15 +131,15 @@ class AdductAnnotator(BaseModel):
     def annotate_adducts_neg(self: Self, s_name: str | int):
         """Pairwise compare features per sample, assign adducts info for negative mode
 
+        Calculates overlap of features (peaks) by simplifying them to
+        one-dimensional vectors. Consider two peaks A and B with A(start, stop)
+        and B(start, stop). If any True in A_stop < B_start OR B_stop < A_start,
+        peaks do NOT overlap. Base assumption is that one of the features is the
+        [M-H]- ion.
+
         Arguments:
             s_name: a sample identifier
 
-        Notes:
-            Calculates overlap of features (peaks) by simplifying them to
-            one-dimensional vectors. Consider two peaks A and B with A(start, stop)
-            and B(start, stop). If any True in A_stop < B_start OR B_stop < A_start,
-            peaks do NOT overlap. Base assumption is that one of the features is the
-            [M-H]- ion.
         """
         sample = self.samples.get(s_name)
         feature_set = sample.feature_ids.intersection(self.stats.active_features)
@@ -182,15 +181,14 @@ class AdductAnnotator(BaseModel):
     def annotate_adducts_pos(self: Self, s_name: str | int):
         """Pairwise compare features per sample, assign adducts info for positive mode
 
+        Calculates overlap of features (peaks) by simplifying them to
+        one-dimensional vectors. Consider two peaks A and B with A(start, stop)
+        and B(start, stop). If any True in A_stop < B_start OR B_stop < A_start,
+        peaks do NOT overlap. Base assumption is that one of the two features is
+        the [M+H]+ adduct.
+
         Arguments:
             s_name: a sample identifier
-
-        Notes:
-            Calculates overlap of features (peaks) by simplifying them to
-            one-dimensional vectors. Consider two peaks A and B with A(start, stop)
-            and B(start, stop). If any True in A_stop < B_start OR B_stop < A_start,
-            peaks do NOT overlap. Base assumption is that one of the two features is
-            the [M+H]+ adduct.
         """
         sample = self.samples.get(s_name)
         feature_set = sample.feature_ids.intersection(self.stats.active_features)
@@ -941,6 +939,14 @@ class AdductAnnotator(BaseModel):
     def dimer_double(self: Self, feat1: int, feat2: int, s_name: str) -> bool:
         """Determination of [M+2H]2+ and [2M+H]+ adducts, add information
 
+        Consider two overlapping peaks A and B
+        peak A with m/z 1648.47;
+        peak B with m/z 824.74.
+        If A is assumed [M+H]+, B would be [M+2H]2+
+        If B is assumed [M+H]+, A would be [2M+H]+
+        Thus, assignment is performed for [M+2H]2+ and [2M+H]+ in parallel,
+        since M cannot be determined without isotopic data.
+
         Arguments:
             feat1: feature 1 identifier
             feat2: feature 2 identifier
@@ -948,15 +954,6 @@ class AdductAnnotator(BaseModel):
 
         Returns:
             A bool indicating the outcome
-
-        Notes:
-            Consider two overlapping peaks A and B:
-                -peak A with m/z 1648.47;
-                -peak B with m/z 824.74.
-            If A is assumed [M+H]+, B would be [M+2H]2+
-            If B is assumed [M+H]+, A would be [2M+H]+
-            Thus, assignment is performed for [M+2H]2+ and [2M+H]+ in parallel,
-            since M cannot be determined without isotopic data.
         """
         mh_ion = self.features.get(feat1)
         adduct = self.features.get(feat2)
@@ -1226,6 +1223,14 @@ class AdductAnnotator(BaseModel):
     def double_dimer_pair_neg(self: Self, feat1: int, feat2: int, s_name: str) -> bool:
         """Determination of [M-2H]2- and [2M-H]- adduct pair, add information
 
+        Consider two overlapping peaks A and B:
+        -peak A with m/z 1648.47;
+        -peak B with m/z 823.73.
+        If A is assumed [M-H]-, B would be [M-2H]2-
+        If B is assumed [M-H]-, A would be [2M-H]-
+        Thus, assignment is performed for [M-2H]2- and [2M-H]- in parallel,
+        since M cannot be determined without isotopic data.
+
         Arguments:
             feat1: feature 1 identifier
             feat2: feature 2 identifier
@@ -1233,15 +1238,6 @@ class AdductAnnotator(BaseModel):
 
         Returns:
             A bool indicating the outcome
-
-        Notes:
-            Consider two overlapping peaks A and B:
-                -peak A with m/z 1648.47;
-                -peak B with m/z 823.73.
-            If A is assumed [M-H]-, B would be [M-2H]2-
-            If B is assumed [M-H]-, A would be [2M-H]-
-            Thus, assignment is performed for [M-2H]2- and [2M-H]- in parallel,
-            since M cannot be determined without isotopic data.
         """
         m_h_ion = self.features.get(feat1)
         adduct = self.features.get(feat2)

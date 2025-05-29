@@ -36,12 +36,15 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "black~=24.4.2",
-    "isort~=5.13.2",
     "pre-commit~=3.4.0",
     "pytest~=7.4.2",
     "pytest-cov~=4.1.0",
     "ruff~=0.4.4",
+]
+doc = [
+    "sphinx~=8.2",
+    "sphinx_rtd_theme~=3.0",
+    "sphinx-autoapi~=3.6",
 ]
 
 
@@ -68,6 +71,13 @@ features = [
     "dev"
 ]
 
+[tool.hatch.envs.doc]
+installer = "uv"
+features = [
+    "doc"
+]
+
+
 [tool.hatch.envs.test]
 dependencies = [
   "pytest~=7.4.2",
@@ -79,17 +89,18 @@ python = ["3.11"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [
-  "/.idea/",
-  "/.github/",
-  "/.pytest_cache/",
-  "/.ruff_cache/",
+  "/.idea",
+  "/.github",
+  "/.pytest_cache",
+  "/.ruff_cache",
   "/.venv",
-  "/example_data/",
-  "/tests/",
+  "/example_data",
+  "/tests",
   "/.gitignore",
   "/.pre-commit-config.yaml",
   "/CODE_OF_CONDUCT.md",
-  "/CONTRIBUTING.md"
+  "/CONTRIBUTING.md",
+  "/docs"
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -117,18 +128,8 @@ omit = [
 show_missing = true
 ignore_errors = true
 
-
 [tool.coverage.html]
 directory = "coverage_html_report"
-
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 88
-include_trailing_comma = true
-reverse_relative = true
-
 
 [tool.ruff]
 line-length = 88

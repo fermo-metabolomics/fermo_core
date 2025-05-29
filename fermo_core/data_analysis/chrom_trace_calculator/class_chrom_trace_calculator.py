@@ -37,24 +37,20 @@ class ChromTraceData:
     Attributes:
         feature_id: id of molecular feature associated to data
         sample_id: id of sample associated to data
-        rt_begin: retention time of beginning of chromatogram
-        int_begin: relative intensity of beginning of chromatogram
-        rt_left_kink: retention time of artificial point between start and fwhm to
-            make the trace look nicer
-        int_left_kink: relative intensity of artificial point between start and fwhm to
-            make the trace look nicer
-        rt_left_fwhm: retention time of left side of feature width at half maximum
-        int_left_fwhm: relative intensity of left side of feature width at half maximum
-        rt_apex: retention time of apex of the peak
-        int_apex: relative intensity of apex of the peak
-        rt_right_fwhm: retention time of right side of feature width at half maximum
-        int_right_fwhm: relative intensity of right side of feature width at half max
-        rt_right_kink: retention time of artificial point between fwhm and end to
-            make the trace look nicer
-        int_right_kink: relative intensity of artificial point between fwhm and end to
-            make the trace look nicer
-        rt_end: retention time of end of chromatogram
-        int_end: relative intensity of end of chromatogram
+        rt_begin: RT of beginning of chromatogram
+        int_begin: rel int of beginning of chromatogram
+        rt_left_kink: RT of artificial point between start and fwhm for vis purpose
+        int_left_kink: rel int of artificial point between start and fwhm for vis purpose
+        rt_left_fwhm: RT of left side of feature width at half maximum
+        int_left_fwhm: rel int of left side of feature width at half maximum
+        rt_apex: RT of apex of the peak
+        int_apex: rel int of apex of the peak
+        rt_right_fwhm: rRT of right side of feature width at half maximum
+        int_right_fwhm: rel int of right side of feature width at half max
+        rt_right_kink: RT of artificial point between fwhm for vis purpose
+        int_right_kink: rel int of artificial point between fwhm for vis purpose
+        rt_end: RT of end of chromatogram
+        int_end: rel int of end of chromatogram
         fwhm: feature width at half maximum intensity in minutes
         rt_range: peak range (from start to stop) in minutes
     """
@@ -234,8 +230,7 @@ class ChromTraceCalculator:
         """Create a trace of retention time points to assign to Feature object.
 
         Returns:
-            A tuple of floats used together with output from create_trace_int() to
-                draw a pseudo-chromatogram.
+            A tuple of floats for RT of pseudo-chromatogram.
         """
         return (
             round(self.chrom_trace.rt_begin, 3),
@@ -251,8 +246,7 @@ class ChromTraceCalculator:
         """Create a trace of relative intensity points to assign to Feature object.
 
         Returns:
-            A tuple of floats used together with output from create_trace_rt() to
-                draw a pseudo-chromatogram.
+            A tuple of floats for int of pseudo-chromatogram.
         """
         return (
             round(self.chrom_trace.int_begin, 3),
