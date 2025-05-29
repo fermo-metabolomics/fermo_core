@@ -25,7 +25,9 @@ For general information on FERMO, see the [FERMO Metabolomics GitHub Organizatio
 
 ## Documentation
 
-The official documentation can be found [HERE](https://fermo-metabolomics.github.io/fermo_docs/).
+The high-level documentation can be found [HERE](https://fermo-metabolomics.github.io/fermo_docs/).
+
+For the Sphinx-generated library documentation, see [HERE](https://fermo-metabolomics.github.io/fermo_core/).
 
 ## System Requirements
 

@@ -27,13 +27,13 @@ jobs:
 
       - name: Install package with pip
         run: |
-          python -m pip install --upgrade pip
-          pip install .[dev]
+          pipx install hatch
+          hatch env create dev
 
       - name: Run tests
         run: |
-          pytest
+          hatch run dev:pytest
 
       - name: Run fermo_core on test dataset
         run: |
-          python fermo_core/main.py --parameters tests/test_data/test.parameters.json
+          hatch run dev:fermo_core --parameters tests/test_data/test.parameters.json
