@@ -26,7 +26,7 @@ jobs:
           hatch env create doc
 
       - name: Build documentation
-        run: hatch run doc:sphinx-build doc _build
+        run: hatch run doc:sphinx-build docs/source/ _build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
