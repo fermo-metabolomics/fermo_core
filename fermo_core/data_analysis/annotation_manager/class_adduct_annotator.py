@@ -281,6 +281,18 @@ class AdductAnnotator(BaseModel):
                     feat2.f_id, feat1.f_id, s_name
                 ):
                     continue
+                elif self.double_quadruple(
+                    feat1.f_id, feat2.f_id, s_name
+                ) or self.double_quadruple(feat2.f_id, feat1.f_id, s_name):
+                    continue
+                elif self.double_triple(
+                    feat1.f_id, feat2.f_id, s_name
+                ) or self.double_triple(feat2.f_id, feat1.f_id, s_name):
+                    continue
+                elif self.quadruple_triple(
+                    feat1.f_id, feat2.f_id, s_name
+                ) or self.quadruple_triple(feat2.f_id, feat1.f_id, s_name):
+                    continue
 
     def sodium_adduct(self: Self, feat1: int, feat2: int, s_name: str) -> bool:
         """Determination of [M+Na]+ adduct, add information
