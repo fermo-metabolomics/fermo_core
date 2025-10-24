@@ -223,3 +223,21 @@ def test_acetate_adduct_valid(adduct_annotator_min):
     adduct_annotator_min.features.entries[1].mz = 852.323614
     adduct_annotator_min.features.entries[2].mz = 912.344741
     assert adduct_annotator_min.acetate_adduct(1, 2, "sample1")
+
+
+def test_double_quadruple_valid(adduct_annotator_min):
+    adduct_annotator_min.features.entries[1].mz = 1405.58893
+    adduct_annotator_min.features.entries[2].mz = 703.29907
+    assert adduct_annotator_min.double_quadruple(1, 2, "sample1")
+
+
+def test_double_triple_valid(adduct_annotator_min):
+    adduct_annotator_min.features.entries[1].mz = 1405.58893
+    adduct_annotator_min.features.entries[2].mz = 937.39628
+    assert adduct_annotator_min.double_triple(1, 2, "sample1")
+
+
+def test_quadruple_triple_valid(adduct_annotator_min):
+    adduct_annotator_min.features.entries[1].mz = 703.29907
+    adduct_annotator_min.features.entries[2].mz = 937.39628
+    assert adduct_annotator_min.quadruple_triple(1, 2, "sample1")

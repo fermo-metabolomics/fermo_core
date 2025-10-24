@@ -1411,3 +1411,147 @@ class AdductAnnotator(BaseModel):
             return True
         else:
             return False
+
+    def double_quadruple(self: Self, feat1: int, feat2: int, s_name: str) -> bool:
+        """Determination of relationship between [M+2H]2+ and [M+4H]4+
+
+        Arguments:
+            feat1: feature 1 identifier
+            feat2: feature 2 identifier
+            s_name: the sample identifier
+
+        Returns:
+            A bool indicating the outcome
+        """
+        double = self.features.get(feat1)
+        quadruple = self.features.get(feat2)
+
+        ppm = UtilityMethodManager.mass_deviation(
+            (double.mz * 2) - (2 * Mass().H),
+            (quadruple.mz * 4) - (4 * Mass().H),
+            quadruple.f_id,
+        )
+        if ppm < self.params.AdductAnnotationParameters.mass_dev_ppm:
+            double = self.add_adduct_info(double)
+            quadruple = self.add_adduct_info(quadruple)
+            double.Annotations.adducts.append(
+                Adduct(
+                    adduct_type="[M+2H]2+",
+                    partner_adduct="[M+4H]4+",
+                    partner_id=quadruple.f_id,
+                    partner_mz=quadruple.mz,
+                    diff_ppm=ppm,
+                    sample=s_name,
+                )
+            )
+            quadruple.Annotations.adducts.append(
+                Adduct(
+                    adduct_type="[M+4H]4+",
+                    partner_adduct="[M+2H]2+",
+                    partner_id=double.f_id,
+                    partner_mz=double.mz,
+                    diff_ppm=ppm,
+                    sample=s_name,
+                )
+            )
+            self.features.modify(feat1, double)
+            self.features.modify(feat2, quadruple)
+            return True
+        else:
+            return False
+
+    def double_triple(self: Self, feat1: int, feat2: int, s_name: str) -> bool:
+        """Determination of relationship between [M+2H]2+ and [M+3H]3+
+
+        Arguments:
+            feat1: feature 1 identifier
+            feat2: feature 2 identifier
+            s_name: the sample identifier
+
+        Returns:
+            A bool indicating the outcome
+        """
+        double = self.features.get(feat1)
+        triple = self.features.get(feat2)
+
+        ppm = UtilityMethodManager.mass_deviation(
+            (double.mz * 2) - (2 * Mass().H),
+            (triple.mz * 3) - (3 * Mass().H),
+            triple.f_id,
+        )
+        if ppm < self.params.AdductAnnotationParameters.mass_dev_ppm:
+            double = self.add_adduct_info(double)
+            triple = self.add_adduct_info(triple)
+            double.Annotations.adducts.append(
+                Adduct(
+                    adduct_type="[M+2H]2+",
+                    partner_adduct="[M+3H]3+",
+                    partner_id=triple.f_id,
+                    partner_mz=triple.mz,
+                    diff_ppm=ppm,
+                    sample=s_name,
+                )
+            )
+            triple.Annotations.adducts.append(
+                Adduct(
+                    adduct_type="[M+3H]3+",
+                    partner_adduct="[M+2H]2+",
+                    partner_id=double.f_id,
+                    partner_mz=double.mz,
+                    diff_ppm=ppm,
+                    sample=s_name,
+                )
+            )
+            self.features.modify(feat1, double)
+            self.features.modify(feat2, triple)
+            return True
+        else:
+            return False
+
+    def quadruple_triple(self: Self, feat1: int, feat2: int, s_name: str) -> bool:
+        """Determination of relationship between [M+4H]4+ and [M+3H]3+
+
+        Arguments:
+            feat1: feature 1 identifier
+            feat2: feature 2 identifier
+            s_name: the sample identifier
+
+        Returns:
+            A bool indicating the outcome
+        """
+        quadruple = self.features.get(feat1)
+        triple = self.features.get(feat2)
+
+        ppm = UtilityMethodManager.mass_deviation(
+            (quadruple.mz * 4) - (4 * Mass().H),
+            (triple.mz * 3) - (3 * Mass().H),
+            triple.f_id,
+        )
+        if ppm < self.params.AdductAnnotationParameters.mass_dev_ppm:
+            quadruple = self.add_adduct_info(quadruple)
+            triple = self.add_adduct_info(triple)
+            quadruple.Annotations.adducts.append(
+                Adduct(
+                    adduct_type="[M+4H]4+",
+                    partner_adduct="[M+3H]3+",
+                    partner_id=triple.f_id,
+                    partner_mz=triple.mz,
+                    diff_ppm=ppm,
+                    sample=s_name,
+                )
+            )
+            triple.Annotations.adducts.append(
+                Adduct(
+                    adduct_type="[M+3H]3+",
+                    partner_adduct="[M+4H]4+",
+                    partner_id=quadruple.f_id,
+                    partner_mz=quadruple.mz,
+                    diff_ppm=ppm,
+                    sample=s_name,
+                )
+            )
+            self.features.modify(feat1, quadruple)
+            self.features.modify(feat2, triple)
+            return True
+        else:
+            return False
