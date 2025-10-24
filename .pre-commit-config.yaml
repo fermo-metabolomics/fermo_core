@@ -14,7 +14,7 @@ repos:
   hooks:
     - id: pytest
       name: pytest
-      entry: hatch run dev:pytest tests/
+      entry: uv run pytest tests/
       language: system
       types: [ file, python ]
 - repo: https://github.com/pre-commit/pre-commit-hooks

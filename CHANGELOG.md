@@ -11,8 +11,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Additional ion adducts to annotate multicharged ions where the [M+H]+ is not visible (e.g. often the case with peptides)
 
-
-
 ## [0.6.4] 13-05-2025
 
 ## Changed

@@ -62,30 +62,6 @@ fermo_core = "fermo_core.main:main_cli"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.envs.default]
-installer = "uv"
-
-[tool.hatch.envs.dev]
-installer = "uv"
-features = [
-    "dev"
-]
-
-[tool.hatch.envs.doc]
-installer = "uv"
-features = [
-    "doc"
-]
-
-
-[tool.hatch.envs.test]
-dependencies = [
-  "pytest~=7.4.2",
-]
-
-[[tool.hatch.envs.test.matrix]]
-python = ["3.11"]
-
 
 [tool.hatch.build.targets.sdist]
 exclude = [

@@ -173,12 +173,12 @@ Instructions for setting up a development environment.
 
 #### Package Installation
 
-*Assumes that `hatch` is installed*
+*Assumes that `uv` is installed*
 
 ```commandline
-hatch env create dev
-hatch run dev:pre-commit install
-hatch run dev:pytest --run_slow
+uv sync --extra dev
+uv run pre-commit install
+uv run pytest --run_slow
 ```
 
 ### Documentation
