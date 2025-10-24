@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.5] UNRELEASED
+
+## Added
+
+- Additional ion adducts to annotate multicharged ions where the [M+H]+ is not visible (e.g. often the case with peptides)
+
+
+
 ## [0.6.4] 13-05-2025
 
 ## Changed
