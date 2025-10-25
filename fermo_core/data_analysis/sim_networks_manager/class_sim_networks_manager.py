@@ -54,7 +54,7 @@ class SimNetworksManager(BaseModel):
         samples: Repository object, holds "Sample" objects
 
     Notes:
-        `UtilityMethodManager` baseclass gives additional utility methods.
+        `UtilityMethodManager` class gives additional utility methods.
     """
 
     params: ParameterManager

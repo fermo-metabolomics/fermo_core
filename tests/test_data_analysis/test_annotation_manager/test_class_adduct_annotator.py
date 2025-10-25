@@ -1,9 +1,14 @@
+import networkx as nx
 import pytest
 
 from fermo_core.data_analysis.annotation_manager.class_adduct_annotator import (
     AdductAnnotator,
 )
-from fermo_core.data_processing.builder_feature.dataclass_feature import Adduct, Feature
+from fermo_core.data_processing.builder_feature.dataclass_feature import (
+    Adduct,
+    Feature,
+    SimNetworks,
+)
 from fermo_core.data_processing.class_repository import Repository
 from fermo_core.data_processing.class_stats import Stats
 from fermo_core.input_output.class_parameter_manager import ParameterManager
@@ -46,8 +51,71 @@ def test_return_features_valid(adduct_annotator_min):
 
 def test_run_analysis_valid(adduct_annotator):
     adduct_annotator.run_analysis()
-    features = adduct_annotator.return_features()
+    features, stats = adduct_annotator.return_features()
     assert features.entries[131].Annotations.adducts[0] is not None
+
+
+def test_create_network_singletons_valid(adduct_annotator_min):
+    """Condiction: feature have no adducts - singletons in graph"""
+    adduct_annotator_min.create_network()
+    assert (
+        len(
+            list(
+                nx.connected_components(
+                    adduct_annotator_min.stats.networks["ion_identity"].network
+                )
+            )
+        )
+        == 2
+    )
+
+
+def test_create_network_subgraph_valid(adduct_annotator_min):
+    """Condition: features are related and in same subgraph"""
+    adduct_annotator_min.features.entries[1].mz = 415.2098
+    adduct_annotator_min.features.entries[2].mz = 437.1912
+    adduct_annotator_min.sodium_adduct(1, 2, "sample1")
+    adduct_annotator_min.create_network()
+    assert (
+        len(
+            list(
+                nx.connected_components(
+                    adduct_annotator_min.stats.networks["ion_identity"].network
+                )
+            )
+        )
+        == 1
+    )
+
+
+def test_create_network_two_subgraphs(adduct_annotator_min):
+    """Condition: two subgraphs of two features each"""
+    adduct_annotator_min.features.entries[1].mz = 415.2098
+    adduct_annotator_min.features.entries[2].mz = 437.1912
+    adduct_annotator_min.sodium_adduct(1, 2, "sample1")
+
+    adduct_annotator_min.features.add(3, Feature(f_id=3, mz=1648.4547))
+    adduct_annotator_min.features.add(4, Feature(f_id=4, mz=1649.4578))
+    adduct_annotator_min.stats.active_features.update([3, 4])
+    adduct_annotator_min.plus1_isotope(3, 4, "sample1")
+    adduct_annotator_min.create_network()
+    assert (
+        len(
+            list(
+                nx.connected_components(
+                    adduct_annotator_min.stats.networks["ion_identity"].network
+                )
+            )
+        )
+        == 2
+    )
+    assert adduct_annotator_min.stats.networks["ion_identity"].summary == {
+        0: {1, 2},
+        1: {3, 4},
+    }
+    assert isinstance(
+        adduct_annotator_min.features.entries[1].networks["ion_identity"], SimNetworks
+    )
 
 
 def test_add_adduct_info_valid(adduct_annotator_min):
@@ -57,7 +125,7 @@ def test_add_adduct_info_valid(adduct_annotator_min):
 
 def test_annotate_spec_features_valid(adduct_annotator):
     adduct_annotator.annotate_adducts_pos("5458_5457_mod.mzXML")
-    features = adduct_annotator.return_features()
+    features, stats = adduct_annotator.return_features()
     assert features.entries[131].Annotations.adducts[0] is not None
 
 
@@ -76,7 +144,7 @@ def test_dereplicate_adducts_valid(adduct_annotator_min):
         )
     )
     adduct_annotator_min.dereplicate_adducts()
-    features = adduct_annotator_min.return_features()
+    features, stats = adduct_annotator_min.return_features()
     adduct_dict = features.entries[1].Annotations.adducts[0].to_json()
     assert len(adduct_dict["samples"]) == 2
 

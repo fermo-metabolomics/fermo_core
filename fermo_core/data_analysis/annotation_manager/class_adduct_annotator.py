@@ -25,6 +25,7 @@ import itertools
 import logging
 from typing import Self
 
+import networkx as nx
 from pydantic import BaseModel
 
 from fermo_core.config.class_default_settings import DefaultMasses as Mass
@@ -32,9 +33,10 @@ from fermo_core.data_processing.builder_feature.dataclass_feature import (
     Adduct,
     Annotations,
     Feature,
+    SimNetworks,
 )
 from fermo_core.data_processing.class_repository import Repository
-from fermo_core.data_processing.class_stats import Stats
+from fermo_core.data_processing.class_stats import SpecSimNet, Stats
 from fermo_core.input_output.class_parameter_manager import ParameterManager
 from fermo_core.utils.utility_method_manager import UtilityMethodManager
 
@@ -59,13 +61,13 @@ class AdductAnnotator(BaseModel):
     features: Repository
     samples: Repository
 
-    def return_features(self: Self) -> Repository:
+    def return_features(self: Self) -> tuple[Repository, Stats]:
         """Returns modified attributes from AdductAnnotator to the calling function
 
         Returns:
-            Modified Feature Repository objects.
+            Modified Feature Repository objects and Stats Object
         """
-        return self.features
+        return self.features, self.stats
 
     def run_analysis(self: Self):
         """Organizes calling of data analysis steps."""
@@ -85,6 +87,74 @@ class AdductAnnotator(BaseModel):
                 self.annotate_adducts_neg(s_name)
 
         self.dereplicate_adducts()
+        self.create_network()
+
+    def create_network(self: Self):
+        """Creates ion identity networks
+
+        add_node() in NetworkX is idempotent — if the node already exists, it is ignored.
+        """
+        logger.info("'AnnotationManager/AdductAnnotator': started ion identity network")
+
+        g = nx.Graph()
+
+        for f_id in self.stats.active_features:
+            feature = self.features.get(f_id)
+
+            if (
+                not feature.Annotations
+                or not feature.Annotations.adducts
+                or len(feature.Annotations.adducts) == 0
+            ):
+                g.add_node(f_id)
+                continue
+
+            g.add_node(f_id)
+
+            for adduct in feature.Annotations.adducts:
+                g.add_node(adduct.partner_id)
+                g.add_edge(
+                    f_id,
+                    adduct.partner_id,
+                    ppm=adduct.diff_ppm,
+                    adduct_type=adduct.adduct_type,
+                    partner_adduct=adduct.partner_adduct,
+                )
+
+        subnetworks = {}
+        for i, component in enumerate(nx.connected_components(g)):
+            subnetworks[i] = g.subgraph(component).copy()
+            subnetworks[i].graph["name"] = i
+
+        summary = {}
+        for sub in subnetworks:
+            ids = {int(node) for node in subnetworks[sub].nodes}
+            summary[sub] = ids
+
+        if not self.stats.networks:
+            self.stats.networks = {}
+        self.stats.networks["ion_identity"] = SpecSimNet(
+            algorithm="ion_identity",
+            network=g,
+            subnetworks=subnetworks,
+            summary=summary,
+        )
+
+        for f_id in self.stats.active_features:
+            feature = self.features.get(f_id)
+            if feature.networks is None:
+                feature.networks = {}
+
+            for cluster_id in summary:
+                if f_id in summary[cluster_id]:
+                    feature.networks["ion_identity"] = SimNetworks(
+                        algorithm="ion_identity", network_id=cluster_id
+                    )
+            self.features.modify(f_id, feature)
+
+        logger.info(
+            "'AnnotationManager/AdductAnnotator': completed ion identity network"
+        )
 
     @staticmethod
     def add_adduct_info(feature: Feature) -> Feature:

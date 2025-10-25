@@ -260,7 +260,7 @@ class AnnotationManager(BaseModel):
                 samples=self.samples,
             )
             adduct_annotator.run_analysis()
-            self.features = adduct_annotator.return_features()
+            self.features, self.stats = adduct_annotator.return_features()
             self.params.AdductAnnotationParameters.module_passed = True
         except Exception as e:
             logger.error(str(e))
