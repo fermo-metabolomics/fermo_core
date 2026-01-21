@@ -290,7 +290,7 @@
         },
         "algorithm": {
           "type": "string",
-          "enum": ["pearson"]
+          "enum": ["pearson", "spearman", "spearman_permutation"]
         },
         "fdr_corr": {
           "type": "string",

@@ -17,6 +17,7 @@ def phen_quant_perc():
         coeff_cutoff=0.7,
         p_val_cutoff=0.05,
         fdr_corr="bonferroni",
+        alg="pearson",
         mode="percentage",
         stats=Stats(),
         features=Repository(),
@@ -85,6 +86,7 @@ def phen_quant_conc():
         coeff_cutoff=0.7,
         p_val_cutoff=0.05,
         fdr_corr="bonferroni",
+        alg="pearson",
         mode="concentration",
         stats=Stats(),
         features=Repository(),
@@ -227,20 +229,38 @@ def test_valid_constant_invalid(phen_quant_conc):
 
 
 def test_pearson_percentage_valid(phen_quant_perc):
-    x, y = phen_quant_perc.pearson_percentage([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+    x, y = phen_quant_perc.pearson([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], mode="percentage")
     assert x == 1
 
 
-def test_pearson_percentage_invalid(phen_quant_perc):
-    with pytest.raises(ValueError):
-        phen_quant_perc.pearson_percentage([1, 1, 1, 1, 1], [1, 2, 3, 4, 5])
-
-
 def test_pearson_concentration_valid(phen_quant_conc):
-    x, y = phen_quant_conc.pearson_concentration([1, 2, 3, 4, 5], [5, 4, 3, 2, 1])
+    x, y = phen_quant_conc.pearson(
+        [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], mode="concentration"
+    )
     assert round(x, 2) == 0.9
 
 
-def test_pearson_concentration_invalid(phen_quant_conc):
-    with pytest.raises(ValueError):
-        phen_quant_conc.pearson_concentration([1, 1, 1, 1, 1], [5, 4, 3, 2, 1])
+def test_spearman_percentage_valid(phen_quant_perc):
+    x, y = phen_quant_perc.pearson([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], mode="percentage")
+    assert x == 1
+
+
+def test_spearman_concentration_valid(phen_quant_conc):
+    x, y = phen_quant_conc.pearson(
+        [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], mode="concentration"
+    )
+    assert round(x, 2) == 0.9
+
+
+def test_spearman_perm_percentage_valid(phen_quant_perc):
+    x, y = phen_quant_perc.spearman_permutation(
+        [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], mode="percentage"
+    )
+    assert round(x, 2) == 1
+
+
+def test_spearman_perm_concentration_valid(phen_quant_conc):
+    x, y = phen_quant_conc.spearman_permutation(
+        [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], mode="concentration"
+    )
+    assert round(x, 2) == 1.0

@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.5] UNRELEASED
+## [0.7.0] UNRELEASED
 
 ## Added
 
 - Additional ion adducts to annotate multicharged ions where the [M+H]+ is not visible (e.g. often the case with peptides)
+- Added Spearman correlation, optionally with permutation test, for phenotype correlation
+
+## Changed
+
+- Removed z-transformation from Pearson correlation in quantitative phenotype score calculation
 
 ## [0.6.4] 13-05-2025
 
