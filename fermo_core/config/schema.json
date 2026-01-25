@@ -253,6 +253,9 @@
             "height",
             "area"
           ]
+        },
+        "p_val_cutoff": {
+          "$ref": "#/$defs/r_perc"
         }
       }
     },

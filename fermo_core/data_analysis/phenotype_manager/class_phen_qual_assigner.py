@@ -25,7 +25,9 @@ import logging
 from statistics import mean, median
 from typing import Optional, Self
 
+import numpy as np
 from pydantic import BaseModel
+from scipy.stats import ttest_ind
 
 from fermo_core.data_processing.builder_feature.dataclass_feature import (
     Annotations,
@@ -143,6 +145,30 @@ class PhenQualAssigner(BaseModel):
         else:
             return values_s_ids
 
+    def determine_active(
+        self, feature: Feature, fct: float, act: list, inact: list
+    ) -> Feature:
+        """Determine active based on fold-change and t-test"""
+        if fct < self.params.PhenoQualAssgnParams.factor:
+            return feature
+
+        phenotype = Phenotype(
+            score=1.0,
+            format="qualitative",
+            descr=f"Fold-difference: '{round(fct, 2)}'",
+        )
+
+        if len(act) > 3 and len(inact):
+            stat, pval = ttest_ind(np.log10(act), np.log10(inact), equal_var=False)
+            if pval <= self.params.PhenoQualAssgnParams.p_val_cutoff:
+                phenotype.descr = f"Fold-difference: '{round(fct, 2)}', Welsh's t-test statistic: '{round(stat, 2)}'"
+                phenotype.p_value = pval
+
+        feature = self.add_annotation_attribute(feature=feature)
+        feature.Annotations.phenotypes.append(phenotype)
+        self.stats.phenotypes[0].f_ids_positive.add(feature.f_id)
+        return feature
+
     def bin_intersection(self: Self):
         """Bin the intersection between positive and negative f_ids based on factor
 
@@ -164,41 +190,26 @@ class PhenQualAssigner(BaseModel):
 
             match self.params.PhenoQualAssgnParams.algorithm:
                 case "minmax":
-                    factor = min(vals_act) / max(vals_inact)
-                    if factor >= self.params.PhenoQualAssgnParams.factor:
-                        feature = self.add_annotation_attribute(feature=feature)
-                        feature.Annotations.phenotypes.append(
-                            Phenotype(
-                                score=1.0,
-                                format="qualitative",
-                                descr=f"Fold-difference: '{round(factor, 2)}'",
-                            )
-                        )
-                        self.stats.phenotypes[0].f_ids_positive.add(f_id)
+                    feature = self.determine_active(
+                        feature=feature,
+                        fct=min(vals_act) / max(vals_inact),
+                        act=vals_act,
+                        inact=vals_inact,
+                    )
                 case "mean":
-                    factor = mean(vals_act) / mean(vals_inact)
-                    if factor >= self.params.PhenoQualAssgnParams.factor:
-                        feature = self.add_annotation_attribute(feature=feature)
-                        feature.Annotations.phenotypes.append(
-                            Phenotype(
-                                score=1.0,
-                                format="qualitative",
-                                descr=f"Fold-difference: '{round(factor, 2)}'",
-                            )
-                        )
-                        self.stats.phenotypes[0].f_ids_positive.add(f_id)
+                    feature = self.determine_active(
+                        feature=feature,
+                        fct=mean(vals_act) / mean(vals_inact),
+                        act=vals_act,
+                        inact=vals_inact,
+                    )
                 case "median":
-                    factor = median(vals_act) / median(vals_inact)
-                    if factor >= self.params.PhenoQualAssgnParams.factor:
-                        feature = self.add_annotation_attribute(feature=feature)
-                        feature.Annotations.phenotypes.append(
-                            Phenotype(
-                                score=1.0,
-                                format="qualitative",
-                                descr=f"Fold-difference: '{round(factor, 2)}'",
-                            )
-                        )
-                        self.stats.phenotypes[0].f_ids_positive.add(f_id)
+                    feature = self.determine_active(
+                        feature=feature,
+                        fct=median(vals_act) / median(vals_inact),
+                        act=vals_act,
+                        inact=vals_inact,
+                    )
                 case _:
                     raise RuntimeError("'PhenQualAssigner': Unsupported algorithm.")
 
