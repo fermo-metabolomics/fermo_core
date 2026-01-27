@@ -683,7 +683,9 @@ class PhenoQuantPercentAssgnParams(BaseModel):
     def val(self):
         ValidationManager.validate_allowed(self.sample_avg, ["mean", "median"])
         ValidationManager.validate_allowed(self.value, ["area"])
-        ValidationManager.validate_allowed(self.algorithm, ["pearson", "spearman"])
+        ValidationManager.validate_allowed(
+            self.algorithm, ["pearson", "spearman", "spearman_permutation"]
+        )
         ValidationManager.validate_allowed(
             self.fdr_corr,
             [
