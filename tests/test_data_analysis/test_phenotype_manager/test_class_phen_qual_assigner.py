@@ -81,7 +81,13 @@ def phen_qual():
         )
     ]
     phen_qual.params.PhenoQualAssgnParams = PhenoQualAssgnParams(
-        **{"activate_module": True, "factor": 5, "algorithm": "minmax", "value": "area"}
+        **{
+            "activate_module": True,
+            "factor": 5,
+            "algorithm": "minmax",
+            "value": "area",
+            "p_val_cutoff": 0.0,
+        }
     )
     phen_qual.params.PhenotypeParameters = PhenotypeParameters(
         **{
@@ -133,3 +139,15 @@ def test_bin_intersection_negative(phen_qual):
     ]
     phen_qual.bin_intersection()
     assert len(phen_qual.stats.phenotypes[0].f_ids_positive) == 0
+
+
+def test_determine_active(phen_qual):
+    phen_qual.params.PhenoQualAssgnParams.p_val_cutoff = 0.05
+    phen_qual.params.PhenoQualAssgnParams.test = "Wilcoxon"
+    feature = phen_qual.determine_active(
+        feature=phen_qual.features.get(1),
+        fct=10,
+        act=[66, 77, 88, 99, 111],
+        inact=[6, 7, 8, 9],
+    )
+    assert feature.Annotations.phenotypes[0].p_value is not None

@@ -76,7 +76,8 @@
         "activate_module": true,
         "factor": 5,
         "algorithm": "minmax",
-        "value": "area"
+        "value": "area",
+        "p_val_cutoff": 0.05
     },
     "PhenoQuantPercentAssgnParameters": {
         "activate_module": false,

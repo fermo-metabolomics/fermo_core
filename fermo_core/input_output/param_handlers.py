@@ -625,6 +625,8 @@ class PhenoQualAssgnParams(BaseModel):
         factor: An integer fold-change to differentiate phenotype-assoc. features.
         algorithm: the algorithm to summarize values of active vs inactive samples.
         value: the type of value to use for determination
+        p_val_cutoff: minimum significance threshold derived by test; 0 to disable test
+        test: type of test performed
         module_passed: indicates that the module ran without errors
     """
 
@@ -632,12 +634,16 @@ class PhenoQualAssgnParams(BaseModel):
     factor: PositiveInt
     algorithm: str
     value: str
+    p_val_cutoff: float = 0.0
+    test: str = "None"
     module_passed: bool = False
 
     @model_validator(mode="after")
     def val(self):
         ValidationManager.validate_allowed(self.algorithm, ["mean", "median", "minmax"])
         ValidationManager.validate_allowed(self.value, ["height", "area"])
+        ValidationManager.validate_allowed(self.test, ["None", "Welsh", "Wilcoxon"])
+        ValidationManager.validate_float_zero_one(self.p_val_cutoff)
         return self
 
     def to_json(self: Self) -> dict:
@@ -680,7 +686,9 @@ class PhenoQuantPercentAssgnParams(BaseModel):
     def val(self):
         ValidationManager.validate_allowed(self.sample_avg, ["mean", "median"])
         ValidationManager.validate_allowed(self.value, ["area"])
-        ValidationManager.validate_allowed(self.algorithm, ["pearson"])
+        ValidationManager.validate_allowed(
+            self.algorithm, ["pearson", "spearman", "spearman_permutation"]
+        )
         ValidationManager.validate_allowed(
             self.fdr_corr,
             [
@@ -743,7 +751,9 @@ class PhenoQuantConcAssgnParams(BaseModel):
     def val(self):
         ValidationManager.validate_allowed(self.sample_avg, ["mean", "median"])
         ValidationManager.validate_allowed(self.value, ["area"])
-        ValidationManager.validate_allowed(self.algorithm, ["pearson"])
+        ValidationManager.validate_allowed(
+            self.algorithm, ["pearson", "spearman", "spearman_permutation"]
+        )
         ValidationManager.validate_allowed(
             self.fdr_corr,
             [

@@ -3,6 +3,7 @@ results/
 data_working/
 .idea/
 fermo_analysis/
+uv.lock
 
 # ms2query files
 fermo_core/libraries/ms2query/results

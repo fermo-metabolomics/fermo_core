@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] 29-01-2026
+
+## Added
+
+- Additional ion adducts to annotate multicharged ions where the [M+H]+ is not visible (e.g. often the case with peptides)
+- Added Cytoscape-compatible ion identity network for additional output for adduct annotation
+- Quantitative phenotype: Added Spearman correlation, optionally with permutation test
+- Qualitative phenotype: Added optional testing (Welsh, Wilcoxon) to reduce spurious hits at low fold-changes (disabled by setting p_value_theshold to 0 or specifying "None"). 
+
+## Changed
+
+- Removed z-transformation from Pearson correlation in quantitative phenotype score calculation
+- For qualitative phenotype assigning, set p-value to "N/A" if not calculated (was 1 before)
+
 ## [0.6.4] 13-05-2025
 
 ## Changed

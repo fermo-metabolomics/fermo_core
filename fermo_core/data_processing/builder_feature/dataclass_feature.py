@@ -180,9 +180,9 @@ class Phenotype(BaseModel):
             "category": self.category if self.category is not None else "N/A",
             "descr": self.descr if self.descr is not None else "N/A",
             "score": round(self.score, 6),
-            "p_value": round(self.p_value, 10) if self.p_value is not None else 1.0,
+            "p_value": round(self.p_value, 10) if self.p_value is not None else "N/A",
             "p_value_corr": (
-                round(self.p_value_corr, 10) if self.p_value_corr is not None else 1.0
+                round(self.p_value_corr, 10) if self.p_value_corr is not None else "N/A"
             ),
         }
 

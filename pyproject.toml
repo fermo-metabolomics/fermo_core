@@ -1,6 +1,6 @@
 [project]
 name = "fermo_core"
-version = "0.6.4"
+version = "0.7.0"
 description = "Data processing/analysis functionality of metabolomics dashboard FERMO"
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
@@ -61,30 +61,6 @@ fermo_core = "fermo_core.main:main_cli"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-[tool.hatch.envs.default]
-installer = "uv"
-
-[tool.hatch.envs.dev]
-installer = "uv"
-features = [
-    "dev"
-]
-
-[tool.hatch.envs.doc]
-installer = "uv"
-features = [
-    "doc"
-]
-
-
-[tool.hatch.envs.test]
-dependencies = [
-  "pytest~=7.4.2",
-]
-
-[[tool.hatch.envs.test.matrix]]
-python = ["3.11"]
 
 
 [tool.hatch.build.targets.sdist]

@@ -253,6 +253,17 @@
             "height",
             "area"
           ]
+        },
+        "p_val_cutoff": {
+          "$ref": "#/$defs/r_perc"
+        },
+        "test": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Welsh",
+            "Wilcoxon"
+          ]
         }
       }
     },
@@ -290,7 +301,7 @@
         },
         "algorithm": {
           "type": "string",
-          "enum": ["pearson"]
+          "enum": ["pearson", "spearman", "spearman_permutation"]
         },
         "fdr_corr": {
           "type": "string",

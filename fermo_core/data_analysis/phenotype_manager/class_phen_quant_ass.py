@@ -22,7 +22,7 @@ from typing import Self
 
 import numpy as np
 from pydantic import BaseModel
-from scipy.stats import pearsonr, zscore
+from scipy import stats
 from statsmodels.stats.multitest import multipletests
 
 from fermo_core.data_processing.builder_feature.dataclass_feature import (
@@ -44,6 +44,7 @@ class PhenQuantAss(BaseModel):
         p_val_cutoff: the corrected p-value cutoff
         fdr_corr: the type of FDR correction
         mode: the type of quantitative data
+        alg: the algorithm used for correlation
         stats: Stats object, holds stats on molecular features and samples
         features: Repository object, holds "General Feature" objects
         samples: Repository object holding Sample objects
@@ -55,6 +56,7 @@ class PhenQuantAss(BaseModel):
     p_val_cutoff: float
     fdr_corr: str
     mode: str
+    alg: str
     stats: Stats
     features: Repository
     samples: Repository
@@ -146,31 +148,72 @@ class PhenQuantAss(BaseModel):
             return True
 
     @staticmethod
-    def pearson_percentage(areas: list, activs: list) -> tuple[float, float]:
+    def pearson(areas: list, activs: list, mode: str) -> tuple[float, float]:
         """Calculate regular pearson coefficient
 
         Args:
             areas: the feature areas per sample
             activs: the measured activities per sample
+            mode: percentage or concentration
 
         Returns:
-            the pearson score and the p-value
+            the Pearson score and the p-value
         """
-        return pearsonr(zscore(areas), zscore(activs))
+        if mode == "concentration":
+            activs = [(1 / val) if val != 0 else 0 for val in activs]
+
+        return stats.pearsonr(areas, activs)
 
     @staticmethod
-    def pearson_concentration(areas: list, activs: list) -> tuple[float, float]:
-        """Calculate regular pearson coefficient
+    def spearman(areas: list, activs: list, mode: str) -> tuple[float, float]:
+        """Calculate Spearman rank correlation
 
         Args:
             areas: the feature areas per sample
             activs: the measured activities per sample
+            mode: percentage or concentration
 
         Returns:
-            the pearson score and the p-value
+            the Spearman score and the p-value
         """
-        activs = [(1 / val) if val != 0 else 0 for val in activs]
-        return pearsonr(zscore(areas), zscore(activs))
+        if mode == "concentration":
+            activs = [(1 / val) if val != 0 else 0 for val in activs]
+
+        r_s = stats.spearmanr(areas, activs).statistic
+        p = stats.spearmanr(areas, activs).pvalue
+        return r_s, p
+
+    @staticmethod
+    def spearman_permutation(
+        areas: list, activs: list, mode: str
+    ) -> tuple[float, float]:
+        """Calculate Spearman rank correlation with two-sided permutation test
+
+        Args:
+            areas: the feature areas per sample
+            activs: the measured activities per sample
+            mode: percentage or concentration
+
+        Returns:
+            the Spearman score and the p-value
+        """
+        if mode == "concentration":
+            activs = [(1 / val) if val != 0 else 0 for val in activs]
+
+        r_s = stats.spearmanr(areas, activs).statistic
+
+        def statistic(x):
+            return stats.spearmanr(x, activs).statistic
+
+        res = stats.permutation_test(
+            (areas,),
+            statistic,
+            permutation_type="pairings",
+            n_resamples=10000,
+            alternative="two-sided",
+        )
+
+        return r_s, res.pvalue
 
     def calculate_correlation(self: Self):
         """Collect data and prepare calculation
@@ -200,22 +243,24 @@ class PhenQuantAss(BaseModel):
                 if not self.valid_constant(areas) or not self.valid_constant(activs):
                     continue
 
-                if self.mode == "percentage":
-                    pearson_s, p_val = self.pearson_percentage(
-                        areas=areas, activs=activs
+                if self.alg == "pearson":
+                    corr, pval = self.pearson(
+                        areas=areas, activs=activs, mode=self.mode
                     )
-                elif self.mode == "concentration":
-                    pearson_s, p_val = self.pearson_concentration(
-                        areas=areas, activs=activs
+                elif self.alg == "spearman":
+                    corr, pval = self.spearman(
+                        areas=areas, activs=activs, mode=self.mode
+                    )
+                elif self.alg == "spearman_permutation":
+                    corr, pval = self.spearman_permutation(
+                        areas=areas, activs=activs, mode=self.mode
                     )
                 else:
-                    raise KeyError(
-                        f"Unsupported type of input data '{self.mode}' - SKIP"
-                    )
+                    raise KeyError(f"Unsupported algorithm '{self.alg}' - SKIP")
 
                 self.assays[assay.category][f_id] = {}
-                self.assays[assay.category][f_id]["corr"] = pearson_s
-                self.assays[assay.category][f_id]["raw_p"] = p_val
+                self.assays[assay.category][f_id]["corr"] = corr
+                self.assays[assay.category][f_id]["raw_p"] = pval
                 self.assays[assay.category][f_id]["datatype"] = assay.datatype
 
     def correct_p_val(self) -> None:
