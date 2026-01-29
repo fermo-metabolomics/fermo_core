@@ -18,22 +18,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/checkout@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          fetch-depth: 2
 
-      - name: Install package with pip
-        run: |
-          pipx install hatch
-          hatch env create dev
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install dependencies
+        run: uv sync --all-groups
 
       - name: Run tests
         run: |
-          hatch run dev:pytest
+          uv run pytest
 
       - name: Run fermo_core on test dataset
         run: |
-          hatch run dev:fermo_core --parameters tests/test_data/test.parameters.json
+          uv run fermo_core --parameters tests/test_data/test.parameters.json
