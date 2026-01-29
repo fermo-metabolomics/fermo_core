@@ -625,7 +625,8 @@ class PhenoQualAssgnParams(BaseModel):
         factor: An integer fold-change to differentiate phenotype-assoc. features.
         algorithm: the algorithm to summarize values of active vs inactive samples.
         value: the type of value to use for determination
-        p_val_cutoff: minimum significance threshold derived by t-test; 0 to disable t-test
+        p_val_cutoff: minimum significance threshold derived by test; 0 to disable test
+        test: type of test performed
         module_passed: indicates that the module ran without errors
     """
 
@@ -634,12 +635,14 @@ class PhenoQualAssgnParams(BaseModel):
     algorithm: str
     value: str
     p_val_cutoff: float = 0.0
+    test: str = "No test"
     module_passed: bool = False
 
     @model_validator(mode="after")
     def val(self):
         ValidationManager.validate_allowed(self.algorithm, ["mean", "median", "minmax"])
         ValidationManager.validate_allowed(self.value, ["height", "area"])
+        ValidationManager.validate_allowed(self.test, ["No test", "Welsh", "Wilcoxon"])
         ValidationManager.validate_float_zero_one(self.p_val_cutoff)
         return self
 

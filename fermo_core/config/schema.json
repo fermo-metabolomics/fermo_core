@@ -256,6 +256,14 @@
         },
         "p_val_cutoff": {
           "$ref": "#/$defs/r_perc"
+        },
+        "test": {
+          "type": "string",
+          "enum": [
+            "No test",
+            "Welsh",
+            "Wilcoxon"
+          ]
         }
       }
     },

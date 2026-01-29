@@ -27,7 +27,7 @@ from typing import Optional, Self
 
 import numpy as np
 from pydantic import BaseModel
-from scipy.stats import ttest_ind
+from scipy.stats import ranksums, ttest_ind
 
 from fermo_core.data_processing.builder_feature.dataclass_feature import (
     Annotations,
@@ -148,7 +148,7 @@ class PhenQualAssigner(BaseModel):
     def determine_active(
         self, feature: Feature, fct: float, act: list, inact: list
     ) -> Feature:
-        """Determine active based on fold-change and t-test"""
+        """Determine active based on fold-change and test"""
         if fct < self.params.PhenoQualAssgnParams.factor:
             return feature
 
@@ -158,11 +158,31 @@ class PhenQualAssigner(BaseModel):
             descr=f"Fold-difference: '{round(fct, 2)}'",
         )
 
-        if len(act) > 3 and len(inact):
-            stat, pval = ttest_ind(np.log10(act), np.log10(inact), equal_var=False)
-            if pval <= self.params.PhenoQualAssgnParams.p_val_cutoff:
-                phenotype.descr = f"Fold-difference: '{round(fct, 2)}', Welsh's t-test statistic: '{round(stat, 2)}'"
-                phenotype.p_value = pval
+        if len(act) > 3 and len(inact) > 3:
+            log_act = np.log10(act)
+            log_inact = np.log10(inact)
+
+            match self.params.PhenoQualAssgnParams.test:
+                case "Welsh":
+                    stat, pval = ttest_ind(log_act, log_inact, equal_var=False)
+                    if (
+                        pval < self.params.PhenoQualAssgnParams.p_val_cutoff
+                        or self.params.PhenoQualAssgnParams.p_val_cutoff == 0
+                    ):
+                        phenotype.descr = f"Fold-difference: '{round(fct, 2)}', Welsh's t-test statistic: '{round(stat, 2)}'"
+                        phenotype.p_value = pval
+                case "Wilcoxon":
+                    stat, pval = ranksums(log_act, log_inact)
+                    if (
+                        pval < self.params.PhenoQualAssgnParams.p_val_cutoff
+                        or self.params.PhenoQualAssgnParams.p_val_cutoff == 0
+                    ):
+                        phenotype.descr = f"Fold-difference: '{round(fct, 2)}', Wilcoxon rank-sum test statistic: '{round(stat, 2)}'"
+                        phenotype.p_value = pval
+                case _:
+                    logger.warning(
+                        f"PhenQualAssigner: test '{self.params.PhenoQualAssgnParams.test}' not recognized - SKIP"
+                    )
 
         feature = self.add_annotation_attribute(feature=feature)
         feature.Annotations.phenotypes.append(phenotype)

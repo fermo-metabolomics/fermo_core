@@ -143,6 +143,7 @@ def test_bin_intersection_negative(phen_qual):
 
 def test_determine_active(phen_qual):
     phen_qual.params.PhenoQualAssgnParams.p_val_cutoff = 0.05
+    phen_qual.params.PhenoQualAssgnParams.test = "Wilcoxon"
     feature = phen_qual.determine_active(
         feature=phen_qual.features.get(1),
         fct=10,
