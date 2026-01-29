@@ -158,25 +158,23 @@ class PhenQualAssigner(BaseModel):
             descr=f"Fold-difference: '{round(fct, 2)}'",
         )
 
-        if len(act) > 3 and len(inact) > 3:
+        if (
+            len(act) > 3
+            and len(inact) > 3
+            and self.params.PhenoQualAssgnParams.p_val_cutoff != 0
+        ):
             log_act = np.log10(act)
             log_inact = np.log10(inact)
 
             match self.params.PhenoQualAssgnParams.test:
                 case "Welsh":
                     stat, pval = ttest_ind(log_act, log_inact, equal_var=False)
-                    if (
-                        pval < self.params.PhenoQualAssgnParams.p_val_cutoff
-                        or self.params.PhenoQualAssgnParams.p_val_cutoff == 0
-                    ):
+                    if pval < self.params.PhenoQualAssgnParams.p_val_cutoff:
                         phenotype.descr = f"Fold-difference: '{round(fct, 2)}', Welsh's t-test statistic: '{round(stat, 2)}'"
                         phenotype.p_value = pval
                 case "Wilcoxon":
                     stat, pval = ranksums(log_act, log_inact)
-                    if (
-                        pval < self.params.PhenoQualAssgnParams.p_val_cutoff
-                        or self.params.PhenoQualAssgnParams.p_val_cutoff == 0
-                    ):
+                    if pval < self.params.PhenoQualAssgnParams.p_val_cutoff:
                         phenotype.descr = f"Fold-difference: '{round(fct, 2)}', Wilcoxon rank-sum test statistic: '{round(stat, 2)}'"
                         phenotype.p_value = pval
                 case _:
