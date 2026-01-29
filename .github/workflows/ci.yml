@@ -36,7 +36,7 @@ jobs:
 
       - name: Run tests
         run: |
-          uv run pytest
+          uv run pytest tests
 
       - name: Run fermo_core on test dataset
         run: |
