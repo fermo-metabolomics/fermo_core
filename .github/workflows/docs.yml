@@ -12,20 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
       - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+        run: uv python install
 
       - name: Install dependencies
-        run: |
-          pipx install hatch
-          hatch env create doc
+        run: uv sync --all-extras --doc
 
       - name: Build documentation
-        run: hatch run doc:sphinx-build docs/source/ _build
+        run: uv run sphinx-build docs/source/ _build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
