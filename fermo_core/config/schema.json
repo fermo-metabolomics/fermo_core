@@ -260,7 +260,7 @@
         "test": {
           "type": "string",
           "enum": [
-            "No test",
+            "None",
             "Welsh",
             "Wilcoxon"
           ]

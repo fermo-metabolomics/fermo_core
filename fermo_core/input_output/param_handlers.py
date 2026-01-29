@@ -635,14 +635,14 @@ class PhenoQualAssgnParams(BaseModel):
     algorithm: str
     value: str
     p_val_cutoff: float = 0.0
-    test: str = "No test"
+    test: str = "None"
     module_passed: bool = False
 
     @model_validator(mode="after")
     def val(self):
         ValidationManager.validate_allowed(self.algorithm, ["mean", "median", "minmax"])
         ValidationManager.validate_allowed(self.value, ["height", "area"])
-        ValidationManager.validate_allowed(self.test, ["No test", "Welsh", "Wilcoxon"])
+        ValidationManager.validate_allowed(self.test, ["None", "Welsh", "Wilcoxon"])
         ValidationManager.validate_float_zero_one(self.p_val_cutoff)
         return self
 
