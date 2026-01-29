@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## Added
 
 - Additional ion adducts to annotate multicharged ions where the [M+H]+ is not visible (e.g. often the case with peptides)
+- Added Cytoscape-compatible ion identity network for additional output for adduct annotation
 - Quantitative phenotype: Added Spearman correlation, optionally with permutation test
 - Qualitative phenotype: Added optional testing (Welsh, Wilcoxon) to reduce spurious hits at low fold-changes (disabled by setting p_value_theshold to 0 or specifying "None"). 
 
