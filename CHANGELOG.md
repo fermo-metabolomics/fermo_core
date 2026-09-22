@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] 22-09-2026
+
+## Bugfix
+
+- Fixed export of mzmine-resulting spectral library annotations to the abbrev.csv file
+- Fixed fail of mzmineAnnotation module if `ion_identities:partner_row_ids` column is missing in mzmine peaktable file
+
+
 ## [0.7.0] 29-01-2026
 
 ## Added

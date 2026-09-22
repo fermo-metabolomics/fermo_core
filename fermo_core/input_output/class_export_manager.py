@@ -298,6 +298,7 @@ class CsvExporter(BaseModel):
             return None
 
         modules = set()
+        modules.add("MzmineAnnParser")
         if (
             self.params.SpectralLibMatchingDeepscoreParameters
             and self.params.SpectralLibMatchingDeepscoreParameters.activate_module

@@ -125,12 +125,12 @@ class MzmineAnnParser(BaseModel):
         if not self.f.Annotations.adducts:
             self.f.Annotations.adducts = []
 
-        for partner_id in r["ion_identities:partner_row_ids"].split(";"):
-            p_id = int(partner_id)
-            if int(r["id"]) == p_id:
-                continue
+        try:
+            for partner_id in r["ion_identities:partner_row_ids"].split(";"):
+                p_id = int(partner_id)
+                if int(r["id"]) == p_id:
+                    continue
 
-            try:
                 self.f.Annotations.adducts.append(
                     Adduct(
                         adduct_type=f'{r["ion_identities:ion_identities"]}(mzmine)',
@@ -140,10 +140,10 @@ class MzmineAnnParser(BaseModel):
                         diff_ppm="0",
                     )
                 )
-            except IndexError:
-                logger.warning(
-                    f"MzmineAnnParser: could not find ion identity annotation for '{p_id}'"
-                )
+        except Exception as e:
+            logger.warning(
+                f"MzmineAnnParser: could not find ion identity annotation: {e!s}"
+            )
 
     def parse_spectral_db(self, r: pd.Series) -> None:
         """Retrieve spectral db annotation information
